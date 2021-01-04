@@ -1,3 +1,5 @@
+![](../site/banner.png)
+
 # Syllabus
 
 ## Overview
