@@ -1,0 +1,439 @@
+@import url("reset.css");
+@import url("./js/highlight/styles/monokai_sublime.css");
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700);
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('./fonts/icomoon.eot');
+  src: url('./fonts/icomoon.eot#iefix-8k8p81') format('embedded-opentype'), url('./fonts/icomoon.ttf') format('truetype'), url('./fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-byui-logo:before {
+  content: "\e000";
+  box-sizing: border-box;
+}
+
+.icon-byui-logo {
+  font-size:75px;
+  color:#fff;
+  float:left;
+  margin-top:-22px;
+  padding-top:0px;
+
+  font-family: 'icomoon';
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: "Open Sans", helvetica, arial, sans-serif;
+	background: #FEFEFE;
+	color: #040404;
+	counter-reset: h3; 
+}
+
+/* Title Bar */
+#courseTitle {
+	background: #326BA9;
+/*	width: 100%;
+*/	padding: 25px;
+
+}
+
+#courseTitle h1 {
+	color: #FFFFFF;
+	font-size: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+
+#courseTitle .logo {
+	width: 64px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 20px 0 20px;
+	border-right: 1px solid #FFFFFF;
+}
+
+/* Code Highlighting */
+pre code {
+	font-family: Menlo, Monaco, Consolas, monospace;
+	font-size: 14px;
+	line-height: 1.4em;
+	margin: 20px auto;
+	border: 1px solid #CCC;
+}
+
+pre code.hljs {
+	padding-bottom: 25px;
+}
+
+code .user-input {
+	text-decoration: underline;
+}
+
+img {
+	max-width: 100%;
+}
+
+img.screenshot {
+	display: block;
+    max-height: 60px;
+    margin: 0 auto 0.5em auto;
+}
+
+img.screenshot-large {
+	display: block;
+    max-height: 200px;
+    margin: 0 auto 0.5em auto;
+}
+
+/*p code, li code {
+	color: #A10200;
+	font-size: 18px;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	background: #FFF;
+	border: 1px solid #CCC;
+	padding: 2px 6px;
+}
+*/
+
+p code, li code {
+	font-size: 18px;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	font-weight:bold;
+}
+/*
+article ol li code {
+	margin-left: 0.5em;
+}
+*/
+.java.hljs {
+	padding: 15px;
+}
+
+/* Content */
+article {
+	margin: 10px auto;
+	max-width: 750px;
+	padding: 20px;
+}
+
+article p {
+	font-size: 22px;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+}
+
+article em {
+	font-style: italic;
+	color: #666;
+	font-size: 17px;
+}
+
+article strong {
+	font-weight: bold;
+	color: #CC0000;
+}
+
+article h1 {
+	text-align: center;
+	font-size: 36px;
+	margin-bottom: 1em;
+}
+
+article h2 {
+	font-size: 26px;
+	font-weight: bold;
+	margin: 40px 0 10px 0;
+	padding-bottom: 0.25em;
+	border-bottom: 1px solid #040404;
+}
+
+article h3 {
+	color: #006AB9;
+	text-transform: uppercase;
+	padding-top: 10px;
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+
+article h4 {
+	padding-top: 10px;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+}
+
+aside.pull-right, aside.pull-left {
+	position: absolute;
+	right: 5px;
+	width: 200px;
+	background: #006AB9;
+	padding: 13px;
+	margin: 0 1.5%;
+}
+
+aside.pull-left {
+	left: 5px;
+	right: 0px;
+}
+
+aside.stay-middle {
+	background: #006AB9;
+	padding: 13px;
+	margin: 15px;
+}
+
+
+
+aside.pull-right p, aside.pull-left p, aside.stay-middle p {
+	color: white;
+	font-size: 16px
+}
+
+aside.pull-right strong, aside.pull-left strong {
+	color: black;
+	font-size: 18px;
+}
+
+aside heading {
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	display: block;
+	padding-bottom: 1.25em;
+}
+
+/* Lists */
+article ul  {
+	margin: 0 0 1em 2em;
+}
+
+article ol  {
+	margin: 0 0 1em 3em;
+}
+
+article ol li {
+	list-style: decimal-leading-zero;
+	font-size: 18px;
+	color: #006AB9;
+	margin-bottom: 1em;
+	border-left: 2px solid #CCC;
+}
+
+article h3:before {
+	content: counter(h3, upper-roman) ".";
+    counter-increment: h3 1;
+    margin-right: 10px;
+}
+
+article li p {
+	font-size: 18px;
+	margin-bottom: 0.5em;
+	color: #040404;
+	margin-left: 10px;
+}
+
+article ol ul li {
+	list-style: none;
+	border-left: none;
+}
+
+article ul li p:before {
+	content: "»";
+	color: #006AB9;
+	font-size: 24px;
+	margin-right: 0.5em;
+}
+
+@media only screen and (max-width: 1250px) {
+    aside.pull-right, aside.pull-left {
+    	width: 96.5%;
+    	position: relative;
+		padding: 13px;
+		margin: 0 0 15px 0;
+		right: 0px;
+		left: 0px;
+	}
+
+}
+
+table.code-examples {
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.code-examples thead {
+	text-align: center;
+	font-weight: bold;
+}
+
+table.code-examples thead td {
+	padding-bottom: 20px;
+}
+
+
+table.code-examples p {
+	font-size: 1em;
+	padding: 0px;
+	margin: 0px;
+}
+
+table.code-examples td {
+	font-size: 1em;
+	padding: 10px;
+	border: 1px solid rgb(200,200,200);
+}
+
+.table-small {
+	font-size:small;
+	margin-bottom: 20px;
+}
+
+.table-small p {
+	font-size:small;
+}
+
+.table-small td {
+	border: 1px solid rgb(200,200,200);
+	padding: 3px;
+}
+
+.table-small thead {
+	text-align:center;
+	font-weight:bold;
+}
+
+.table-small ul {
+	list-style-position: inside;
+	margin-left: 10px;
+	padding-left: 0px;
+	text-indent: -10px;
+}
+
+.table-small li {
+
+	padding-left: 10px;
+}
+
+
+/*******************************
+ * Class Diagrams
+ *******************************/
+.class-diagrams {
+text-align: center;
+}
+
+.class-diagram-spacer{
+background: #EFEFEF;
+padding: 0;
+}
+
+.table-class-diagram tr.class-diagram-spacer td{
+padding: 0;
+border: 1px solid #EFEFEF;
+}
+
+.table-class-diagram{
+border: 1px solid #CCC;
+border-collapse: collapse;
+margin-left: 20px;
+margin-bottom: 10px;
+display: inline-block;
+vertical-align: top;
+text-align: left;
+font-family: Menlo, Monaco, Consolas, fixed;
+}
+
+.table-class-diagram th{
+background: #3981B2;
+color: #EFEFEF;
+text-align: center;
+padding: 5px;
+padding-top: 5px!important;
+}
+
+.table-class-diagram tr td{
+padding: 5px;
+padding-top: 5px!important;
+border-right: 1px dashed #CCC;
+}
+
+.table-class-diagram tr{
+border-bottom: 1px solid #EEE;
+}
+
+.table-class-diagram tr:last-child, .table-class-diagram tr:first-child{
+border-bottom: none;
+}
+
+
+/* Instructor Tips */
+
+.tips {
+  background-color: rgb(230, 230, 230);
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.tips p:first-child {
+	font-weight: bold;
+}
+
+.tips p {
+	font-size: 0.8em;
+}
+
+.tips p code {
+	font-size: 1em;
+	font-family: Menlo, Monaco, Consolas, monospace;
+	font-weight:bold;
+}
+
+p.subtitle {
+	text-align: center;
+	margin-top: -30px;
+	color: #0F6CB6;
+	font-size: 1.45em;
+}
+
+heading.subtitle {
+	text-align: center;
+	margin-top: -30px;
+	color: #0F6CB6;
+	font-size: 1.45em;
+	display: block;
+}
+
+.img-tutorial {
+	border: 0;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+span.subtitle {
+	font-weight: bold;
+}
+
+.img-center {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+li heading {
+	font-weight: bold;
+}
