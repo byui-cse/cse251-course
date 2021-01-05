@@ -1,0 +1,10 @@
+https://swapi.dev/api/people/1/
+https://swapi.dev/api/people/3/
+https://swapi.dev/api/people/5/
+https://swapi.dev/api/people/8/
+https://swapi.dev/api/people/30/
+https://swapi.dev/api/people/13/
+https://swapi.dev/api/people/64/
+https://swapi.dev/api/people/76/
+https://swapi.dev/api/people/18/
+https://swapi.dev/api/people/21/
