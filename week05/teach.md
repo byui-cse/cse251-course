@@ -33,11 +33,12 @@ The following graph outlines the processes and data structures that you will nee
 
 ### Requirements
 
-1. Read the numbers from the data file into a queue.
-2. Create three `prime processes`'s that will test the numbers from the queue
-3. Do not hard code the number of values that the program will process. Your program needs to handle any number of values in a data file.
-4. Get main to display the final list of prime numbers.
-5. After you get the program working, change it to handle any number of `prime process` processes.
+1. Download the file `team.py` from GitHub [File Link](team/team.py)
+2. Read the numbers from the data file into a queue.
+3. Create three `prime processes`'s that will test the numbers from the queue
+4. Do not hard code the number of values that the program will process. Your program needs to handle any number of values in a data file.
+5. Get main to display the final list of prime numbers.
+6. After you get the program working, change it to handle any number of `prime process` processes.
 
 ## Sample Solution
 
