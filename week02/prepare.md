@@ -4,7 +4,7 @@
 
 ## Overview
 
-Last week, we learned to create threads that are considered "stand alone".  Meaning that whan that thread is running, it doesn't effect other threads. Also, there was no communication between threads.  This week, we are learning about the communication tools that allow threads to work together.
+Last week, we learned to create threads that are considered "stand alone" -- meaning that whan that thread is running, it doesn't effect other threads. Also, there was no communication between threads.  This week, we are learning about the communication tools that allow threads to work together.
 
 ## Thread Objects
 
@@ -14,12 +14,11 @@ There are two methods that you must implement (You can create others if your cla
 
 **`__init__()`**
 
-This method is used to initialize the instance of the object you just created and to call the parent class's constructor.  You are free to add any number of arguments that you require.
+This method is used to initialize the instance of the object you just created and to call the parent class' constructor.  You are free to add any number of arguments that you require.
 
 **`run()`**
 
-After to create an instance of this class, when you call the start() method, this `run()` method will be executed.  This method only has one argument with is `self`. When the `run()` exits, then the thread is finished.  Within the the `run()` method, you can call other methods in your class if you have them.
-
+After you create an instance of this class, when you call the start() method, this `run()` method will be executed.  The only method this argument has is `self`. When the `run()` exits, then the thread is finished.  Within the  `run()` method, you can call other methods in your class if you have them.
 
 ```python
 import threading
@@ -107,7 +106,7 @@ Add_Two(200) returns 202
 
 You can easily share resources between threads. Any global variables are shared.  As programmers, we don't like global variables because of the side-effects that can happen with them.  The shared data doesn't have to be a global variable, if you pass the same list or dictionary to threads, then they are sharing that object.
 
-Each threads has their own function stack.  This means that local variables that are created in a thread are unique to that thread.
+Each thread has its own function stack.  This means that local variables that are created in a thread are unique to that thread.
 
 We will learn about other data elements that are used for sharing data between threads and processes later in the course.
 
@@ -202,7 +201,7 @@ def thread_func(filename, count):
 **Rules when using locks**
 
 1. Don't over do it.  The more locks you add to a program, the less parallel and concurrent it becomes.  You do need to use locks in your code, just use the minimum required.
-2. Try to keep the code in the critical section as small and fast as possible.  Since only one thread can enter a critical section at a time, all others are waiting.  If you have a critical section that takes a lond time to execute, then your program will be slow.
+2. Try to keep the code in the critical section as small and fast as possible.  Since only one thread can enter a critical section at a time, all others are waiting.  If you have a critical section that takes a long time to execute, then your program will be slow.
 3. Try to limit any I/O statements. (ie., file access, print() statements)  **NEVER** put an `input()` statement in a critical section unless you have a really good reason (And I would like to hear it).
 
 
@@ -218,4 +217,4 @@ For example: in the language C++, the `rand()` function is not thread safe.  If 
 
 In Python, tuples are thread safe since they are read only. However, `list`, `set` and `dict` need to be protected in threaded code. (ie., using locks or semaphores).
 
-Note that individual methods such as `append()` for list/set in thread safe in that if you call this method, you can be sure that the item was appended to the list/set.  However, in most cases, you are doing more to a list/set/dict than just one method call. You can still have a race condition "between" the method statements.
+Note that individual methods such as `append()` for list/set are thread safe in that if you call this method, you can be sure that the item was appended to the list/set.  However, in most cases, you are doing more to a list/set/dict than just one method call. You can still have a race condition "between" the method statements.

@@ -29,7 +29,7 @@ draw_triangles(tur)
 draw_rectangles(tur)
 ```
 
-4. Look for `TODO` in the program.  You will be creating and executing 4 threads.  Each thread will call one of the `draw_?(tur)` functions above.  (I.e. one thread calls `draw_squares()`, another calls `draw_circles()`, etc...)
+4. Look for `TODO` in the program.  You will be creating and executing 4 threads.  Each thread will call one of the `draw_?(tur)` functions above.  (I.e. one thread calls `draw_squares()`, another calls `draw_circles()`, etc...).  Your goal is not to draw the shapes in the same order as the non-threaded function, but to end up with the same results.  The threads must be running concurrenctly and take turns drawing their shape.
 5. You should not change any of the Log statements in the assignment. (See below section on the Logger class)
 
 ## CSE 251 Logger
