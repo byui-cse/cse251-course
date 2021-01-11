@@ -53,7 +53,7 @@ import threading
 # Include cse 251 common Python files
 import os, sys
 sys.path.append('../../code')
-from cse251common import *
+from cse251 import *
 
 # Const Values
 TOP_API_URL = 'https://swapi.dev/api'
