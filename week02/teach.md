@@ -10,7 +10,7 @@
 
 ## Overview
 
-The website http://deckofcardsapi.com allows us to make Internet requests for a deck of cards.  
+The website **http://deckofcardsapi.com** allows us to make Internet requests for a deck of cards.  
 
 ## Assignment
 

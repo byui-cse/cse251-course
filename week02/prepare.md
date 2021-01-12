@@ -211,7 +211,7 @@ def thread_func(filename, count):
 
 > A program may execute code in several threads simultaneously in a shared address space where each of those threads has access to virtually all of the memory of every other thread. Thread safety is a property that allows code to run in multithreaded environments by re-establishing some of the correspondences between the actual flow of control and the text of the program, by means of synchronization.
 
-Modern concurrent and parallel programing languages will list which statements and data structures are "thread safe".  This means that the function/data structure can be used in threads.  
+Modern concurrent and parallel programming languages will list which statements and data structures are "thread safe".  This means that the function/data structure can be used in threads.  
 
 For example: in the language C++, the `rand()` function is not thread safe.  If `rand()` is called in threads, the values returned by the `rand()` function will not be random.
 

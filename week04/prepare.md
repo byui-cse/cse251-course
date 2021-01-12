@@ -18,27 +18,27 @@ The definition of a process is a program that has been loaded into memory.  All 
 
 On the left side of the figure below, this process has the main thread running.  This thread has full access to data, files, registers and stack.
 
-The right hand side of the figure shows three threads running in a process.  Nore that they all shared the common data and files of the process.  However, each thread has their own regstiers and stack.
+The right hand side of the figure shows three threads running in a process.  Note that they all shared the common data and files of the process.  However, each thread has their own registers and stack.
 
-Any global variables created before threads are created are shared with each thread.  Although, we don't like to use global variables, they are used in multi-threaded and multi-processor programs.  They will be used sparingly in the course.
+Any global variables created before threads are created are shared with each thread.  Although, we don't like to use global variables, they are used in multi-threaded and multi-processor programs.  They will be used sparingly in the course (if at all).
 
 ![](single-and-multithreaded-process.png)
 -- https://www.studytonight.com/operating-system/multithreading
 
 The `threading` module in Python contains data structures to help with the sharing of data and synchronization.
 
-## Thread queues
+## Queues
 
-One data structure that is used is called a queue.  It is a FIFO structure (First-In First-Out).  Items are added to the queue at one end. (This is the Python put() function).  Then items are removed from the other end. (Python uses the get() function)
+One data structure that is used to share data between threads is called a queue.  It is a FIFO structure (First-In First-Out).  Items are added to the queue at one end. (This is the Python `put()` function).  Then items are removed from the other end. (Python uses the `get()` function)
 
 It is called a FIFO because the first items placed into the queue are the first one removed.
 
 ![](queue.png)
 
-
+[Python Documentation](https://docs.python.org/3/library/queue.html)
 [Python documentation on threading queue](https://docs.python.org/3/library/queue.html)
 
-The threading.Queue() data structure is thread safe which means that the `get()` and `put()` when used will add or remove an item from the queue without race conditions.  These methods are sometimes called atomic.
+The threading.Queue() data structure is `thread safe` which means that the `get()` and `put()` when used will add or remove an item from the queue without race conditions.  These methods are sometimes called atomic.
 
 Here is an example of creating and using a queue from the threading module
 
@@ -90,6 +90,7 @@ def main():
 	q.put('three')
 
 	# Create 3 threads
+	# This is a list comprehension
 	threads = [threading.Thread(target=thread_function, args=(q, )) for _ in range(3)]
 
 	for i in range(3):
@@ -117,7 +118,7 @@ All work completed
 
 Locks are used to protect a critical section in your program.  Critical sections can be variables, data structures, file access, database access, etc.  If locks are used too often, then the program becomes linear in execution.  The best situation in designed threaded programs is to not use locks at all.  In the vidoe processing assignment, each process was able to work without any synchronization between them.
 
-[Threading locks](https://docs.python.org/3/library/threading.html#lock-objects)
+[Threading locks Documentation](https://docs.python.org/3/library/threading.html#lock-objects)
 
 
 ### Lock example 1
@@ -196,7 +197,7 @@ All work completed: [2252529]
 
 The results should have been 3,000,000 but it calculated a value of 2,252,529.  In fact, each time that the program is run, it displays a different results.
 
-This is a race condition where the statement `data[0] += 1` is actually multiple CPU instructions where the thread can be suppended after any of them.
+This is a race condition where the statement `data[0] += 1` is actually multiple CPU instructions where the thread can be suspended after any of them.
 
 Also, the above example shows an important principal of code testing.  Just because it works for a small test doesn't mean it works for large tests. 
 
@@ -281,9 +282,9 @@ if __name__ == '__main__':
 
 > The semaphore concept was invented by Dutch computer scientist Edsger Dijkstra in 1962 or 1963, when Dijkstra and his team were developing an operating system for the Electrologica X8. That system eventually became known as THE multiprogramming system.
 
-Whereas a `Lock` is a "only allow one thread in at a time".  A `Semphore` allows multiple threads to enter an area of code.
+Whereas a `Lock` is a "only allow one thread in at a time".  A `Semaphore` allows multiple threads to enter an area of code.
 
-When a sempahore is created, you can indiciate that number of concurrent threads that can be allowed "in".  They are used to control access to data not threads.
+When a semaphore is created, you can indicate that number of concurrent threads that can be allowed "in".  They are used to control access to data not threads.
 
 ```python
 sem = Semaphore(count)
@@ -296,12 +297,12 @@ sem.release()
 
 Each time `acquire()` is called, two outcomes are possible.  
 
-1. If the semphore count is zero, then that thread will be suspended.  
+1. If the semaphore count is zero, then that thread will be suspended.
 2. If the count is >0, then the count is decreased by one and the thread gains access to the protected code.  
  
 When a thread calls `release()` on the semaphore, the count is increased by one and the operating system will "wake up" any threads waiting on the semaphore.
 
-Having a thread wait on a semaphore that is never `released()` is a deadlock situation.  Note that a semphore of 1 is the same thing as a lock.
+Having a thread wait on a semaphore that is never `released()` is a deadlock situation.  Note that a semaphore of 1 is the same thing as a lock.
 
 Here is an example of using a shared queue between two threads.  Note that the number of `put()` calls must match the number of `get()` calls.  If this is not the case, you might/will have deadlock.
 

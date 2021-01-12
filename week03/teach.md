@@ -10,7 +10,7 @@
 
 ## Overview
 
-[Word Search](https://thewordsearch.com/) puzzles are fun to play.  You will be speeding up a word search program
+[Word Search](https://thewordsearch.com/) puzzles are fun to play.  You will be speeding up a word search program.
 
 ## Assignment
 

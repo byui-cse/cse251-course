@@ -11,9 +11,9 @@ When sharing information between processes in Python, there are limits on what w
 
 ## Issues with sharing data between processes
 
-It was easy to create chared data structures that work between threads.  This is because there is only one GIL running and all theads can share the program's memory.
+It was easy to create shared data structures that work between threads.  This is because there is only one GIL running and all threads can share the program's memory.
 
-Processes in Python are different since when you create a process, you create a new GIL.  Each process/GIL has it's own memory, stack, registers.  The `multiprocessing` module supplies us with a few options for shareing data between processes.
+Processes in Python are different since when you create a process, you create a new GIL.  Each process/GIL has it's own memory, stack, registers.  The `multiprocessing` module supplies us with a few options for sharing data between processes.
 
 First, lets review the problem in a few examples. In the following example from last lesson, we have three threads all sharing the same list.  This list contains three values `[0, 0, 0]` before the threads are started and it is passed to each thread.
 
@@ -46,7 +46,7 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-The program generates the following output.  The thread order might be different if you run this program on your computer, but the results are the same.  Each theads only changes the value in the list based on thread_id.
+The program generates the following output.  The thread order might be different if you run this program on your computer, but the results are the same.  Each thread only changes the value in the list based on thread_id.
 
 ```
 Process 0: [10, 0, 0]
@@ -87,6 +87,7 @@ if __name__ == '__main__':
 The results of this program are very different from the thread version.  When each process was created, a new GIL was created.  In this case, each process has their own version of the list `data`.  After each process changes their version of the data list, the main code calls `join()` to wait until they are finished.  Then, main's version of the list `data` is used in the finial print() statement.  It's empty, because the processes changed a different `data` list.
 
 In should be clear that global variables would be handled the same method using processes, where each process has a copy of the global variables.
+
 ```
 Process 0: [10, 0, 0]
 Process 1: [0, 10, 0]
@@ -96,7 +97,7 @@ All work completed: 0
 
 ### Solution to the processes sharing
 
-The `multiprocessing` module provides a few mechanisms to help with charing data between processes.
+The `multiprocessing` module provides a few mechanisms to help with sharing data between processes.
 
 **mp.Queue**  Creating a Queue from the `multiprocessing` module allows you to share a queue between processes.  Here is the code example from last lesson using processes and `mp.Queue`
 
@@ -141,7 +142,7 @@ The other data structure that can be used is called a pipe.  We will be going ov
 
 ## Managers
 
-We have `Queue` and `Pipe` for charing data between processes.  For all other data the `multiprocessing` module has a manager.  Managers are used for this sharing.  Lets go back to the process example with the shared list that didn't work.  Here is a version that does. `data = mp.Manager().list([0] * 3)` solves the data sharing issue.
+We have `Queue` and `Pipe` for sharing data between processes.  For all other data the `multiprocessing` module has a manager.  Managers are used for this sharing.  Lets go back to the process example with the shared list that didn't work.  Here is a version that does. `data = mp.Manager().list([0] * 3)` solves the data sharing issue.
 
 ```python
 import multiprocessing as mp 
@@ -169,7 +170,9 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-Output:
+
+Output from the above program.  Why was the results of the list after process 0 was finished `[10, 9, 0]` and not `[10, 10, 0]`?
+
 ```
 Process 0: [10, 9, 0]
 Process 1: [10, 10, 0]
@@ -242,7 +245,9 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
 Here is the output of the program.  Notice that without the barrier, process 1 should have displayed it's results because it finished faster.
+
 ```
 Process 4: time = 11.25130: primes found = 66330
 Process 2: time = 8.20724: primes found = 70435

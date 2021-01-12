@@ -18,11 +18,11 @@ Processes do not have this limit.  Each process created in Python contains it's 
 
 Before we can talk about threads and processes, we need to understand the Python Global Interpreter Lock or GIL. It is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
 
-This means that only one thread can be in a state of execution at any one time. If you write single-threaded programs, then the GIL has no impact.  However, when writting paralell and concurrent programs, it is critical to understand it.
+This means that only one thread can be in a state of execution at any one time. If you write single-threaded programs, then the GIL has no impact.  However, when writing parallel and concurrent programs, it is critical to understand it.
 
 ### Process
 
-A Process is a program that has been loaded by the operating system and is running.  It contains 1 to N threads.  All processes contain 1 thread that is called the main thread.  The operating system will start that main thread for the process and when that main thread ends, the process ends. [Process (computing)](https://en.wikipedia.org/wiki/Process_(computing))
+A Process is a program that has been loaded by the operating system and is running.  It contains 1 to N threads.  All processes contain a main thread.  The operating system will start that main thread for the process and when that main thread ends, the process ends. [Process (computing)](https://en.wikipedia.org/wiki/Process_(computing))
 
 
 ### Thread
@@ -34,12 +34,11 @@ A thread is the smallest unit managed by the operating system that is scheduled 
 
 Because of the GIL, all threads are running concurrently in your program.  The operating system will give each thread a little time slice on the CPU where it will appear that they are all running at the some time.
 
-When you create a process in Python, each process will contain their own instance of a GIL.  This allows each process to run in parallel on the computer.
-
+When you create a process in Python, each process will contain their own instance of a GIL.  This allows each process to run in parallel on the computer.  This is because the operating system is free to place each Python process on a different CPU.
 
 ### I/O and CPU Bound code
 
-Computer programs have been analyzed for many years and researchers have noticed that during the life of a process, the process will **switch** between waiting for I/O (ie., user input, Internet requests, file accesses) and running instructions on the CPU (ie., calculations).
+Computer programs have been analyzed for many years and researchers have noticed that during the life of a process, the process will **switch** between waiting for I/O (ie., user input, Internet requests, file accesses) and running instructions on the CPU (ie., calculations, graphics, etc...).
 
 **I/O Bound**
 
@@ -105,6 +104,7 @@ if __name__ == '__main__':
     print(f'After thread global_var = {global_var}')
 ```
 Output:
+
 ```
 Before process global_var = 0
 bob: 123456
@@ -115,17 +115,15 @@ bob: 123456
 After thread global_var = 123456
 ```
 
-In the output, you see that the thread was able to change the global variable while the process wasn't.  This is because the process, when created, gets it's own GIL and it's own copy of `global_var`.  This is different than the `global_var` in the main thread.  This is why it doesn't change.
+In the output, you see that the thread was able to change the global variable while the process wasn't.  This is because the process, when created, gets it's own GIL and it's own copy of `global_var`.  This is different than the `global_var` in the main thread.  This is why it doesn't change.  Other reason not to use global variables.
 
 # Analyzing Programs
 
-The goal of a software developer is to study and analyse algorithms.  For concurrency and parallelism, we are looking to see if it makes sense to take the time to try to make it concurrent or parallel.
+The goal of a software developer is to study and analyse algorithms.  For concurrency and parallelism, we are looking to see if it makes sense to take the time to try to make it concurrent or parallel.  Adding parallelism to software involves a learning curve and requires more effort.
 
-Adding parallelism to software involves a learning curve and requries more effort.
+## Fine-grained, coarse-grained, and embarrassing parallel
 
-## Fine-grained, coarse-grained, and embarrassing parallelism
-
-Applications are often classified according to how often their subtasks need to synchronize or communicate with each other. An application exhibits fine-grained parallelism if its subtasks must communicate many times per second; it exhibits coarse-grained parallelism if they do not communicate many times per second, and it exhibits embarrassing parallelism if they rarely or never have to communicate. Embarrassingly parallel applications are considered the easiest to parallelize.
+Applications are often classified according to how often their sub tasks need to synchronize or communicate with each other. An application exhibits fine-grained parallelism if its sub tasks must communicate many times per second; it exhibits coarse-grained parallelism if they do not communicate many times per second, and it exhibits embarrassing parallelism if they rarely or never have to communicate. Embarrassingly parallel applications are considered the easiest to add parallelism.
 
 (Parts of the following is from [Parallelism Document](https://web.engr.oregonstate.edu/~pancake/presentations/sdsc.pdf))
 
@@ -139,7 +137,7 @@ The best type of software to make parallel is called [Embarrassingly parallel](h
 
 > A common example of an embarrassingly parallel problem is 3D video rendering handled by a graphics processing unit, where each frame (forward method) or pixel (ray tracing method) can be handled with no interdependency. Some forms of password cracking are another embarrassingly parallel task that is easily distributed on central processing units, CPU cores, or clusters.
 
-Unfortunately, there are not great deal of embarrassingly parallel problems that we find.  There is, of course, the other extreme case where a program can not have any parallelism. (For example, a shopping cart program.  The program can't do anything until the user makes a choice to do something).
+Unfortunately, there are not a great deal of embarrassingly parallel problems to find.  There is, of course, the other extreme case where a program can not have any parallelism. (For example, a shopping cart program.  The program can't do anything until the user makes a choice to do something).
 
 One of the goals of this course is to understand that we might be able to add parallelism to programs and if it makes sense and is possible, then we can speed up the software.
 

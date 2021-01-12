@@ -28,9 +28,9 @@ FFmpeg is a free open-course video and image converter.  It is included in the g
 
 1. Download `mac-ffmpeg-4.3.1.7z` from the assignment folder in github.
 2. Place that it in the same folder as your other assignment files.
-3. Double click on the `7z` file to un-compress it.  It will create a `ffmpeg` app.
+3. Double click on the `7z` file to un-compress it.  It will create a `ffmpeg` app.  Make sure that this app is in the same folder as your assignment code.
 
-Note, I downloaded VLC Player inorder to view the final.mp4 video file that is created.
+Note, I downloaded VLC Player in order to view the final.mp4 video file that is created.
 
 When you have everything in place and try running the `setup_files_dirs.py` program, MAC OS might the following warning message:
 
@@ -85,9 +85,9 @@ Take a look at the code in `assignment.py` and the `TODO` in the comments.  Your
 
 Your program will process all of the frames using 1 CPU core.  You will need to keep track of the time it took to process all of the frames.  (See the main code for the variables that will be used.)
 
-Then, you will process all of the frames using 2 CPU cores and record to the time it took.  Then 3 CPU cores, 3 CPU cores, etc... until you reach `CPU_COUNT` CPU cores.
+Then, you will process all of the frames using 2 CPU cores and record to the time it took.  Then 3 CPU cores, 4 CPU cores, etc... until you reach `CPU_COUNT` CPU cores.
 
-On my computer, I have 12 CPU cores.  The const variable `CPU_COUNT` is set to 4 more the number of CPU cores on your computer.  So for me CPU_COUNT = 16.  Here is a example of the plot that is created for 16 CPU cores.  Notice that the processing time decreases with more CPU cores.  Your results might be different on your computer.
+On my computer, I have 12 CPU cores.  The const variable `CPU_COUNT` is set to 4 more the number of CPU cores on your computer.  So for me CPU_COUNT equals 16.  Here is a example of the plot that is created for 16 CPU cores.  Notice that the processing time decreases with more CPU cores.  Your results might/should be different on your computer.
 
 ![](16_cpu_cores_300_frames.png)
 
@@ -103,11 +103,10 @@ The Assignment will be graded in broad categories according to the following:
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% | Meets requirements |
-| 100% | Showed creativity and extend your assignments beyond the minimum standard that is specifically required |
+| 100% | Showed creativity and extend your assignments beyond the minimum standard that is specifically required.  Do not use different videos than the ones included in this assignment. |
 
 
 ## Submission
 
 When finished, upload your Python file to Canvas.
 
-https://github.com/byui-cse/cse251-course/blob/master/week01/prepare.md

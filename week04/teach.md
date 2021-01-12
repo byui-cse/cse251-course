@@ -10,7 +10,7 @@
 
 ## Overview
 
-Today's team activity will be using queue(s) and threading's semaphore(s). 
+Today's team activity will be using queue(s) and thread's semaphore(s). 
 
 ## Assignment
 
