@@ -56,7 +56,7 @@ sys.path.append('../../code')
 from cse251 import *
 
 # Const Values
-TOP_API_URL = 'https://swapi.dev/api'
+TOP_API_URL = r'https://swapi.dev/api'
 
 # Global Variables
 call_count = 0

@@ -55,6 +55,44 @@ The following in the **required** output of your assignment.  Notice that the na
 
 ```
 
+## How to use the requests package
+
+There are a number of Python packages that can help you make Internet calls.  We will be using the package `requests`.
+
+### Install Package
+
+This package needs to be installed.  Read the details on how to install packages in the `resources/software` section of the course.  Using pip, the command is `pip install requests`.  Using Python, it's `python -m pip install requests`.
+
+### How to make an Internet call
+
+```python
+import requests
+import json
+
+# Const Values
+TOP_API_URL = r'https://swapi.dev/api'
+
+if __name__ == '__main__':
+
+    response = requests.get(TOP_API_URL)
+    
+    # Check the status code to see if the request succeeded.
+    if response.status_code == 200:
+        data = response.json()
+        print(data)
+        print('\nHere is the people url:', data['people'])
+    else:
+        print('Error in requesting ID')
+```
+
+Output:
+
+```
+{'people': 'http://swapi.dev/api/people/', 'planets': 'http://swapi.dev/api/planets/', 'films': 'http://swapi.dev/api/films/', 'species': 'http://swapi.dev/api/species/', 'vehicles': 'http://swapi.dev/api/vehicles/', 'starships': 'http://swapi.dev/api/starships/'}
+
+Here is the people url: http://swapi.dev/api/people/
+```
+
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
