@@ -25,7 +25,7 @@ You will be using this website to implement some Python classes to retrieve play
 
 ### Stretch Challenge
 
-1. Implement a card game.  Talk with your team if a `Card` class needs to be created for your game.  You might not have time to complete a card game, so focus on at least solving part of a game.  (For example: in the card game "War", draw two cards to see which player wins.  Then work on a tie, etc...)
+1. Start implementing a card game.  Talk with your team if a `Card` class needs to be created for your game.  You might not (won't) have time to complete a card game during class, so focus on at least solving part of a game.  (For example: in the card game "War", draw two cards to see which player wins.  Then work on a tie, etc...)
 2. Question: Would the class `Deck` be faster if you retrieved all of the cards for the deck when you reshuffle instead of making an API call for draw every card?
 3. Question: Why do you think that it's important to have the `Request_thread` class?  Why not just make the API calls in `Deck`?
 
@@ -35,7 +35,7 @@ When your program is finished, please view the sample solution for this program 
 
 You should work to complete this team activity for the one hour period first, without looking at the sample solution. However, if you have worked on it for at least an hour and are still having problems, you may feel free to use the sample solution to help you finish your program.
 
-- Sample solution (Core requirements): [Solution](team_solution.py)
+- Sample solution (Core requirements): [Solution](team/team_solution.py)
 
 ## Submission
 
