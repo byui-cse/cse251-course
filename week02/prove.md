@@ -25,7 +25,7 @@ The website `swapi.dev` contains details of all of the Star Wars films.  You can
 
 ## Sample Output (Log file)
 
-The following in the **required** output of your assignment.  Notice that the names of characters, planets, etc... are sorted.
+The following in the **required** output of your assignment.  Notice that the names of characters, planets, etc... are sorted.  Don't worry about the blank lines or the extra "," you might get while printing the names.
 
 ```text
 16:57:24| Starting to retrieve data from swapi.dev
