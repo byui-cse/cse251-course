@@ -8,7 +8,6 @@ Purpose: Team Activity:
 
 Instructions:
 
-- You can't use any thread or process pools
 - Try to speed up this program
     - you can use threads or processes
     - you can change the Board class
@@ -160,6 +159,7 @@ class Board():
 def main():
     board = Board(25)
     board.place_words(words)
+    print('Board with placed words')
     board.display()
     board.fill_in_dots()
     board.display()

@@ -171,7 +171,7 @@ April, 3672
 George, 3672
 ```
 
-Here is an example of using tuples for the argument to the function used for a process pool.  Notice the output order form the program.  The first tuple in the list was `(1, 2)`.  However, it wasn't the first tuple processed by the pool.  You can't depend on any order of processing while using a pool - you just know that it will be all processed.
+Here is an example of using tuples for the argument to the function used for a process pool.  Notice the output order from the program.  The first tuple in the list was `(1, 2)`.  However, it wasn't the first tuple processed by the pool.  You can't depend on any order of processing while using a pool - you just know that it will be all processed.
 
 ```Python
 import os
