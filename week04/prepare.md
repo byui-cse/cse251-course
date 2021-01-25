@@ -158,6 +158,57 @@ Output:
 All work completed: [30000]
 ```
 
+Here is an example of using a shared queue between two threads.  Note that the number of `put()` calls must match the number of `get()` calls.  If this is not the case, you might/will have deadlock.
+
+```python
+import threading
+import queue
+
+MAX_COUNT = 10
+
+def read_thread(shared_q):
+    for i in range(MAX_COUNT):
+        # read from queue
+        print(shared_q.get())
+
+def write_thread(shared_q):
+    for i in range(MAX_COUNT):
+        # place value onto queue
+        shared_q.put(i)
+
+def main():
+    """ Main function """
+
+    shared_q = queue.Queue()
+
+    write = threading.Thread(target=write_thread, args=(shared_q,))
+    read = threading.Thread(target=read_thread, args=(shared_q,))
+
+    read.start()        # doesn't matter which starts first
+    write.start()
+
+    write.join()
+    read.join()
+
+if __name__ == '__main__':
+    main()
+```
+
+Output:
+
+```
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
 ### Lock example 2
 
 Same program, but each thread will try to update the item in the list 1,000,000 times
@@ -273,6 +324,7 @@ if __name__ == '__main__':
 
 - [Thread Semaphore Document](https://docs.python.org/3/library/threading.html#semaphore-objects)
 - [Wikipedia page](https://en.wikipedia.org/wiki/Semaphore_(programming))
+- [Read the first two sections on locks and semaphores](https://hackernoon.com/synchronization-primitives-in-python-564f89fee732)
 
 > In computer science, a semaphore is a variable or abstract data type used to control access to a common resource by multiple processes and avoid critical section problems in a concurrent system such as a multitasking operating system. A trivial semaphore is a plain variable that is changed (for example, incremented or decremented, or toggled) depending on programmer-defined conditions.
 
@@ -304,53 +356,4 @@ When a thread calls `release()` on the semaphore, the count is increased by one 
 
 Having a thread wait on a semaphore that is never `released()` is a deadlock situation.  Note that a semaphore of 1 is the same thing as a lock.
 
-Here is an example of using a shared queue between two threads.  Note that the number of `put()` calls must match the number of `get()` calls.  If this is not the case, you might/will have deadlock.
-
-```python
-import threading
-import queue
-
-MAX_COUNT = 10
-
-def read_thread(shared_q):
-    for i in range(MAX_COUNT):
-        # read from queue
-        print(shared_q.get())
-
-def write_thread(shared_q):
-    for i in range(MAX_COUNT):
-        # place value onto queue
-        shared_q.put(i)
-
-def main():
-    """ Main function """
-
-    shared_q = queue.Queue()
-
-    write = threading.Thread(target=write_thread, args=(shared_q,))
-    read = threading.Thread(target=read_thread, args=(shared_q,))
-
-    read.start()        # doesn't matter which starts first
-    write.start()
-
-    write.join()
-    read.join()
-
-if __name__ == '__main__':
-    main()
-```
-
-Output:
-
-```
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-```
+Semaphores are often used with locks.
