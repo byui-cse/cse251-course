@@ -1,0 +1,8 @@
+{
+    "marble-count":1000,
+    "creator-delay":0.01,
+    "bagger-delay":0.05,
+    "assembler-delay":0.05,
+    "wrapper-delay":0.05,
+    "bag-count":7
+}
