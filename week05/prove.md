@@ -16,6 +16,8 @@ This is a continuation of assignment 04.  Instead of one factory and one dealers
 2. Review the instructions found in the Python file as well as the global constants.
 3. Your goal is for each factory to produce `CARS_TO_CREATE_PER_FACTORY` many cars.
 4. The function `run_production()` will be passed different number of factories and dealerships that are to be created for a production run.
+1. When creating the shared queue between the threads, you can not create it with a limit or maxsize.
+1. When using the `get()` function for the queue, you must use the argument `get(block=False)`.
 5. The program will create a plot of the production time VS number of threads used.
 
 
