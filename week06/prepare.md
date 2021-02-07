@@ -78,7 +78,7 @@ Received: World
 
 ## Sharing data between processes
 
-Normal variables can't be shared between processes because each process has a complete copy of the Python program - their own GIL.  However, there is a method for sharing data. We will need to use the `multiprocessing` module for this.
+Normally variables can't be shared between processes because each process has a complete copy of the program - their own GIL.  However, there is a method for sharing data. We will need to use the `multiprocessing` module for this.
 
 Here is an example from [the Python documentation website](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes)
 
@@ -153,3 +153,5 @@ def f(n, a):
 	for i in range(len(a)):
 	    a[i] = -a[i]
 ```
+
+When using shared variables, remember that if there are processes writing and reading them, when you need to stop a race condition by using a shared lock.
