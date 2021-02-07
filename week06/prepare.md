@@ -2,27 +2,6 @@
 
 # 06 Prepare: Multiprocessing Module and Pipes
 
-
-```python
-import multiprocessing as mp
-
-def f(conn):
-    conn.send([42, None, 'hello'])
-    conn.close()
-
-if __name__ == '__main__':
-    parent_conn, child_conn = mp.Pipe()
-    p = Process(target=f, args=(child_conn,))
-    p.start()
-    print(parent_conn.recv())   # prints "[42, None, 'hello']"
-    p.join()
-```
-
-
-Talk about Value and Array
-from multiprocessing import Process, Value, Array
-
-
 ## Overview
 
 We will be covering two parts of the multiprocessing module - Pipe and Value.  They are used to allow processes to shared information between them.
