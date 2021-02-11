@@ -8,7 +8,7 @@ This program will process a directory full of task files.  Each file will contai
 
 ## Assignment
 
-1. The assignment files is [found here](assignment/assignment.py) and the [create_tasks.py file](assignment/create_tasks.py).
+1. The assignment files is [found here](assignment/assignment.py) and the [create_tasks.py file](assignment/create_tasks.py).  You also need to download the file [words.txt](assignment/words.txt)
 1. Follow the instructions found in the `assignment.py`
 1. When you submit your assignment code file, describe the size of each process pool for each task type how to determined they the best values.
 

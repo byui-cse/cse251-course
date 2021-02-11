@@ -14,13 +14,20 @@ Instructions:
   you.  However, your goal is to process all of the tasks as quicky as possible
   using these pools.  You will need to try out different pool sizes.
 - The program will load a task one at a time and add it to the pool that is used
-  to process that task.  You can't load all of the tasks into memory/list and
+  to process that task type.  You can't load all of the tasks into memory/list and
   then pass them to a pool.
 - You are required to use the function apply_async() for these 5 pools. You can't
   use map(), or any other pool function.
 - Each pool will collect that results of their tasks into a global list.
   (ie. result_primes, result_words, result_upper, result_sums, result_names)
 - the task_* functions contain general logic of what needs to happen
+
+
+TODO
+
+Add you comments here on the pool sizes that you used for your assignment and
+why they were the best choices.
+
 """
 
 from datetime import datetime, timedelta
@@ -43,7 +50,6 @@ TYPE_SUM    = 'sum'
 TYPE_NAME   = 'name'
 
 # Global lists to collect the task results
-# Note: Global variables work here because as are using threads and not processes
 result_primes = []
 result_words = []
 result_upper = []
@@ -108,10 +114,6 @@ def task_name(url):
     """
     pass
 
-def log_list(lst, log):
-    for item in lst:
-        log.write(item)
-    log.write(' ')
 
 def main():
     log = Log(show_terminal=True)
@@ -141,9 +143,15 @@ def main():
         else:
             log.write(f'Error: unknown task type {task_type}')
 
-
     # TODO start and wait pools
 
+
+    # Do not change the following code (to the end of the main function)
+    def log_list(lst, log):
+        for item in lst:
+            log.write(item)
+        log.write(' ')
+    
     log.write('-' * 80)
     log.write(f'Primes: {len(result_primes)}')
     log_list(result_primes, log)
