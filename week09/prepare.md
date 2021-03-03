@@ -71,8 +71,6 @@ Please read the following links on Conditions.
 
 A condition is like a lock but with a list or queue of threads waiting on that lock.  After a thread acquires a condition and is finished with it, it has the choice to notify the waiting threads.  It can notify one to N of them or all of them. The notified thread is not awakened until the thread that acquired the condition releases it.
 
-The different between a lock and a condition is that the order that threads try to acquire the condition is kept so that when the condition is released, the thread waiting on the condition the longest gains access to it.  When a lock is released, any thread waiting on that lock may acquire it.
-
 ### Condition Example
 
 In the example below, there are two consumer threads and one producer.  The main code will start 1 consumer, sleep a little to allow it to start running before the others.  Then it will start the other consumer and sleep again. 
