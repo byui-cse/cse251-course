@@ -40,7 +40,7 @@ Instructions:
   There must not be a issue picking up the two forks since the waiter is in control of 
   the forks and when philosophers eat.  When a philosopher is finished eating, it will 
   informs the waiter that he/she is finished.  If the waiter indicates to a philosopher
-  that is can not eat, the philosopher will wait between 2 to 5 seconds and try again.
+  that they can not eat, the philosopher will wait between 1 to 3 seconds and try again.
 
 - You have Locks and Semaphores that you can use.
 - Remember that lock.acquire() has an argument called timeout.
