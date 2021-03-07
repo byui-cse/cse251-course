@@ -1,15 +1,14 @@
 ![](../site/banner.png)
 
-# 09 Prove: Finding Paths in a Maze
+# 10 Prove: Reader Writer Problem
 
 ## Overview
 
-
-## Project Description
-
+You will be implementing the reader writer problem using shared memory in Python.
 
 ## Assignment
 
+The project file is `assignment.py` in the `week10/assignment` folder in GitHub.  Refer to this file for instructions.
 
 ## Rubric
 
@@ -29,3 +28,4 @@ The Assignment will be graded in broad categories according to the following:
 When finished
 
 - upload your Python files to Canvas.
+
