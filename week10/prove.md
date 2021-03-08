@@ -18,7 +18,7 @@ The Assignment will be graded in broad categories according to the following:
 | Grade | Description |
 |-------|-------------|
 | 0% | Nothing submitted |
-| 50% | Some attempt made |
+| 50% | Some attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% - 100% | Meets requirements and/or Showed creativity and extend your assignments beyond the minimum standard that is specifically required |

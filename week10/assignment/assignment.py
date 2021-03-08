@@ -17,7 +17,7 @@ Instructions:
 - You must use shared_memory block between the two processes.  
   This shared memory must be at least BUFFER_SIZE in size, but
   can be larger if you need to store other values.
-- Not allowed to use Queue(), Pipe(), or any other data structure.
+- Not allowed to use Queue(), Pipe(), List() or any other data structure.
 - Not allowed to use Value() or Array() from the multiprocessing package.
 
 Add any comments for me:
