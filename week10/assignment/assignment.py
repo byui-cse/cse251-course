@@ -10,7 +10,7 @@ Instructions:
 
 - Review TODO comments
 - writer: a process that will "write"/send numbers to the reader.  
-  To keep things simple, have the writer send consecutive numbers starting at 1.
+  To keep things simple, send random values from 0 to 255 to the reader.
 - reader: a process that receive numbers sent by the writer.
 - You don't need any sleep() statements for either process.
 - You are able to use lock(s) and semaphores(s).
