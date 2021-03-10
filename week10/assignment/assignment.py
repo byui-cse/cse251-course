@@ -15,10 +15,13 @@ Instructions:
 - You don't need any sleep() statements for either process.
 - You are able to use lock(s) and semaphores(s).
 - You must use shared_memory block between the two processes.  
-  This shared memory must be at least BUFFER_SIZE in size, but
-  can be larger if you need to store other values.
+  You are only allowed to use BUFFER_SIZE number of positions
+  in this shared_memory for tranfering data from the writer to
+  the reader.  However, you can use other parts of the shared_memory
+  for other purposes if you want by increasing the size of the shared_memory.
 - Not allowed to use Queue(), Pipe(), List() or any other data structure.
-- Not allowed to use Value() or Array() from the multiprocessing package.
+- Not allowed to use Value() or Array() or any other shared data type from 
+  the multiprocessing package.
 
 Add any comments for me:
 
