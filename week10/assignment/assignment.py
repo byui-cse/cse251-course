@@ -13,7 +13,8 @@ Instructions:
   To keep things simple, send random values from 0 to 255 to the reader.
 - reader: a process that receive numbers sent by the writer.
 - You don't need any sleep() statements for either process.
-- You are able to use lock(s) and semaphores(s).
+- You are able to use lock(s) and semaphores(s).  When using locks, you can't
+  use the arguments "block=False" or "timeout".
 - You must use shared_memory block between the two processes.  
   You are only allowed to use BUFFER_SIZE number of positions
   in this shared_memory for tranfering data from the writer to
