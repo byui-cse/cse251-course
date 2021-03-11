@@ -9,18 +9,26 @@ Purpose: assignment for week 10 - reader writer problem
 Instructions:
 
 - Review TODO comments
+
 - writer: a process that will "write"/send numbers to the reader.  
   To keep things simple, send random values from 0 to 255 to the reader.
+
 - reader: a process that receive numbers sent by the writer.
+
 - You don't need any sleep() statements for either process.
+
 - You are able to use lock(s) and semaphores(s).  When using locks, you can't
   use the arguments "block=False" or "timeout".
-- You must use shared_memory block between the two processes.  
+
+- You must use ShareableList between the two processes.  
   You are only allowed to use BUFFER_SIZE number of positions
-  in this shared_memory for tranfering data from the writer to
-  the reader.  However, you can use other parts of the shared_memory
-  for other purposes if you want by increasing the size of the shared_memory.
+  in this ShareableList for tranfering data from the writer to
+  the reader.  However, you can use other parts of the ShareableList
+  for other purposes if you want by increasing the size of the ShareableList.
+  This buffer area will act like a queue - First In First Out.
+
 - Not allowed to use Queue(), Pipe(), List() or any other data structure.
+
 - Not allowed to use Value() or Array() or any other shared data type from 
   the multiprocessing package.
 
@@ -30,7 +38,7 @@ Add any comments for me:
 
 """
 import random
-from multiprocessing import shared_memory
+from multiprocessing.managers import SharedMemoryManager
 import multiprocessing as mp
 
 BUFFER_SIZE = 10
@@ -40,7 +48,10 @@ def main():
     # This is the number of values that the writer will send to the reader
     items_to_send = random.randint(100000, 1000000)
 
-    # TODO - Create shared_memory block to be used between the processes
+    smm = SharedMemoryManager()
+    smm.start()
+
+    # TODO - Create a ShareableList to be used between the processes
 
     # TODO - Create any lock(s) or semaphore(s) that you feel you need
 
@@ -52,7 +63,8 @@ def main():
 
     # TODO - Display the number of numbers/items received by the reader.
 
-    pass
+    smm.shutdown()
+
 
 if __name__ == '__main__':
     main()
