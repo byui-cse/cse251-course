@@ -1,6 +1,6 @@
 ![](../site/banner.png)
 
-# 10 Teach: PThreads
+# 11 Teach: Java Threads
 
 ## Overview
 
