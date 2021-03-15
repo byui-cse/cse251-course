@@ -10,6 +10,41 @@ You will be implementing passengers boarding a cruise ship
 
 The project file is `assignment.py` in the `week11/assignment` folder in GitHub.  Refer to this file for instructions.
 
+### Sample output of the assignment
+
+From the sample output below, you can see that when security officers are adding a passenger to the passenger list, no other officer or director is accessing the list.  When a director gains access to the passenger list, you can see other directors also accessing it.  The first directory to start reading displays a message "start reading..." and the last directory to finish reading will display "Stop reading..."
+
+```
+              :
+              :
+Security adding passenger: 18
+Security adding passenger: 19
+Start reading vvvvvvvvvvvvvvvvvvvvvvv
+Director reading: list size is 19
+Director reading: list size is 19
+Director reading: list size is 19
+Director reading: list size is 19
+Director reading: list size is 19
+Stop reading ^^^^^^^^^^^^^^^^^^^^^^^
+Security adding passenger: 20
+Security adding passenger: 21
+Start reading vvvvvvvvvvvvvvvvvvvvvvv
+Director reading: list size is 21
+Director reading: list size is 21
+Director reading: list size is 21
+Director reading: list size is 21
+Stop reading ^^^^^^^^^^^^^^^^^^^^^^^
+Start reading vvvvvvvvvvvvvvvvvvvvvvv
+Director reading: list size is 21
+Director reading: list size is 21
+Director reading: list size is 21
+Stop reading ^^^^^^^^^^^^^^^^^^^^^^^
+Security adding passenger: 22
+Security adding passenger: 23
+              :
+              :
+```
+
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
