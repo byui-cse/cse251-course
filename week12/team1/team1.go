@@ -1,19 +1,19 @@
 /* -----------------------------------------------------------
 Course: CSE 251
 Lesson Week: 12
-File: team2.go
+File: team1.go
 
-Purpose: Process Task files
+Purpose: Process URLs
 
 Instructions:
 
 Part 1
 - Take this program and use goroutines for the function getPerson().
-  Hint: look at using sync.WaitGroup
 
 Part 2
 - Create a function "getSpecies()" that will receive the following urls
   using that function as a goroutine.
+- For a species, display name, average_height and language
 
 "http://swapi.dev/api/species/1/",
 "http://swapi.dev/api/species/2/",
@@ -121,7 +121,7 @@ func main() {
 	}
 
 	for _, url := range urls {
-		getPerson(url)
+		go getPerson(url)
 	}
 
 	fmt.Println("All done!")
