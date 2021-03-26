@@ -66,9 +66,9 @@ surnames = ('Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller', 'Davis',
             'Allen', 'Sanchez', 'Wright', 'King', 'Scott', 'Green', 'Baker', 'Adams', 'Nelson', 'Hill', 'Ramirez', 'Campbell', 
             'Mitchell', 'Roberts', 'Carter', 'Phillips', 'Evans', 'Turner', 'Torres', 'Parker', 'Collins', 'Edwards', 'Stewart', 'Flores', 
             'Morris', 'Nguyen', 'Murphy', 'Rivera', 'Cook', 'Rogers', 'Morgan', 'Peterson', 'Cooper', 'Reed', 'Bailey', 'Bell', 
-            'Gomez', 'Tremblay', 'Gagnon', 'Roy', 'Côté', 'Bouchard', 'Hernández', 'García', 'Martínez', 'González', 'López', 'Rodríguez', 
-            'Pérez', 'Sánchez', 'Ramírez', 'Flores', 'Gómez', 'Torres', 'Díaz', 'Vásquez', 
-            'Cruz', 'Morales', 'Gutiérrez', 'Reyes', 'Ruíz', 'Jiménez')
+            'Gomez', 'Tremblay', 'Gagnon', 'Roy', 'Cote', 'Bouchard', 'Hernandez', 'Garcia', 'Martinez', 'Gonzalez', 'Lopez', 'Rodriguez', 
+            'Perez', 'Sanchez', 'Ramirez', 'Flores', 'Gomez', 'Torres', 'Diaz', 'Vasquez', 
+            'Cruz', 'Morales', 'Gutierrez', 'Reyes', 'Ruiz', 'Jimenez')
 
 max_thread_count = 0
 thread_count = 0
