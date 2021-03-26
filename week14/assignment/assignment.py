@@ -24,7 +24,7 @@ Describe how to sped up part 2
 <Add your comments here>
 
 
-10% Bonus
+10% Bonus to speed up part 2
 
 <Add your comments here>
 
@@ -87,10 +87,11 @@ class Family:
 # -----------------------------------------------------------------------------
 class Tree:
 
-    def __init__(self):
+    def __init__(self, start_family_id):
         super().__init__()
         self.people = {}
         self.families = {}
+        self.start_family_id = start_family_id
 
     def add_person(self, person):
         if self.does_person_exist(person.id):
@@ -128,6 +129,93 @@ class Tree:
     def does_family_exist(self, id):
         return id in self.families
 
+    def display(self, log):
+        log.write('Tree Display')
+        for family_id in self.families:
+            fam = self.families[family_id]
+
+            log.write(f'Family id: {family_id}')
+
+            # Husband
+            husband = self.get_person(fam.husband)
+            if husband == None:
+                log.write(f'  Husband: None')
+            else:
+                log.write(f'  Husband: {husband.name}, {husband.birth}')
+
+            # wife
+            wife = self.get_person(fam.wife)
+            if wife == None:
+                log.write(f'  Wife: None')
+            else:
+                log.write(f'  Wife: {wife.name}, {wife.birth}')
+
+            # Parents of Husband
+            if husband == None:
+                log.write(f'  Husband Parents: None')
+            else:
+                parent_fam_id = husband.parents
+                if parent_fam_id in self.families:
+                    parent_fam = self.get_family(parent_fam_id)
+                    father = self.get_person(parent_fam.husband)
+                    mother = self.get_person(parent_fam.wife)
+                    log.write(f'  Husband Parents: {father.name} and {mother.name}')
+                else:
+                    log.write(f'  Husband Parents: None')
+
+            # Parents of Wife
+            if wife == None:
+                log.write(f'  Wife Parents: None')
+            else:
+                parent_fam_id = wife.parents
+                if parent_fam_id in self.families:
+                    parent_fam = self.get_family(parent_fam_id)
+                    father = self.get_person(parent_fam.husband)
+                    mother = self.get_person(parent_fam.wife)
+                    log.write(f'  Wife Parents: {father.name} and {mother.name}')
+                else:
+                    log.write(f'  Wife Parents: None')
+
+            # children
+            output = []
+            for index, child_id in enumerate(fam.children):
+                person = self.people[child_id]
+                output.append(f'{person.name}')
+            out_str = str(output).replace("'", '', 100)
+            log.write(f'  Children: {out_str[1:-1]}')
+
+
+    def _test_number_connected_to_start(self):
+        # start with first family, how many connected to that family
+        inds_seen = set()
+
+        def _recurive(family_id):
+            nonlocal inds_seen
+            if family_id in self.families:
+                # count people in this family
+                fam = self.families[family_id]
+
+                husband = self.get_person(fam.husband)
+                if husband != None:
+                    if husband.id not in inds_seen:
+                        inds_seen.add(husband.id)
+                    _recurive(husband.parents)
+                
+                wife = self.get_person(fam.wife)
+                if wife != None:
+                    if wife.id not in inds_seen:
+                        inds_seen.add(wife.id)
+                    _recurive(wife.parents)
+
+                for child_id in fam.children:
+                    if child_id not in inds_seen:
+                        inds_seen.add(child_id)
+
+
+        _recurive(self.start_family_id)
+        return len(inds_seen)
+
+
     def _count_generations(self, family_id):
         max_gen = -1
 
@@ -147,14 +235,15 @@ class Tree:
                 if wife != None:
                     _recurive_gen(wife.parents, gen + 1)
 
-        _recurive_gen(1, 1)
+        _recurive_gen(family_id, 0)
         return max_gen + 1
 
     def __str__(self):
         out = '\nTree Stats:\n'
-        out += f'Number of people  : {len(self.people)}\n'
-        out += f'Number of families: {len(self.families)}\n'
-        out += f'Max generations   : {self._count_generations(1)}\n'
+        out += f'Number of people                    : {len(self.people)}\n'
+        out += f'Number of families                  : {len(self.families)}\n'
+        out += f'Max generations                     : {self._count_generations(self.start_family_id)}\n'
+        out += f'People connected to starting family : {self._test_number_connected_to_start()}\n'
         return out
 
 
@@ -178,6 +267,7 @@ class Request_thread(threading.Thread):
 
 
 # -----------------------------------------------------------------------------
+# Change this function to speed it up
 def depth_fs_pedigree(family_id, tree):
     if family_id == None:
         return
@@ -234,7 +324,7 @@ def depth_fs_pedigree(family_id, tree):
 # -----------------------------------------------------------------------------
 # You should not change this function
 def part1(log, start_id, generations):
-    tree = Tree()
+    tree = Tree(start_id)
 
     req = Request_thread(f'{TOP_API_URL}/start/{generations}')
     req.start()
@@ -242,14 +332,18 @@ def part1(log, start_id, generations):
 
     log.start_timer('Depth-First')
     depth_fs_pedigree(start_id, tree)
-    log.stop_timer('Time for Depth-Frist')
+    total_time = log.stop_timer()
 
     req = Request_thread(f'{TOP_API_URL}/end')
     req.start()
     req.join()
 
+    tree.display(log)
     log.write(tree)
-
+    log.write(f'total_time                   : {total_time}')
+    log.write(f'People and families / second : {(tree.get_person_count()  + tree.get_family_count()) / total_time}')
+    log.write('')
+    
 # -----------------------------------------------------------------------------
 def breadth_fs_pedigree(start_id, tree):
     # TODO - implement breadth first retrieval
@@ -264,7 +358,7 @@ def breadth_fs_pedigree(start_id, tree):
 # -----------------------------------------------------------------------------
 # You should not change this function
 def part2(log, start_id, generations):
-    tree = Tree()
+    tree = Tree(start_id)
 
     req = Request_thread(f'{TOP_API_URL}/start/{generations}')
     req.start()
@@ -272,13 +366,17 @@ def part2(log, start_id, generations):
 
     log.start_timer('Breadth-First')
     breadth_fs_pedigree(start_id, tree)
-    log.stop_timer('Time for Breadth-Frist')
+    total_time = log.stop_timer()
 
     req = Request_thread(f'{TOP_API_URL}/end')
     req.start()
     req.join()
 
+    tree.display(log)
     log.write(tree)
+    log.write(f'total_time      : {total_time}')
+    log.write(f'People / second : {tree.get_person_count() / total_time}')
+    log.write('')
 
 
 # -----------------------------------------------------------------------------

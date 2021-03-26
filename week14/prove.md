@@ -59,7 +59,7 @@ The file `assignment.py` contains two functions: `part1()` and `part2()`.
 
 ### 10% Bonus
 
-- A 10% bonus if you can limit the number of threads to 5 while retrieving the family information.  No more that 5 active threads that the server will be processing. (watch the output from the server to see number of activity threads)
+- A 10% bonus if you can limit the number of threads to 5 while retrieving the family information in part 2.  The server must not have more than 5 active threads at a time. (watch the output from the server to see number of activity threads)
 
 ### Misc
 

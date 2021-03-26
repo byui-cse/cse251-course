@@ -66,9 +66,9 @@ surnames = ('Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller', 'Davis',
             'Allen', 'Sanchez', 'Wright', 'King', 'Scott', 'Green', 'Baker', 'Adams', 'Nelson', 'Hill', 'Ramirez', 'Campbell', 
             'Mitchell', 'Roberts', 'Carter', 'Phillips', 'Evans', 'Turner', 'Torres', 'Parker', 'Collins', 'Edwards', 'Stewart', 'Flores', 
             'Morris', 'Nguyen', 'Murphy', 'Rivera', 'Cook', 'Rogers', 'Morgan', 'Peterson', 'Cooper', 'Reed', 'Bailey', 'Bell', 
-            'Gomez', 'Tremblay', 'Gagnon', 'Roy', 'Cote', 'Bouchard', 'Hernandez', 'Garcia', 'Martinez', 'Gonzalez', 'Lopez', 'Rodriguez', 
-            'Perez', 'Sanchez', 'Ramirez', 'Flores', 'Gomez', 'Torres', 'Diaz', 'Vasquez', 
-            'Cruz', 'Morales', 'Gutierrez', 'Reyes', 'Ruiz', 'Jimenez')
+            'Gomez', 'Tremblay', 'Gagnon', 'Roy', 'Côté', 'Bouchard', 'Hernández', 'García', 'Martínez', 'González', 'López', 'Rodríguez', 
+            'Pérez', 'Sánchez', 'Ramírez', 'Flores', 'Gómez', 'Torres', 'Díaz', 'Vásquez', 
+            'Cruz', 'Morales', 'Gutiérrez', 'Reyes', 'Ruíz', 'Jiménez')
 
 max_thread_count = 0
 thread_count = 0
@@ -77,6 +77,7 @@ lock = threading.Lock()
 family_request_order = []
 people = {}
 families = {}
+generations_created = 0
 
 
 def get_name_male():
@@ -301,6 +302,7 @@ class Handler(BaseHTTPRequestHandler):
         global max_thread_count
         global family_request_order
         global log
+        global generations_created
 
         with lock:
             thread_count += 1
@@ -337,6 +339,7 @@ class Handler(BaseHTTPRequestHandler):
             print(output)
             log.write(output)
 
+            generations_created = generations
             build_tree(generations)
 
             max_thread_count = 1
@@ -348,6 +351,14 @@ class Handler(BaseHTTPRequestHandler):
         elif 'end' in self.path:
             print('#' * 80)
             log.write('#' * 80)
+
+            print(f'Total number of people  : {len(people)}')
+            print(f'Total number of families: {len(families)}')
+            print(f'Number of generations   : {generations_created}')
+            log.write(f'Total number of people  : {len(people)}')
+            log.write(f'Total number of families: {len(families)}')
+            log.write(f'Number of generations   : {generations_created}')
+
 
             print('Families were requested in this order:')
             log.write('Families were requested in this order:')
@@ -435,5 +446,5 @@ if __name__ == '__main__':
 
 
     server = ThreadedHTTPServer((hostName, serverPort), Handler)
-    print('Starting server, use <Ctrl-C> to stop')
+    print('Starting server, use <Ctrl-C> or <Command-C> to stop')
     server.serve_forever()
