@@ -19,7 +19,7 @@ import threading
 
 # Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 # Global variable for counting the number of primes found

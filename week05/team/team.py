@@ -20,7 +20,7 @@ import random
 
 #Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 PRIME_PROCESS_COUNT = 1

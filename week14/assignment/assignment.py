@@ -13,13 +13,15 @@ https://www.youtube.com/watch?v=9RHO6jU--GU
 Breadth First Search
 https://www.youtube.com/watch?v=86g8jAQug04
 
+You will lose 10% if you don't detail your part 1 
+and part 2 code below
 
-Describe how to sped up part 1
+Describe how to speed up part 1
 
 <Add your comments here>
 
 
-Describe how to sped up part 2
+Describe how to speed up part 2
 
 <Add your comments here>
 
@@ -38,7 +40,7 @@ import requests
 
 # Include cse 251 common Python files - Dont change
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 

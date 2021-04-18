@@ -1,5 +1,4 @@
 """
-------------------------------------------------------------------------------
 Course: CSE 251 
 Lesson Week: 01
 File: assignment.py 
@@ -19,9 +18,9 @@ Instructions:
 - Find the "TODO" comment below and add your code that will use threads.
 - You are not allowed to use any other Python modules/packages than the packages
   currently imported below.
+- You can create other functions if needed.
 - No global variables.
 
-------------------------------------------------------------------------------
 """
 
 
@@ -29,9 +28,9 @@ import math
 import threading 
 from cse251turtle import *
 
-# Include CSE 251 common Python files
+# Include CSE 251 common Python files. 
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 

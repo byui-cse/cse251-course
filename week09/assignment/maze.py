@@ -23,12 +23,12 @@ import os, sys
 import cv2
 
 
-COLOR_ON = (255, 255, 255)
-COLOR_OFF = (0, 0, 0)
+COLOR_WHITE = (255, 255, 255)
+COLOR_BLACK = (0, 0, 0)
 COLOR_VISITED = (128, 128, 128)
 
-ON = 1
-OFF = 2
+OPEN = 1
+WALL = 2
 VISITED = 3
 
 class Maze():
@@ -56,12 +56,12 @@ class Maze():
         self.offset_x = self.border_size // 2
         self.offset_y = self.border_size // 2
 
-        self.colors = [ [COLOR_OFF for _ in range(self.height)] for _ in range(self.width)]
+        self.colors = [ [COLOR_BLACK for _ in range(self.height)] for _ in range(self.width)]
         # Set colors
         for row in range(self.height):
             for col in range(self.width):
                 if self.pixels[row, col] == 255:
-                    self.colors[row][col] = COLOR_ON
+                    self.colors[row][col] = COLOR_WHITE
 
         self._draw()
 
@@ -69,7 +69,9 @@ class Maze():
     def move(self, row, col, color):
         """ Change a color of a square """
         state = self._state(row, col)
-        # assert state == ON, f'You are trying to move on a spot that is a wall or already visited: {state}, {row},{col}'
+        if state != OPEN:
+            print(f'ERROR: You are trying to move on a spot that is a wall or already visited: {row}, {col}, color = {self.colors[row][col]}')
+            return
 
         self.colors[row][col] = color
         pos_x, pos_y = self._calc_screen_pos(row, col)
@@ -88,7 +90,7 @@ class Maze():
 
     def can_move_here(self, row, col):
         """ Is the square free to move to """
-        return self._state(row, col) == ON
+        return self._state(row, col) == OPEN
 
 
     def get_possible_moves(self, row, col):
@@ -101,7 +103,7 @@ class Maze():
 
         moves = []
         for x, y in possible:
-            if self._state(x, y) == ON:
+            if self._state(x, y) == OPEN:
                 moves.append((x, y))
 
         return moves
@@ -124,21 +126,21 @@ class Maze():
         # Assume that the background on the screen is black
         for row in range(self.height):
             for col in range(self.width):
-                if self._state(row, col) == ON:
+                if self._state(row, col) == OPEN:
                     pos_x, pos_y = self._calc_screen_pos(row, col)
-                    self.screen.block(pos_x, pos_y, self.scale_w, self.scale_h, color=COLOR_ON)
+                    self.screen.block(pos_x, pos_y, self.scale_w, self.scale_h, color=COLOR_WHITE)
                 else:
                     pos_x, pos_y = self._calc_screen_pos(row, col)
-                    self.screen.block(pos_x, pos_y, self.scale_w, self.scale_h, color=COLOR_OFF)
+                    self.screen.block(pos_x, pos_y, self.scale_w, self.scale_h, color=COLOR_BLACK)
         self.screen.update()
 
     def _state(self, x, y):
         if x < 0 or y < 0 or x >= self.height or y >= self.width:
-            return OFF
-        if self.colors[x][y] == COLOR_ON:
-            return ON
+            return WALL
+        if self.colors[x][y] == COLOR_WHITE:
+            return OPEN
         else:
-            return OFF
+            return WALL
 
     def _calc_screen_pos(self, x, y):
         pos_x = (self.scale_w * x) + self.offset_x

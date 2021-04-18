@@ -1,6 +1,6 @@
 """
 Course: CSE 251
-Lesson Week: 04
+Lesson Week: 03
 File: team.py
 Author: Brother Comeau
 
@@ -8,11 +8,7 @@ Purpose: Team Activity:
 
 Instructions:
 
-- Try to speed up this program
-    - you can use threads or processes
-    - you can change the Board class
-    - talk with your team before making changes
-    - make backups if you try something that doesn't work
+- Review instructions in I-Learn
 
 """
 
@@ -28,7 +24,7 @@ import time
 
 # Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 words = ['BOOKMARK', 'SURNAME', 'RETHINKING', 'HEAVY', 'IRONCLAD', 'HAPPY', 

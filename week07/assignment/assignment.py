@@ -17,7 +17,8 @@ Instructions:
   to process that task type.  You can't load all of the tasks into memory/list and
   then pass them to a pool.
 - You are required to use the function apply_async() for these 5 pools. You can't
-  use map(), or any other pool function.
+  use map(), or any other pool function.  You must use callback functions with
+  the apply_async() statement.
 - Each pool will collect that results of their tasks into a global list.
   (ie. result_primes, result_words, result_upper, result_sums, result_names)
 - the task_* functions contain general logic of what needs to happen
@@ -40,7 +41,7 @@ import math
 
 # Include cse 251 common Python files - Dont change
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 TYPE_PRIME  = 'prime'
@@ -73,6 +74,7 @@ def is_prime(n: int):
  
 def task_prime(value):
     """
+    Use the is_prime() above
     Add the following to the global list:
         {value} is prime
             - or -

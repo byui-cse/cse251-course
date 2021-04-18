@@ -20,5 +20,6 @@ def main():
     os.system(command)
 
     print('\nThe video file final.mp4 has been created\n')
+    print('Do NOT submit this video for your assignment!!')
 
 main()

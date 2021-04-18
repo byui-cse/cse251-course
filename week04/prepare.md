@@ -16,34 +16,33 @@ This week's lesson is on thread synchronization and sharing of data between thre
 
 The definition of a process is a program that has been loaded into memory.  All processes contain a main thread.  Once the main thread finishes, the process is also finished.  
 
-On the left side of the figure below, this process has the main thread running.  This thread has full access to data, files, registers and stack.
+On the left side of the figure below, this process has the main thread running.  This thread has full access to data, files, registers and stack - the whole program.
 
-The right hand side of the figure shows three threads running in a process.  Note that they all shared the common data and files of the process.  However, each thread has their own registers and stack.
+The right hand side of the figure shows three threads running in a process.  One of the threads is the main thread.  Note that they all share the common data and files of the process.  However, each thread has their own registers and stack.  This means that is a thread creates a local variable, that variable is not shared with another other thread.
 
-Any global variables created before threads are created are shared with each thread.  Although, we don't like to use global variables, they are used in multi-threaded and multi-processor programs.  They will be used sparingly in the course (if at all).
+Global variables are shared with each thread.  Although, we don't like to use global variables, they are sometimes used in multi-threaded and multi-processor programs.  They will be used sparingly in the course.
 
 ![](single-and-multithreaded-process.png)
 -- https://www.studytonight.com/operating-system/multithreading
 
 The `threading` module in Python contains data structures to help with the sharing of data and synchronization.
 
-## Queues
+## Queue
 
 One data structure that is used to share data between threads is called a queue.  It is a FIFO structure (First-In First-Out).  Items are added to the queue at one end. (This is the Python `put()` function).  Then items are removed from the other end. (Python uses the `get()` function)
 
-It is called a FIFO because the first items placed into the queue are the first one removed.
-
 ![](queue.png)
 
-[Python Documentation](https://docs.python.org/3/library/queue.html)
-[Python documentation on threading queue](https://docs.python.org/3/library/queue.html)
+- [Python Documentation](https://docs.python.org/3/library/queue.html)
+- [Python documentation on threading queue](https://docs.python.org/3/library/queue.html)
+- [Python Queue Video](https://www.youtube.com/watch?v=TQx3IfCVvQ0)
 
-The threading.Queue() data structure is `thread safe` which means that the `get()` and `put()` when used will add or remove an item from the queue without race conditions.  These methods are sometimes called atomic.
+The Queue data structure is `thread safe` which means that the `get()` and `put()` when used will add or remove an item from the queue without race conditions.  These type of methods or operations are called atomic.
 
-Here is an example of creating and using a queue from the threading module
+Here is an example of creating and using a queue.  Note that `queue` is not part of the threading module.
 
 ```python
-import threading, queue
+import queue
 
 q = queue.Queue()
 
@@ -53,24 +52,24 @@ q.put('Farm')
 q.put('Truck')
 
 print(f'Size of queue = {q.qsize()}')
-print(q.get())
+print(f'Get an item from the queue: {q.get()}')
 
 print(f'Size of queue = {q.qsize()}')
-print(q.get())
+print(f'Get an item from the queue: {q.get()}')
 ```
 
 Output:
 
 ```
 Size of queue = 4
-House
+Get an item from the queue: House
 Size of queue = 3
-tree
+Get an item from the queue: tree
 ```
 
 **get() method**
 
-For the threading.Queue(), if a thread uses `get()` on a queue where there is no items in it, that thread will be suspended until there is something in the queue.  If an item is never added to the queue, this is a deadlock situation.
+If a thread uses `get()` on a queue where there are no items in it, that thread will be suspended (placed on the Blocked queue in the operating system) until there is something in the queue.  If an item is never added to the queue, this is a deadlock situation where the program hangs.
 
 Example of using a queue in a thread:
 
@@ -89,13 +88,15 @@ def main():
 	q.put('two')
 	q.put('three')
 
-	# Create 3 threads
-	# This is a list comprehension
+	# Create 3 threads - This is a list comprehension
+	# Pass the queue as an argument to the threads
 	threads = [threading.Thread(target=thread_function, args=(q, )) for _ in range(3)]
 
+	# start all threads
 	for i in range(3):
 		threads[i].start()
 
+	# Wait for them to finish
 	for i in range(3):
 		threads[i].join()
 
@@ -114,39 +115,71 @@ Thread: three
 All work completed
 ```
 
+### Queue deadlock situation
+
+[Issue with not clearing a Queue](https://docs.python.org/3/library/multiprocessing.html#synchronization-between-processes)
+
+> The following is from the above link
+
+Bear in mind that a process that has put items in a queue will wait before terminating until all the buffered items are fed by the “feeder” thread to the underlying pipe. (The child process can call the `Queue.cancel_join_thread` method of the queue to avoid this behavior.)
+
+This means that whenever you use a queue you need to make sure that all items which have been put on the queue will eventually be removed before the process is joined. Otherwise you cannot be sure that processes which have put items on the queue will terminate. Remember also that non-daemonic processes will be joined automatically.
+
+An example which will deadlock is the following:
+
+```python
+from multiprocessing import Process, Queue
+
+def f(q):
+    q.put('X' * 1000000)
+
+if __name__ == '__main__':
+    queue = Queue()
+    p = Process(target=f, args=(queue,))
+    p.start()
+    p.join()                    # this deadlocks
+    obj = queue.get()
+
+```
+
+A fix here would be to swap the last two lines.
+
+
 ## Review of Thread locks
 
-Locks are used to protect a critical section in your program.  Critical sections can be variables, data structures, file access, database access, etc.  If locks are used too often, then the program becomes linear in execution.  The best situation in designed threaded programs is to not use locks at all.  In the vidoe processing assignment, each process was able to work without any synchronization between them.
+Locks are used to protect a critical section in your program.  Critical sections can be accessing variables, data structures, file access, database access, etc.  If locks are used too often, then the program becomes linear in execution.  The best situation in designed threaded programs is to not use locks at all.  In the video processing assignment, each process was able to work without any synchronization between them.
 
 [Threading locks Documentation](https://docs.python.org/3/library/threading.html#lock-objects)
 
 
-### Lock example 1
+### Example 1
 
-Here is a small Python program that will create three threads where each one will update the first item in a list.  Then it will display the results.  In the code below, it displays the correct value of 30,000.
+Here is a small program that will create three threads where each one will update the first item in a list.  Then it will display the results.  In the code below, it displays the correct value of 30,000.  There are no locks used.
 
 ```python
-import threading
+import threading, time
 
-def thread_function(lock, data):
-    for i in range(10000):
+THREADS = 3
+ITEMS = 10000
+
+def thread_function(data):
+    for i in range(ITEMS):
         data[0] += 1
 
 def main():    
-    lock = threading.Lock()
-
     data = [0]
+    start_time = time.perf_counter()
 
-    # Create 3 threads
-    threads = [threading.Thread(target=thread_function, args=(lock, data)) for _ in range(3)]
+    # Create threads
+    threads = [threading.Thread(target=thread_function, args=(data, )) for _ in range(THREADS)]
 
-    for i in range(3):
-        threads[i].start()
+    for t in threads:
+        t.start()
 
-    for i in range(3):
-        threads[i].join()
+    for t in threads:
+        t.join()
 
-    print(f'All work completed: {data}')
+    print(f'All work completed: {data[0]:,} in {time.perf_counter() - start_time:.5f} seconds')
 
 if __name__ == '__main__':
     main()
@@ -155,8 +188,130 @@ if __name__ == '__main__':
 Output:
 
 ```
-All work completed: [30000]
+All work completed: 30,000 in 0.00295 seconds
 ```
+
+### Example 2
+
+Same program as above but looping 1,000,000 times.  The results should be 3,000,000, but it isn't.  In fact, each time the the program is run, different results are displayed.  This is caused by a race condition for the first element in the list.
+
+```python
+import threading, time
+
+THREADS = 3
+ITEMS = 1000000
+
+def thread_function(data):
+    for i in range(ITEMS):
+        data[0] += 1
+
+def main():    
+    data = [0]
+    start_time = time.perf_counter()
+
+    # Create threads
+    threads = [threading.Thread(target=thread_function, args=(data, )) for _ in range(THREADS)]
+
+    for t in threads:
+        t.start()
+
+    for t in threads:
+        t.join()
+
+    print(f'All work completed: {data[0]:,} in {time.perf_counter() - start_time:.5f} seconds')
+
+if __name__ == '__main__':
+    main()
+```
+
+Output:
+
+```
+All work completed: 1,717,014 in 0.19610 seconds
+```
+
+### Example 3
+
+We can fix the race condition by adding a lock around `data[0] += 1`.  We got the right answer with adding a lock, but the execution time of the program is now 5 seconds.
+
+```python
+import threading, time
+
+THREADS = 3
+ITEMS = 1000000
+
+def thread_function(lock, data):
+    for i in range(ITEMS):
+        with lock:
+            data[0] += 1
+
+def main():    
+    lock = threading.Lock()
+    data = [0]
+    start_time = time.perf_counter()
+
+    # Create threads
+    threads = [threading.Thread(target=thread_function, args=(lock, data)) for _ in range(THREADS)]
+
+    for t in threads:
+        t.start()
+
+    for t in threads:
+        t.join()
+
+    print(f'All work completed: {data[0]:,} in {time.perf_counter() - start_time:.5f} seconds')
+
+if __name__ == '__main__':
+    main()    
+```
+
+Output:
+
+```
+All work completed: 3,000,000 in 5.09544 seconds
+```
+
+
+### Example 4
+
+The best fix to this race condition example, is to remove the race condition.  In the three threads, they are all updating the same variable.  The fix is to have each thread have it's own variable to update.  These variables will be totaled after the threads are finished.
+
+```python
+import threading, time
+
+THREADS = 3
+ITEMS = 1000000
+
+def thread_function(data, index):
+    for i in range(ITEMS):
+        data[index] += 1
+
+def main():    
+    data = [0] * THREADS   # Each thread uses it's own index into the list
+    start_time = time.perf_counter()
+
+    # Create threads
+    threads = [threading.Thread(target=thread_function, args=(data, index)) for index in range(THREADS)]
+
+    for t in threads:
+        t.start()
+
+    for t in threads:
+        t.join()
+
+    print(f'All work completed: {sum(data):,} in {time.perf_counter() - start_time:.5f} seconds')
+
+if __name__ == '__main__':
+    main()     
+```
+
+Output:
+
+```
+All work completed: 3,000,000 in 0.21455 seconds
+```
+
+### Example 5
 
 Here is an example of using a shared queue between two threads.  Note that the number of `put()` calls must match the number of `get()` calls.  If this is not the case, you might/will have deadlock.
 
@@ -187,7 +342,7 @@ def main():
     read.start()        # doesn't matter which starts first
     write.start()
 
-    write.join()
+    write.join()		# Doesn't matter the order
     read.join()
 
 if __name__ == '__main__':
@@ -209,118 +364,7 @@ Output:
 9
 ```
 
-### Lock example 2
-
-Same program, but each thread will try to update the item in the list 1,000,000 times
-
-```python
-import threading
-
-def thread_function(lock, data):
-    for i in range(1000000):
-        data[0] += 1
-
-def main():    
-    lock = threading.Lock()
-
-    data = [0]
-
-    # Create 3 threads
-    threads = [threading.Thread(target=thread_function, args=(lock, data)) for _ in range(3)]
-
-    for i in range(3):
-        threads[i].start()
-
-    for i in range(3):
-        threads[i].join()
-
-    print(f'All work completed: {data}')
-
-if __name__ == '__main__':
-    main()
-```
-
-Output:
-
-```
-All work completed: [2252529]
-```
-
-The results should have been 3,000,000 but it calculated a value of 2,252,529.  In fact, each time that the program is run, it displays a different results.
-
-This is a race condition where the statement `data[0] += 1` is actually multiple CPU instructions where the thread can be suspended after any of them.
-
-Also, the above example shows an important principal of code testing.  Just because it works for a small test doesn't mean it works for large tests. 
-
-Here is the correct Python program with each thread updating the value 10,000,000 times.
-
-```python
-import threading
-
-def thread_function(lock, data):
-    for i in range(10000000):
-        with lock:          # protect the data
-            data[0] += 1
-        
-def main():    
-    lock = threading.Lock()
-
-    data = [0]
-
-    # Create 3 threads
-    threads = [threading.Thread(target=thread_function, args=(lock, data)) for _ in range(3)]
-
-    for i in range(3):
-        threads[i].start()
-
-    for i in range(3):
-        threads[i].join()
-
-    print(f'All work completed: {data}')
-
-if __name__ == '__main__':
-    main()
-```
-
-Output:
-
-```
-All work completed: [30000000]
-```
-
-This correct version of the program took about 50 seconds to run.  All of the time was taken by locking and unlocking the critical section.  A better solution for this code would be to remove the lock.  Here is a version without any locks.  This version took a little over two seconds to complete.
-
-Using `data = [0] * 3` where each thread has their own value they can update without conflicts with the other threads allows the program remove the lock.
-
-```python
-import threading
-
-def thread_function(thread_id, lock, data):
-    for i in range(10000000):
-        data[thread_id] += 1
-
-def main():    
-    lock = threading.Lock()
-
-    # Create a value with each thread
-    data = [0] * 3
-
-    # Create 3 threads, pass a "thread_id" for each thread
-    threads = [threading.Thread(target=thread_function, args=(i, lock, data)) for i in range(3)]
-
-    for i in range(3):
-        threads[i].start()
-
-    for i in range(3):
-        threads[i].join()
-
-    print(f'All work completed: {sum(data)}')
-
-if __name__ == '__main__':
-    main()
-```
-
-## Thread semaphores
+## Semaphores
 
 - [Thread Semaphore Document](https://docs.python.org/3/library/threading.html#semaphore-objects)
 - [Wikipedia page](https://en.wikipedia.org/wiki/Semaphore_(programming))
@@ -336,7 +380,7 @@ if __name__ == '__main__':
 
 Whereas a `Lock` is a "only allow one thread in at a time".  A `Semaphore` allows multiple threads to enter an area of code.
 
-When a semaphore is created, you can indicate that number of concurrent threads that can be allowed "in".  They are used to control access to data not threads.
+When a semaphore is created, you can indicate that number of concurrent threads that can be allowed "in".  They are used to control access to data not threads.  They are a synchronization construct whereas a lock is mutual exclusion control.
 
 ```python
 sem = Semaphore(count)
@@ -345,7 +389,6 @@ sem.acquire()
 # Do something
 sem.release()
 ```
-
 
 Each time `acquire()` is called, two outcomes are possible.  
 
@@ -356,4 +399,4 @@ When a thread calls `release()` on the semaphore, the count is increased by one 
 
 Having a thread wait on a semaphore that is never `released()` is a deadlock situation.  Note that a semaphore of 1 is the same thing as a lock.
 
-Semaphores are often used with locks.
+Semaphores are often used with locks.  A semaphore of size 1 is the same as a lock.

@@ -47,8 +47,10 @@ The file `assignment.py` contains two functions: `part1()` and `part2()`.
 - The function `part1()` currently retrieves the pedigree information one family and person at a time.  Each call to the server takes 0.25 seconds.
 - Your task is to use threads to make this function faster.  There is no limit on the number of threads you can use.
 - You must build the pedigree tree starting with the starting family id.  You must write your program to handle different family information from the server (ie., number of families, number of children, etc.).
-- You will be using a depth-first algorithm.  The given code in `part1()` uses DFS to retrieve information.
+- The given code in `part1()` uses Depth First Search to retrieve information. You can change it to use threads to go up the husband's line and wife's line concurrently.
 - You must retrieve all individuals in a family (ie., husband, wife and children)
+
+**Your goal is to execute part 1 in under 10 seconds**
 
 ### Part 2
 
@@ -56,10 +58,15 @@ The file `assignment.py` contains two functions: `part1()` and `part2()`.
 - Use threads to speed up requesting families and individuals from the server.
 - Your goal is to make this function as fast as possible by using threads.
 - You must retrieve all individuals in a family (ie., husband, wife and children)
+- Do not use recursion for this algorithm.
+
+**Your goal is to execute part 2 in under 10 seconds**
 
 ### 10% Bonus
 
 - A 10% bonus if you can limit the number of threads to 5 while retrieving the family information in part 2.  The server must not have more than 5 active threads at a time. (watch the output from the server to see number of activity threads)
+- There is no time requirement for this extra feature.
+- Implement the function bonus().
 
 ### Misc
 
@@ -69,13 +76,17 @@ The file `assignment.py` contains two functions: `part1()` and `part2()`.
 
 ## Rubric
 
+**Describing your code**
+
+In the header of the file ``assignment.py` is a place where you can give meaningful descriptions of part 1 and part 2.  If this is missing or incomplete, 10 points will be taken off your grade for this assignment.
+
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
 The Assignment will be graded in broad categories according to the following:
 
 | Grade | Description |
 |-------|-------------|
-| 0% | Nothing submitted |
-| 50% | Some attempt made or doesn't compile |
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% - 100% | Meets requirements and/or Showed creativity and extend your assignments beyond the minimum standard that is specifically required |

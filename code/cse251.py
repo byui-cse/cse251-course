@@ -4,7 +4,6 @@ File: cse251.py
 Author: Brother Comeau
 
 Purpose: Common classes for the cse 251 course
-
 """
 
 import os
@@ -21,6 +20,7 @@ def print_dict(dict, title=''):
     if title != '':
         print(f'Dictionary: {title}')
     print(json.dumps(dict, indent=3))
+
 
 # ===============================================================================================
 def load_json_file(filename):

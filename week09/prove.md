@@ -20,7 +20,7 @@ This hold the maze of the program.  It is given a bitmap image of the maze.  You
 
 **Screen**
 
-This class is used by the Maze to save drawing commands while the program is finding a path or looking for the ending position.  The reason for this class is that only the main thread can draw to the screen.  Therefore, this class will save all of the drawing commands until asked to display them in your program.  You should not need to look at the code for this Screen class.
+This class is used by the Maze to save drawing commands while the program is finding a path or looking for the ending position.  The reason for this class is that only the main thread can draw to the screen.  Therefore, this class will save all of the drawing commands until asked to display them in your program.  You should not need to look at the code for your assignment.
 
 ## Assignment
 
@@ -155,8 +155,8 @@ The Assignment will be graded in broad categories according to the following:
 
 | Grade | Description |
 |-------|-------------|
-| 0% | Nothing submitted |
-| 50% | Some attempt made |
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% - 100% | Meets requirements and/or Showed creativity and extend your assignments beyond the minimum standard that is specifically required |

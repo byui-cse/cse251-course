@@ -14,42 +14,69 @@ This is a continuation of assignment 04.  Instead of one factory and one dealers
 
 1. Download the [assignment.py](assignment/assignment.py) file.
 2. Review the instructions found in the Python file as well as the global constants.
-3. Your goal is for each factory to produce `CARS_TO_CREATE_PER_FACTORY` many cars.
 4. The function `run_production()` will be passed different number of factories and dealerships that are to be created for a production run.
-1. When creating the shared queue between the threads, you can not create it with a limit or maxsize.
-1. When using the `get()` function for the queue, you must use the argument `get(block=False)`.
-5. The program will create a plot of the production time VS number of threads used.
+1. You must not use the Python queue object for this assignment.  Use the class Queue251().
+1. When using the function `acquire()`, do not use any arguments with it such as `timeout`.
 
-
-Sample output:
+Here is a sample run of the completed assignment.  The number of cars each factory produces is random:
 
 ```
-08:35:34| 200 cars have been created = 3.95057450
-[200]
-08:35:38| 400 cars have been created = 3.91286310
-[198, 202]
-08:35:42| 600 cars have been created = 4.05465940
-[198, 205, 197]
-08:35:46| 800 cars have been created = 4.12323340
-[205, 195, 200, 200]
-08:35:50| 1000 cars have been created = 4.02148100
-[194, 200, 206, 200, 200]
-08:35:54| 2000 cars have been created = 4.11957210
-[196, 208, 202, 194, 199, 199, 200, 204, 202, 196]
-08:35:59| 3000 cars have been created = 4.17968270
-[203, 200, 201, 202, 200, 197, 194, 200, 200, 201, 201, 206, 205, 193, 197]
-08:36:03| 4000 cars have been created = 4.17816700
-[196, 201, 200, 203, 195, 198, 203, 205, 199, 201, 193, 199, 200, 206, 199, 196, 203, 203, 197, 203]
-08:36:07| 5000 cars have been created = 4.31302600
-[204, 195, 197, 205, 198, 201, 200, 207, 198, 199, 204, 196, 206, 195, 200, 204, 194, 206, 192, 191, 209, 197, 201, 193, 208]  
-08:36:12| 6000 cars have been created = 4.33806250
-[212, 203, 201, 199, 190, 206, 199, 201, 197, 203, 195, 198, 201, 188, 193, 198, 206, 200, 199, 204, 197, 209, 206, 208, 198, 201, 199, 206, 192, 191]
+15:33:42| 296 cars have been created = 4.60179630
+15:33:42| Factories      : 1     
+15:33:42| Dealerships    : 1     
+15:33:42| Run Time       : 4.6018
+15:33:42| Max queue size : 1     
+15:33:42| Factor Stats   : [296] 
+15:33:42| Dealer Stats   : [296] 
+15:33:42| 
+15:33:46| 211 cars have been created = 3.32463510
+15:33:46| Factories      : 1
+15:33:46| Dealerships    : 2
+15:33:46| Run Time       : 3.3246    
+15:33:46| Max queue size : 2
+15:33:46| Factor Stats   : [211]     
+15:33:46| Dealer Stats   : [107, 104]
+15:33:46| 
+15:33:55| 566 cars have been created = 8.92919360
+15:33:55| Factories      : 2
+15:33:55| Dealerships    : 1
+15:33:55| Run Time       : 8.9292    
+15:33:55| Max queue size : 10        
+15:33:55| Factor Stats   : [271, 295]
+15:33:55| Dealer Stats   : [566]     
+15:33:55| 
+15:33:59| 484 cars have been created = 4.00742010
+15:33:59| Factories      : 2
+15:33:59| Dealerships    : 2
+15:33:59| Run Time       : 4.0074    
+15:33:59| Max queue size : 2
+15:33:59| Factor Stats   : [230, 254]
+15:33:59| Dealer Stats   : [241, 243]
+15:33:59| 
+15:34:03| 489 cars have been created = 4.09568640
+15:34:03| Factories      : 2
+15:34:03| Dealerships    : 5
+15:34:03| Run Time       : 4.0957
+15:34:03| Max queue size : 5
+15:34:03| Factor Stats   : [229, 260]
+15:34:03| Dealer Stats   : [89, 92, 108, 106, 94]
+15:34:03| 
+15:34:12| 1147 cars have been created = 8.97750810
+15:34:12| Factories      : 5
+15:34:12| Dealerships    : 2
+15:34:12| Run Time       : 8.9775
+15:34:12| Max queue size : 10
+15:34:12| Factor Stats   : [239, 211, 204, 228, 265]
+15:34:12| Dealer Stats   : [574, 573]
+15:34:12| 
+15:34:16| 2536 cars have been created = 4.71039130
+15:34:16| Factories      : 10
+15:34:16| Dealerships    : 10
+15:34:16| Run Time       : 4.7104
+15:34:16| Max queue size : 10
+15:34:16| Factor Stats   : [269, 249, 297, 267, 228, 253, 253, 200, 299, 221]
+15:34:16| Dealer Stats   : [258, 253, 257, 247, 257, 254, 255, 254, 256, 245]
 ```
-
-
-Sample final plot:
-
-![](Figure_1.png)
 
 
 ## Rubric
@@ -59,8 +86,8 @@ The Assignment will be graded in broad categories according to the following:
 
 | Grade | Description |
 |-------|-------------|
-| 0% | Nothing submitted |
-| 50% | Some attempt made |
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% | Meets requirements |

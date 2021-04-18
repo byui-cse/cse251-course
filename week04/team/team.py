@@ -8,11 +8,7 @@ Purpose: Team Activity
 
 Instructions:
 
-- NO global variables!!!
-- Don't use thread/process pools for this program.
-- Use only the provided packages that are imported.
-- I would suggest setting RETRIEVE_THREADS to 1 and get that to work.
-  Then increase it.
+- See in I-Learn
 
 """
 
@@ -22,7 +18,7 @@ import requests
 
 # Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 RETRIEVE_THREADS = 4        # Number of retrieve_threads
@@ -49,6 +45,7 @@ def file_reader(): # TODO add arguments
     log.write('finished reading file')
 
     # TODO signal the retrieve threads one more time that there are "no more values"
+
 
 
 def main():

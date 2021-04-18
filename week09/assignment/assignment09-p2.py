@@ -35,7 +35,7 @@ import cv2
 
 # Include cse 251 common Python files - Dont change
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 SCREEN_SIZE = 800

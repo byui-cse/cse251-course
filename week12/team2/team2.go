@@ -72,7 +72,7 @@ func main() {
 
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < numberValues; i++ {
-		// TODO - place in a channel
+		// ch <- rand.Int()
 	}
 
 	go readValues() // Add any arguments

@@ -2,29 +2,19 @@
 
 # 01 Teach: Finding Prime Numbers
 
-- They work on the non-threaded part first
-- Then add threads
-- Analysis the results in both
-
-## Instructions
-
-**Face-to-face** students will complete this activity in class.
-
-**Online students** should arrange for a one hour synchronous meeting to work through the activity together.
-
 ## Overview
 
 Programs can run with and without threads.  In the team activity today, you will be taking a program that counts the number of prime numbers in a range and converting it to use threads to find these prime numbers.
 
 ## Assignment
 
-- Review the documentation on [directory structure](../overview/directory_structure.md).  Create directories for the course
-  - Main folder for the course.  Place is anywhere on your computer.
-  - The "code" folder and copy the file(s) from github's "code" folder to this folder.
-  - "week01" folder
-  - "week01/team" folder where you will be placing the `team.py` file for this activity.
-- Don't forget to open the "week01/team" folder in VSCode.
-- The file `team.py` contains code to find all ofthe prime numbers within a range of values.
+Review the documentation on [directory structure](../overview/directory_structure.md).  Create the following directories for the course:
+
+- Main folder for the course.  Place it anywhere on your computer.
+- The "code" folder and copy the file(s) from github's "code" folder to this folder.
+- A "week01" folder
+- A "week01/team" folder where you will be placing the `team.py` file for this activity. Don't forget to open the "week01/team" folder in VSCode.
+- The file `team.py` contains code to find all of the prime numbers within a range of values.
 
 ### Core Requirements
 
@@ -43,7 +33,7 @@ Programs can run with and without threads.  In the team activity today, you will
 1. Convert your program to use 10 threads to find these prime numbers.  You should get the same results as the original program.  Your program needs to display the primes that it finds.
    - Keep track on how long it takes for the program to run.
 2. Question: compare the run times of the original non-threaded program with the 10 threaded version.  Talk with your team members to explain the difference.  Also, why don't we need a lock to protect the global variables `prime_count` and `numbers_processed`?
-3. Remove the `print` statements that display when a prime is found.  Test the non-threaded and threaded program and compare run times. 
+3. Remove (comment out) the `print` statements that display when a prime is found.  Test the non-threaded and threaded program and compare run times. 
     - Why is the program faster when you don't print out the found primes?
     - Why is there a greater time difference when you remove print statements from the threaded program when compared to the non-threaded version. (ie., run each program with and without the print statements and review the log files).  The following is my test results.  Do you get the same results?
 

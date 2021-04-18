@@ -12,15 +12,30 @@ This assignment will contain two threaded classes.  A `Factory` will create cars
 
 ## Assignment
 
-1. Download the [assignment.py](assignment/assignment.py) file.
-2. Review the instructions found in the Python file as well as the global constants.
-3. The Python file contains three classes:
-   - **Car**: This is the car that the factory will create.  When a car is created, it randomly selects a make, model and year.
-   - **Factor**: This threaded class creates the cars for the dealerships.  After a car is created, the factory uses a short delay between creating another one.
-   - **Dealer**: This is the dealership retrieves cars created by the factory to be sold. After a car is received, the dealership uses a short delay to seel the car.  The dealership only has room for 10 cars, therefore, if the dealership is full, the factory must until a car is sold before creating another car.
-4. Your goal is to create `CARS_TO_PRODUCE` many cars.
+The Python file contains the following classes:
 
-Sample plot created by your program.  Before the Dealership takes a car from the queue, it uses `qsize()` to get the size of the queue and updates the `queue_stats` list.
+**Car**: This is the car that the factory will create.  When a car is created, it randomly selects a make, model and year.
+
+**Factor**: This threaded class creates the cars for the dealerships.  After a car is created, the factory uses a short delay between creating another one.
+
+**Dealer**: This is the dealership retrieves cars created by the factory to be sold. After a car is received, the dealership uses a short delay to sell the car.  The dealership only has room for 10 cars, therefore, if the dealership is full, the factory must until a car is sold before creating another car.
+
+**Queue251**: This is a queue that must be used in the assignment.
+
+## Instructions
+
+- Download the [assignment.py](assignment/assignment.py) file.
+- Implement your code where the TODO comments are found.
+- No global variables, all data must be passed to the objects.
+- Only the included/imported packages are allowed. 
+- Thread pools are not allowed.
+- You are not allowed to use the normal Python Queue class.  You must use Queue251. This shared queue holds the Car objects and can not be greater than MAX_QUEUE_SIZE while your program is running.
+- Your goal is to create `CARS_TO_PRODUCE` many cars. The Dealer thread must not know how many cars will be produced by the factory.
+- You will need two semaphores to properly implement this assignment.  Don't use a BoundedSemaphore.
+
+### Plot created by your program.  
+
+**Before** the Dealership takes a car from the queue, it uses `qsize()` to get the size of the queue and updates the `queue_stats` list.  Here is an example of a plot (Your plot might/will look different).  Each bar represents the size of the queue while the program is running.  From this plot, the program had a full queue of size 10 during most of the execution time.
 
 ![](plot.png)
 
@@ -28,12 +43,13 @@ Sample plot created by your program.  Before the Dealership takes a car from the
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
+
 The Assignment will be graded in broad categories according to the following:
 
 | Grade | Description |
 |-------|-------------|
-| 0% | Nothing submitted |
-| 50% | Some attempt made |
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% - 100% | Meets requirements / Showed creativity and extend your assignments beyond the minimum standard that is specifically required |

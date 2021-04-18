@@ -9,6 +9,8 @@ Instructions:
   threads to process this array.  If you find a prime number, display
   it to the console.
 
+- DON'T copy/slice the array in main() for each thread.
+
 Part 1:
 - Create a class that is a sub-class of Thread.
 - create 4 threads based on this class you created.

@@ -10,7 +10,7 @@ This week's lesson is on Python processes and Introduction to Analyzing programs
 
 We have been using threads in Python.  Threads in Python are limited where only one thread can run at a time because of the GIL.  Threads are concurrent but not parallel.
 
-Processes do not have this limit.  Each process created in Python contains it's own GIL.  This allows processes to run on different CPUs on the computer and are running in concurrently and parallel.
+Processes do not have this limit.  Each process created in Python contains it's own GIL.  This allows processes to run on different CPUs on the computer and are running concurrently and parallel.
 
 ## Differences between threads and processes (From week 01)
 
@@ -22,7 +22,7 @@ This means that only one thread can be in a state of execution at any one time. 
 
 ### Process
 
-A Process is a program that has been loaded by the operating system and is running.  It contains 1 to N threads.  All processes contain a main thread.  The operating system will start that main thread for the process and when that main thread ends, the process ends. [Process (computing)](https://en.wikipedia.org/wiki/Process_(computing))
+A "Process" is a program that has been loaded by the operating system and is running.  It contains 1 to N threads.  All processes contain a main thread.  The operating system will start that main thread for the process and when that main thread ends, the process ends. [Process (computing)](https://en.wikipedia.org/wiki/Process_(computing))
 
 
 ### Thread
@@ -115,13 +115,13 @@ bob: 123456
 After thread global_var = 123456
 ```
 
-In the output, you see that the thread was able to change the global variable while the process wasn't.  This is because the process, when created, gets it's own GIL and it's own copy of `global_var`.  This is different than the `global_var` in the main thread.  This is why it doesn't change.  Other reason not to use global variables.
+In the output, you see that the thread was able to change the global variable while the process wasn't.  This is because the process, when created, gets it's own GIL and it's own copy of `global_var`.  This is different than the `global_var` in the main thread.  This is why it doesn't change.  Another reason not to use global variables.
 
 ## Process Pool and Map() function
 
 [Python Documentation](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool)
 
-The pool feature of the multiprocessing package allows you to indicate the run of processes that you want to use for a parallel section of your program.
+The pool feature of the multiprocessing package allows you to indicate the number of processes that you want to use for a parallel section of your program.
 
 Break down of the following example:
 
@@ -131,7 +131,7 @@ This creates a process pool of 2 processes.  They are not running at this point.
 
 **p.map(func, names)**
 
-The map function takes in a reference to a function that you want to apply to the process pool.  The function that you place in the first argument can only have 1 argument.  It this example, it's one name (ie., a string)
+The map function takes in a reference to a function that you want to apply to the process pool.  The function that you place in the first argument can only have 1 argument. 
 
 The second argument is a list of items that you want the processes to use.  The Pool will divide up the list for the processes in the pool to use.  In this case, `'John'` was used by one process where the process called `func('John')`.  Then 'Mary' was used by the other process (or the same one for 'John'), etc. until all of the items in the list are used.
 
@@ -150,13 +150,11 @@ def func(name):
 if __name__ == '__main__':
 
     names = ['John', 'Mary', 'April', 'Murry', 'George']
-    # for _ in range(10000):
-    #     names.append('sdfsdf')
 
     # Create a pool of 2 processes
     with mp.Pool(2) as p:
         # map those 2 process to the function func()
-        # Python will call the function func() with each item in the names list
+        # Python will call the function func() alternating items in the names list.
         # the two processes will run in parallel
         p.map(func, names)
 ```
@@ -179,6 +177,7 @@ import time
 import multiprocessing as mp
 
 def add_two_numbers(values):
+	# The sleep is here to slow down the program
     time.sleep(0.5)
     number1 = values[0]
     number2 = values[1]

@@ -302,3 +302,42 @@ Output:
 12:29:59| Finished:  = 8.19670030
 [5000000050000000, 5000000150000001, 5000000250000003, 5000000350000006]
 ```
+
+## Amdahl's Law
+
+(The following section comes from Wikipedia)
+
+When adding processes to a software problem, there is a "limit" or point where adding more processes to a problem doesn't speed it up very much or at all.  Amdahl's Law is used to understand this.
+
+[Wikipedia Amdahl's law page](https://en.wikipedia.org/wiki/Amdahl%27s_law)
+
+### Amdahl's Law Formula
+
+![](formula.png)
+
+**where**
+
+- S<sub>latency</sub> is the theoretical speedup of the execution of the whole task.
+- s is the speedup of the part of the task that benefits from improved system resources.
+- p is the proportion of execution time that the part benefiting from improved resources originally occupied.
+
+### Example 1
+
+Amdahl's law is often used in parallel computing to predict the theoretical speedup when using multiple processors. For example, if a program needs 20 hours to complete using a single thread, but a one-hour portion of the program cannot be parallelized, therefore only the remaining 19 hours (p = 0.95) of execution time can be parallelized, then regardless of how many threads are devoted to a parallelized execution of this program, the minimum execution time cannot be less than one hour. Hence, the theoretical speedup is limited to at most 20 times the single thread performance,
+
+![](AmdahlsLaw.svg)
+
+The theoretical speedup of the latency of the execution of a program as a function of the number of processors executing it, according to Amdahl's law. The speedup is limited by the serial part of the program. For example, if 95% of the program can be parallelized, the theoretical maximum speedup using parallel computing would be 20 times.
+
+### Example 2
+
+![](example.png)
+
+
+### Relation to the law of diminishing returns
+
+Amdahl's law is often conflated with the [law of diminishing returns](https://en.wikipedia.org/wiki/Diminishing_returns), whereas only a special case of applying Amdahl's law demonstrates law of diminishing returns. If one picks optimally (in terms of the achieved speedup) what to improve, then one will see monotonically decreasing improvements as one improves. If, however, one picks non-optimally, after improving a sub-optimal component and moving on to improve a more optimal component, one can see an increase in the return. Note that it is often rational to improve a system in an order that is "non-optimal" in this sense, given that some improvements are more difficult or require larger development time than others.
+
+Amdahl's law does represent the law of diminishing returns if on considering what sort of return one gets by adding more processors to a machine, if one is running a fixed-size computation that will use all available processors to their capacity. Each new processor added to the system will add less usable power than the previous one. Each time one doubles the number of processors the speedup ratio will diminish, as the total throughput heads toward the limit of 1/(1 − p).
+
+This analysis neglects other potential bottlenecks such as memory bandwidth and I/O bandwidth. If these resources do not scale with the number of processors, then merely adding processors provides even lower returns.

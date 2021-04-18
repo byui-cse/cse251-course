@@ -2,19 +2,13 @@
 Course: CSE 251
 Lesson Week: 04
 File: assignment.py
-Author: Brother Comeau
+Author: <Your name>
 
 Purpose: Assignment 04 - Factory and Dealership
 
 Instructions:
 
-- Read the comments in the following code.  
-- Implement your code where the TODO comments are found.
-- No global variables, all data must be passed to the objects.
-- Only the included/imported packages are allowed.  
-- Thread pools are not allowed
-- the shared queue between the threads that are used to hold the Car objects
-  can not be greater than MAX_QUEUE_SIZE
+- See I-Learn
 
 """
 
@@ -25,7 +19,7 @@ import random
 
 # Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 # Global Consts - Do not change
@@ -54,10 +48,31 @@ class Car():
         self.model = random.choice(Car.car_models)
         self.make = random.choice(Car.car_makes)
         self.year = random.choice(Car.car_years)
+
+        # Sleep a little.  Last statement in this for loop - don't change
+        time.sleep(random.random() / (SLEEP_REDUCE_FACTOR))
+
+        # Display the car that has just be created in the terminal
+        self.display()
            
     def display(self):
         print(f'{self.make} {self.model}, {self.year}')
 
+
+class Queue251():
+    """ This is the queue object to use for this assignment. Do not modify!! """
+
+    def __init__(self):
+        self.items = []
+
+    def size(self):
+        return len(self.items)
+
+    def put(self, item):
+        self.items.append(item)
+
+    def get(self):
+        return self.items.pop(0)
 
 
 class Factory(threading.Thread):
@@ -70,12 +85,16 @@ class Factory(threading.Thread):
 
 
     def run(self):
-        for i in range(self.car_count):
-            # TODO Create a Car object and place it on a queue for the dealerships
+        for i in range(CARS_TO_PRODUCE):
+            # TODO Add you code here
+            """
+            create a car
+            place the car on the queue
+            signal the dealer that there is a car on the queue
+           """
 
-            # Sleep a little - don't change
-            time.sleep(random.random() / (SLEEP_REDUCE_FACTOR + 4))
-
+        # signal the dealer that there there are not more cars
+        pass
 
 
 class Dealer(threading.Thread):
@@ -88,18 +107,23 @@ class Dealer(threading.Thread):
 
     def run(self):
         while True:
-            # TODO process a car if there is one
+            # TODO Add your code here
+            """
+            take the car from the queue
+            signal the factory that there is an empty slot in the queue
+            """
 
-            # Sleep a little - don't change
-            time.sleep(random.random() / (SLEEP_REDUCE_FACTOR + 0))
+            # Sleep a little after selling a car
+            # Last statement in this for loop - don't change
+            time.sleep(random.random() / (SLEEP_REDUCE_FACTOR))
 
 
 
 def main():
     log = Log(show_terminal=True)
 
-    # TODO Create semaphore(s) ?
-    # TODO Create queue(s) ?
+    # TODO Create semaphore(s)
+    # TODO Create queue251 
     # TODO Create lock(s) ?
 
     # This tracks the length of the car queue during receiving cars by the dealership

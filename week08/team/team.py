@@ -4,14 +4,8 @@ Lesson Week: ??
 File: ??
 Author: Brother Comeau
 
-Purpose: ??
-
 Instructions:
-
--
-
-
-
+- Look for TODO comments
 """
 
 import time
@@ -23,7 +17,7 @@ import numpy as np
 
 # Include cse 251 common Python files - Dont change
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 # -----------------------------------------------------------------------------

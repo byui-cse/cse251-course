@@ -2,12 +2,6 @@
 
 # 03 Teach: Word Search
 
-## Instructions
-
-**Face-to-face** students will complete this activity in class.
-
-**Online students** should arrange for a one hour synchronous meeting to work through the activity together.
-
 ## Overview
 
 [Word Search](https://thewordsearch.com/) puzzles are fun to play.  You will be speeding up a word search program.
@@ -16,6 +10,12 @@
 
 Download the file [team.py](team/team.py) to your computer.  Place it based on the suggested directory structure of the course.  This program creates a word search puzzle, then it solves it.  However, the searching for the words isn't fast and needs to be improved.
 
+### Instructions:
+
+- Try to speed up this program
+- you can change the Board class
+- talk with your team before making changes
+- make backups if you try something that doesn't work
 
 ### Core Requirements
 
@@ -25,9 +25,9 @@ Download the file [team.py](team/team.py) to your computer.  Place it based on t
 
 ### Stretch Challenge
 
-- Try to improve the speed of the program using threads.
-- Try to improve the speed of the program using processes.
-- Time your changes.  What worked and what didn't?  Was it worth the effort?
+1. Try to improve the speed of the program using threads.
+1. Try to improve the speed of the program using processes.
+1. Time your changes.  What worked and what didn't?  Was it worth the effort?
 
 ## Sample Solution
 

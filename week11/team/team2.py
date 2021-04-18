@@ -19,28 +19,23 @@ Part 2
 - Once written, test them using multiple processes.
 
 Queue methods:
-    - constructor()
+    - constructor(<no arguments>)
     - size()
     - get()
     - put(item)
 
-Pipe methods:
-    - constructor()
-    - get()
-    - put(item)
-
 Stack methods:
-    - constructor()
+    - constructor(<no arguments>)
     - push(item)
     - pop()
 
 Steps:
 1) write the Queue_t and test it with threads.
 2) write the Queue_p and test it with processes.
-3) Implement Pipe_t and test it 
-4) Implement Pipe_p and test it 
-5) Implement Stack_t and test it 
-6) Implement Stack_p and test it 
+3) Implement Stack_t and test it 
+4) Implement Stack_p and test it 
+
+Note: Testing means having lots of concurrency/parallelism happening
 
 """
 import time
@@ -52,19 +47,11 @@ class Queue_t:
 	pass
 
 # -------------------------------------------------------------------
-class Pipe_t:
-	pass
-
-# -------------------------------------------------------------------
 class Stack_t:
 	pass
 
 # -------------------------------------------------------------------
 class Queue_p:
-	pass
-
-# -------------------------------------------------------------------
-class Pipe_p:
 	pass
 
 # -------------------------------------------------------------------

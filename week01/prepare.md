@@ -4,14 +4,14 @@
 
 # Overview
 
-The first week of the course is an introduction to the topic of parallelism and concurrency.  Since this course uses the programming language Python for all assignments, we will spend some of the first week reviewing the Python language and Python packages that will we be using.
+The first week of the course is an introduction to the topic of parallelism and concurrency.  Since this course uses the programming language Python for assignments, we will spend some of the first week reviewing the Python language and Python packages that we will be using.
 
 Please carefully read the syllabus so you will know how to best allocate your time and focus your efforts.  The Syllabus is found in Canvas (I-Learn).
 
 
 # Preparation Material
 
-This course assumes that you have used Python and you are familiar with it.  We will be using Python classes for our coding examples and assignments.  Please refer to [Software Requirements](../overview/software.md) for details.
+This course assumes that you have programmed in Python using classes. Please refer to [Software Requirements](../overview/software.md) for details and a review of Python.
 
 
 # Course Introduction
@@ -21,9 +21,9 @@ This course assumes that you have used Python and you are familiar with it.  We 
 > In computer science, concurrency is the ability of different parts or units of a program, algorithm, or problem to be executed out-of-order or in partial order, without affecting the final outcome. This allows for parallel execution of the concurrent units, which can significantly improve overall speed of the execution in multi-processor and multi-core systems. In more technical terms, concurrency refers to the decomposability property of a program, algorithm, or problem into order-independent or partially-ordered components or units
 
 Example of concurrency are:
-- Internet Browser
+- Chrome Browser
 - Website server node.js [website](https://nodejs.org/en/)
-- Operating System running on 1 cpu core
+- An Operating System running on a 1 cpu core computer
 
 
 -- [Definition of Concurrency](https://en.wikipedia.org/wiki/Concurrency_(computer_science))
@@ -35,9 +35,9 @@ Example of concurrency are:
 
 Example of parallelism are:
 - Graphical Cards (GPU)
-- long numberic calculations
+- long numeric calculations
 - Computer games
-- Compresson software
+- Compression software
 - Operating System running on many cpu cores
 
 -- [Definition of Parallelism](https://en.wikipedia.org/wiki/Parallel_computing)
@@ -54,13 +54,13 @@ Researchers have studied software and note that there are generally two differen
 
  [I/O Bound](https://en.wikipedia.org/wiki/I/O_bound) refers to a condition in which the time it takes to complete a computation is determined principally by the period spent waiting for input/output operations to be completed.  For example: Waiting for the user to enter something, file access (reading and writing), Internet requests, etc...
 
-In Python, will be using threads for I/O bound programs.
+In Python, we'll be using threads for I/O bound problems.
 
 **CPU Bound** 
 
 [CPU Bound](https://en.wikipedia.org/wiki/CPU-bound) refers to a situation when the time for a task to complete is determined principally by the speed of the central processor or the number of processors.  Once a program has all of the data it needs to do work, it will be spending it's time using the CPU.
 
-In Python, will be using processes for CPU bound programs.
+In Python, we'll be using processes for CPU bound programs.
 
 Quote from https://rednafi.github.io/digressions/python/2020/04/21/python-concurrent-futures.html
 
@@ -70,7 +70,7 @@ We will be focusing on the threading module for the first 2 weeks of the course.
 
 ## Threading Package
 
-For the first two weeks of the course, we are learning how to add threads to our programs.  We will be using the threading package.  It is imported using the following:
+For the first two weeks of the course, we are learning how to add threads to our programs.  We will be using the threading package.  It is included in your Python program using the following:
 
 ```python
 import threading
@@ -81,7 +81,7 @@ import threading
 This quote is from: [Thread (computing)](https://en.wikipedia.org/wiki/Thread_(computing))
 > In computer science, a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, which is typically a part of the operating system. The implementation of threads and processes differs between operating systems, but in most cases a thread is a component of a process. Multiple threads can exist within one process, executing concurrently and sharing resources such as memory, while different processes do not share these resources. In particular, the threads of a process share its executable code and the values of its dynamically allocated variables and non-thread-local global variables at any given time.
 
-For all of the previous Python program that you wrote, there was always one thread running in your program.  This is called the `main thread`.  All programs have this main thread.  This main thread only uses one CPU core on a computer.  With computers now having 8, 16, 32, etc... cores, we need to write programs that can use those mulitple cores.
+In the previous Python program that you wrote, there was always one thread running in your program.  This is called the `main thread`.  All programs have this main thread and only uses one CPU core on a computer.  With computers now having 8, 16, 32, etc... cores, we need to write programs that can use those multiple cores.
 
 ### Timer() function in the threading package
 
@@ -159,9 +159,26 @@ Thread "Sleep Function": finishing
 Main    : all done
 ```
 
+### Starting and waiting for it to finish
+
+There are two methods used for starting and waiting for class threads.
+
+**start()**
+
+This is a non-blocking function call.  Start() will start the thread running and will return to the caller.  It doesn't wait for the thread to execute.  In designing programs that use threads, there are a few guiding principles:
+
+1. Don't use sleep() to control the order of when threads run.  The course uses `sleep()` in some assignments and team activities just to slow execution down to simulate the thread doing meaningful work.
+2. When you start a group of threads, you as a programmer should not assume any order of execution of these threads.  For example: if you create two threads (t1 and t2), and start them in the order of `t1.start()` then `t2.start()`.  You should not assume that `t1` is going to run first before `t2`.
+
+**join()**
+
+This is a blocking function call.  Join() will wait until that thread is finished executing.  If the thread is still busy doing something, then join() will not return until it's finished.  If the thread never finishes, then your program will hang (deadlock) on `join()`.
+
 ## The importance of `__main__`
 
-In Python, there are special runtime variables that are available to programmers.  Python programs don't need a "main" function if there is only one file in your program.  Where you have multiple files, Python needs to know which file contains the "main" code.  The variable `__name__` is used to denote if a file is the main file. [More details on `__main__`](https://docs.python.org/3/library/__main__.html)
+In Python, there are special run-time variables that are available to programmers.  Python programs don't need a "main" function if there is only one file in your program.  Where you have multiple files, Python needs to know which file contains the "main" code.  The variable `__name__` is used to denote if a file is the main file. [More details on `__main__`](https://docs.python.org/3/library/__main__.html)
+
+[Video on why \_\_name\_\_ is important](https://www.youtube.com/watch?v=lOeIDvyRUQs)
 
 
 ```python
@@ -186,28 +203,28 @@ Note: the function `dir()` can display the current builtin functions in your pro
 
 Before we can talk about threads and processes, we need to understand the Python Global Interpreter Lock or GIL. It is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
 
-This means that only one thread can be in a state of execution at any one time. If you write single-threaded programs, then the GIL has no impact.  However, when writting paralell and concurrent programs, it is critical to understand it.
+This means that only one thread can be in a state of execution at any one time. If you write single-threaded programs, then the GIL has no impact.  However, when writing parallel and concurrent programs, it is critical to understand it.
 
 ### Process
 
-A Process is a program that has been loaded by the operating system and is running.  It contains 1 to N threads.  All processes contain 1 thread that is called the main thread.  The operating system will start that main thread for the process and when that main thread ends, the process ends. [Process (computing)](https://en.wikipedia.org/wiki/Process_(computing))
+In terms of computer systems, a "process" is a program that has been loaded by the operating system and is running.  It contains 1 to N threads.  All processes contain 1 thread that is called the main thread.  The operating system will start that main thread for the process and when that main thread ends, the process ends. [Process (computing)](https://en.wikipedia.org/wiki/Process_(computing))
 
 
 ### Thread
 
-A thread is the smallest unit managed by the operating system that is scheduled to run on the CPU. All processes contain a main thread.[Thread (computing)](https://en.wikipedia.org/wiki/Thread_(computing))
+A thread is the smallest unit managed by the operating system that is scheduled to run on the CPU. [Thread (computing)](https://en.wikipedia.org/wiki/Thread_(computing))
 
 
 ### How Python handles threads and processes
 
-Because of the GIL, all threads are running concurrently in your program.  The operating system will give each thread a little time slice on the CPU where it will appear that they are all running at the some time.
+Because of the GIL, all threads are running concurrently in your program.  The operating system will give each thread a little time slice on the CPU and switch between them quickly giving the appearance that they are all running at the same time.
 
 When you create a process in Python, each process will contain their own instance of a GIL.  This allows each process to run in parallel on the computer.
 
 
 ### I/O and CPU Bound code
 
-Computer programs have been analyzed for many years and researchers have noticed that during the life of a process, the process will **switch** between waiting for I/O (ie., user input, Internet requests, file accesses) and running instructions on the CPU (ie., calculations).
+Computer programs have been analyzed for many years and researchers have noticed that during the life of a running process, the process will **switch** between waiting for I/O (ie., user input, Internet requests, file accesses) and running instructions on the CPU (ie., calculations).
 
 **I/O Bound**
 
@@ -286,7 +303,7 @@ t.start()
 
 3. Wait for the thread to finish.
 
-The parent thread has full control of any child threads that are created.  The parent thread can wait for the child threads to finish. The function `join()` is used for this purpose.  Think of the parent thread waiting for the child threads to "re-join" the parent.
+The parent thread has full control of any child threads that are created and can wait for the child threads to finish. The function `join()` is used for this purpose.  Think of the parent thread waiting for the child threads to "re-join" the parent.
 
 ```python
 t.join()
@@ -355,7 +372,7 @@ Main    : all done
 
 ## Critical Sections
 
-Although the GIL will run threads concurrently (ie., one at a time switching quickly between them), you still might need to protect shared data between the threads.
+Although the GIL will run threads concurrently (ie., one at a time switching quickly between them), you still might need to protect shared data between threads.
 
 For Example: let's say that you have threads that are using a file as a counter (I know that this is a made up example). The file will contain an integer that is the count.
 
@@ -366,7 +383,7 @@ def thread_func(filename, count):
     f.close()
 ```
 
-This works great in a single-threaded program.  But when we have, say two threads, it can become a problem. Remember, you as the programmer can't control which thread runs, or when the operating system will switch to another thread and for how long they will run when they have the CPU.
+This works great in a single-threaded program.  But when we have, say two threads, it can become a problem. Remember, you as the programmer can't control which thread runs on the cpu, or when the operating system will switch to another thread and for how long they will run when they have the CPU.
 
 | Thread A | Thread B |
 |---|---|
@@ -376,9 +393,9 @@ This works great in a single-threaded program.  But when we have, say two thread
 |  | f = open(filename, 'w') |
 |  | Program crashes because the file is locked by thread A |
 
-In the table above, Thread `B` will crash when tyring to open the file in write only mode.  This is because Thread `A` never finished closing the file before Thread `B` started.
+In the table above, Thread `B` will crash when trying to open the file in write only mode.  This is because Thread `A` never finished closing the file before Thread `B` started.
 
-Python allows you to denote part of your code as a critical section.  A critical section is code that only allows 1 thread to execute at a time.  That thread will start and finish executing the code before any other thread can excute it.  [Critical Section webpage](https://en.wikipedia.org/wiki/Critical_section)
+Python allows you to denote part of your code as a critical section.  A critical section is code that only allows 1 thread to execute at a time.  That thread will start and finish executing the code before any other thread can execute it.  [Critical Section webpage](https://en.wikipedia.org/wiki/Critical_section)
 
 
 In the figure, 4 threads are tyring to get into the critical section.
@@ -421,4 +438,4 @@ The issue with deamon threads is that they are abruptly stopped at shutdown.  Th
 
 > **From the Instructor**
 > 
-> Reading is key to doing well in this course.  You will be required to read the provided material each week.  Take your time and read the maiterial more than once if you don't understand it the first time.
+> Reading is key to doing well in this course.  You will be required to read the provided material each week.  Take your time and read the material more than once if you don't understand it the first time.

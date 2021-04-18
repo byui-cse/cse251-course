@@ -19,7 +19,7 @@ import cv2
 
 # Include cse 251 common Python files - Dont change
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 SCREEN_SIZE = 800
@@ -29,7 +29,9 @@ COLOR = (0, 0, 255)
 # TODO add any functions
 
 def solve_path(maze):
-    """ Solve the maze and return the path.  The path is a list of positions, (x, y) """
+    """ Solve the maze and return the path found between the start and end positions.  
+        The path is a list of positions, (x, y) """
+        
     # TODO start add code here
     path = []
     return path

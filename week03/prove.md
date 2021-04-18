@@ -6,7 +6,6 @@
 
 Processing videos can take a great deal of processing time and resources.  You will be combining two videos together where one video will contain a "green screen".  The results of your assignment will be a new combined video.  The goal of the assignment is to use all of the CPU cores on your computer for the video processing.
 
-
 ## Project Description
 
 ### Software Required for the Assignment
@@ -29,8 +28,6 @@ FFmpeg is a free open-course video and image converter.  It is included in the g
 1. Download `mac-ffmpeg-4.3.1.7z` from the assignment folder in github.
 2. Place that it in the same folder as your other assignment files.
 3. Double click on the `7z` file to un-compress it.  It will create a `ffmpeg` app.  Make sure that this app is in the same folder as your assignment code.
-
-Note, I downloaded VLC Player in order to view the final.mp4 video file that is created.
 
 When you have everything in place and try running the `setup_files_dirs.py` program, MAC OS might the following warning message:
 
@@ -68,6 +65,8 @@ Short video of a TV with the screen all green.
 
 Once you have created all of the frames in the `processed` folder, run this program.  It will create a video based on the images found in `processed`.  The video that is created will be called `final.mp4`.  You are not submitting this final video file, only your Python code.
 
+Note, I had problems viewing the final video using the default video player in Windows.  I downloaded **VLC Player** and was able to view the video.
+
 ### Directory Structure
 
 After you run `setup_files_dirs.py`, you will have the following directory structure.  (There is sample code in `assignment.py` that uses these folders)
@@ -91,22 +90,45 @@ On my computer, I have 12 CPU cores.  The const variable `CPU_COUNT` is set to 4
 
 ![](16_cpu_cores_300_frames.png)
 
+Here is a example log file for 16 CPUs
+
+```
+10:50:35| Time for 300 frames using 1 processes: 101.8020556
+10:51:46| Time for 300 frames using 2 processes: 71.93878520000001
+10:52:45| Time for 300 frames using 3 processes: 58.97159289999999
+10:53:31| Time for 300 frames using 4 processes: 45.3859032
+10:54:07| Time for 300 frames using 5 processes: 36.22025639999998
+10:54:41| Time for 300 frames using 6 processes: 34.265467599999965
+10:55:11| Time for 300 frames using 7 processes: 29.98336469999998
+10:55:42| Time for 300 frames using 8 processes: 31.0306688
+10:56:14| Time for 300 frames using 9 processes: 32.005908199999965
+10:56:44| Time for 300 frames using 10 processes: 30.009154299999977
+10:57:14| Time for 300 frames using 11 processes: 29.614024700000016
+10:57:44| Time for 300 frames using 12 processes: 29.636116699999945
+10:58:12| Time for 300 frames using 13 processes: 28.241375600000083
+10:58:41| Time for 300 frames using 14 processes: 28.767867000000024
+10:59:07| Time for 300 frames using 15 processes: 26.312874100000045
+10:59:34| Time for 300 frames using 16 processes: 27.02049850000003
+10:59:34| Total Time for ALL procesing: 641.3756915
+```
 
 You will be creating a plot graph image and a log file.  Both of these will be submitted with your Python program in I-Learn.
 
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
+
+Do not use different videos than the ones included in this assignment.
+
 The Assignment will be graded in broad categories according to the following:
 
 | Grade | Description |
 |-------|-------------|
-| 0% | Nothing submitted |
-| 50% | Some attempt made |
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
-| 93% | Meets requirements |
-| 100% | Showed creativity and extend your assignments beyond the minimum standard that is specifically required.  Do not use different videos than the ones included in this assignment. |
+| 93% to 100% | Meets requirements or Showed creativity and extend your assignments beyond the minimum standard that is specifically required. |
 
 
 ## Submission

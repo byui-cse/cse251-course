@@ -30,7 +30,7 @@ The first will use ID = 1, the second passenger to arrive will use 2, etc.
 
 Instructions:
 
-- Use processes for the security (SECURITY_PERSONAL) and directors (DIRECTOR_PERSONAL)
+- Use processes for the security (SECURITY_PERSONNEL) and directors (DIRECTOR_PERSONNEL)
 - Make sure the directors print the messages STARTING_READING_MESSAGE and STOPPING_READING_MESSAGE
 - When using locks, the acquire() method must not use the timeout or block options. (ie., just lock.acquire())
 - This problem is harder if you use the Python 'with lock:' statement.
@@ -48,8 +48,8 @@ import multiprocessing as mp
 TOTAL_PASSENGERS = 30
 
 # number of security and ship directors
-SECURITY_PERSONAL = 2
-DIRECTOR_PERSONAL = 4
+SECURITY_PERSONNEL = 2
+DIRECTOR_PERSONNEL = 4
 
 # When the first director starts reading the passenger list, display this message
 STARTING_READING_MESSAGE = 'Directors reading vvvvvvvvvvvvvvvvvvvvvvv'
@@ -126,11 +126,11 @@ def main():
 
 
     security_persons = []
-    for _ in range(SECURITY_PERSONAL):
+    for _ in range(SECURITY_PERSONNEL):
         security_persons.append(mp.Process(target=security, args=(passenger_list, lock_security)))
 
     director_persons = []
-    for _ in range(DIRECTOR_PERSONAL):
+    for _ in range(DIRECTOR_PERSONNEL):
         director_persons.append(mp.Process(target=cruise_director, args=(passenger_list, lock_directors, lock_security, directors_count)))
 
     # Start all

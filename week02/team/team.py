@@ -8,10 +8,7 @@ Purpose: Playing Card API calls
 
 Instructions:
 
-- Don't include any other packages/modules.
-- Use the website http://deckofcardsapi.com to implement then
-  methods below.  Go to this website to get documentation on
-  the API calls allowed.
+- Review instructions in I-Learn.
 
 """
 
@@ -22,7 +19,7 @@ import json
 
 # Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 # TODO Create a class based on (threading.Thread) that will

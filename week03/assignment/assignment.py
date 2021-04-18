@@ -25,7 +25,7 @@ import multiprocessing as mp
 
 # Include cse 251 common Python files
 import os, sys
-sys.path.append('../../code')
+sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
 
 # 4 more than the number of cpu's on your computer
@@ -41,6 +41,7 @@ BLUE  = 2
 
 
 def create_new_frame(image_file, green_file, process_file):
+    """ Creates a new image file from image_file and green_file """
 
     # this print() statement is there to help see which frame is being processed
     print(f'{process_file[-7:-4]}', end=',', flush=True)
@@ -72,11 +73,11 @@ if __name__ == '__main__':
     all_process_time = timeit.default_timer()
     log = Log(show_terminal=True)
 
-    xaxis_frames = []
+    xaxis_cpus = []
     yaxis_times = []
 
     # TODO Process all frames trying 1 cpu, then 2, then 3, ... to CPU_COUNT
-    #      add results to xaxis_frames and yaxis_times
+    #      add results to xaxis_cpus and yaxis_times
 
 
     # sample code: remove before submitting  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -93,10 +94,10 @@ if __name__ == '__main__':
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-    log.write(f'Total Time for ALL procesing: {timeit.default_timer() - all_process_time}')
+    log.write(f'Total Time for ALL processing: {timeit.default_timer() - all_process_time}')
 
     # create plot of results and also save it to a PNG file
-    plt.plot(xaxis_frames, yaxis_times, label=f'{FRAME_COUNT}')
+    plt.plot(xaxis_cpus, yaxis_times, label=f'{FRAME_COUNT}')
     
     plt.title('CPU Core yaxis_times VS CPUs')
     plt.xlabel('CPU Cores')

@@ -67,8 +67,8 @@ When you submit your assignment code file, describe the size of each process poo
 
 | Grade | Description |
 |-------|-------------|
-| 0% | Nothing submitted |
-| 50% | Some attempt made |
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
 | 93% - 100%| Meets requirements and/or Showed creativity and extend your assignments beyond the minimum standard that is specifically required |
