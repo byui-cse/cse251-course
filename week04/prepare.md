@@ -18,7 +18,7 @@ The definition of a process is a program that has been loaded into memory.  All 
 
 On the left side of the figure below, this process has the main thread running.  This thread has full access to data, files, registers and stack - the whole program.
 
-The right hand side of the figure shows three threads running in a process.  One of the threads is the main thread.  Note that they all share the common data and files of the process.  However, each thread has their own registers and stack.  This means that is a thread creates a local variable, that variable is not shared with another other thread.
+The right hand side of the figure shows three threads running in a process.  One of the threads is the main thread.  Note that they all share the common data and files of the process.  However, each thread has their own registers and stack.  This means that when a thread creates a local variable, that variable is not shared with another other threads.
 
 Global variables are shared with each thread.  Although, we don't like to use global variables, they are sometimes used in multi-threaded and multi-processor programs.  They will be used sparingly in the course.
 
@@ -145,7 +145,7 @@ if __name__ == '__main__':
 A fix here would be to swap the last two lines.
 
 
-## Review of Thread locks
+## Review of Locks
 
 Locks are used to protect a critical section in your program.  Critical sections can be accessing variables, data structures, file access, database access, etc.  If locks are used too often, then the program becomes linear in execution.  The best situation in designed threaded programs is to not use locks at all.  In the video processing assignment, each process was able to work without any synchronization between them.
 
@@ -397,6 +397,4 @@ Each time `acquire()` is called, two outcomes are possible.
  
 When a thread calls `release()` on the semaphore, the count is increased by one and the operating system will "wake up" any threads waiting on the semaphore.
 
-Having a thread wait on a semaphore that is never `released()` is a deadlock situation.  Note that a semaphore of 1 is the same thing as a lock.
-
-Semaphores are often used with locks.  A semaphore of size 1 is the same as a lock.
+Having a thread wait on a semaphore that is never `released()` is a deadlock situation. Semaphores are often used with locks.  A semaphore of size 1 is the same as a lock.

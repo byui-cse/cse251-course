@@ -84,7 +84,7 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-The results of this program are very different from the thread version.  When each process was created, a new GIL was created.  In this case, each process has their own version of the list `data`.  After each process changes their version of the data list, the main code calls `join()` to wait until they are finished.  Then, main's version of the list `data` is used in the finial print() statement.  It's empty, because the processes changed a different `data` list.
+The results of this program are very different from the thread version.  When each process was created, a new GIL was created for each.  In this case, each process has their own version of the list `data`.  After each process changes their version of the data list, the main code calls `join()` to wait until they are finished.  Then, main's version of the list `data` is used in the finial print() statement.  It's empty, because the processes changed a different `data` list.
 
 In should be clear that global variables would be handled in the same method using processes, where each process has a copy of the global variables.
 
@@ -121,6 +121,7 @@ def write_thread(shared_q):
 def main():
     """ Main function """
 
+    # This queue will be shared between the processes
     shared_q = mp.Queue()
 
     write = mp.Process(target=write_thread, args=(shared_q,))
@@ -144,7 +145,7 @@ The other data structure that can be used is called a pipe.  We will be going ov
 
 ## Managers
 
-We have `Queue` and `Pipe` for sharing data between processes.  For all other data the `multiprocessing` module has a manager.  Managers are used for sharing between processes.  Lets go back to the process example with the shared list that didn't work.  Here is a version that does. `data = mp.Manager().list([0] * 3)` solves the data sharing issue.
+We have `Queue` and `Pipe` for sharing data between processes.  For all other data the `multiprocessing` module has a managers.  Managers are used for sharing between processes.  Lets go back to the process example with the shared list that didn't work.  Here is a version that does. `data = mp.Manager().list([0] * 3)` solves the data sharing issue.
 
 ```python
 import multiprocessing as mp 
@@ -224,6 +225,7 @@ def process_function(process_id, barrier, start_value, end_value):
         if is_prime(i):
             primes.append(i)
     total_time = time.perf_counter() - start_time
+
     barrier.wait()  # Wait for all processes to complete the task before printing
     print(f'Process {process_id}: time = {total_time:.5f}: primes found = {len(primes)}')
 
@@ -231,7 +233,7 @@ def main():
 
     barrier = mp.Barrier(4)         # 4 is the number of processes to wait
 
-    # Create 3 processes, pass a "process_id" for each thread
+    # Create 4 processes, pass a "process_id" and a barrier to each thread
     processes = []
     processes.append(mp.Process(target=process_function, args=(1, barrier, 1, 1000000)))
     processes.append(mp.Process(target=process_function, args=(2, barrier, 1000000, 2000000)))

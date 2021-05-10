@@ -54,6 +54,8 @@ def main():
     """ Main function """
 
     filename = 'data.txt'
+
+    # Once the data file is created, you can comment out this line
     create_data_txt(filename)
 
     log = Log(show_terminal=True)

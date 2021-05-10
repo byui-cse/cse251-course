@@ -2,12 +2,6 @@
 
 # 05 Teach: Using Semaphores, Queue and List
 
-## Instructions
-
-**Face-to-face** students will complete this activity in class.
-
-**Online students** should arrange for a one hour synchronous meeting to work through the activity together.
-
 ## Overview
 
 Your team will be creating thread and processes to check a list of prime numbers from a file.
@@ -18,7 +12,7 @@ The following graph outlines the processes and data structures that you will nee
 
 ![](team_graph.png)
 
-**data.txt** This is the file that contains a list of numbers to test if they are prime.
+**data.txt** This is the file that contains a list of numbers to test if they are prime.  This file is created by the team activity program.
 
 **Reader Thread** This is a thread that will read the data file and place items onto a Queue. (Hint: a semaphore is also required here)
 
