@@ -4,7 +4,7 @@ Lesson Week: 05
 File: assignment.py
 Author: Brother Comeau
 
-Purpose: Assignment 05 - Factories and Stores
+Purpose: Assignment 05 - Factories and Dealers
 
 Instructions:
 

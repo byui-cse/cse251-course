@@ -16,7 +16,6 @@ This is a continuation of assignment 04.  Instead of one factory and one dealers
 2. Review the instructions found in the Python file as well as the global constants.
 4. The function `run_production()` will be passed different number of factories and dealerships that are to be created for a production run.
 1. You must not use the Python queue object for this assignment.  Use the class Queue251().
-1. When using the function `acquire()`, do not use any arguments with it such as `timeout`.
 
 Here is a sample run of the completed assignment.  The number of cars each factory produces is random:
 
@@ -90,8 +89,7 @@ The Assignment will be graded in broad categories according to the following:
 | 50% | Meaningful attempt made or doesn't compile |
 | 75% | Developing (but significantly deficient) |
 | 85% | Slightly deficient |
-| 93% | Meets requirements |
-| 100% | Showed creativity and extend your assignments beyond the minimum standard that is specifically required |
+| 93% to 100% | Meets requirements and/or Showed creativity and extend your assignments beyond the minimum standard that is specifically required |
 
 ## Submission
 
