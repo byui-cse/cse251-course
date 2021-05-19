@@ -2,12 +2,6 @@
 
 # 06 Teach: Copying a file
 
-## Instructions
-
-**Face-to-face** students will complete this activity in class.
-
-**Online students** should arrange for a one hour synchronous meeting to work through the activity together.
-
 ## Overview
 
 Your team will be using two processes to copy the contents of a text file.

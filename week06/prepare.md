@@ -25,7 +25,7 @@ Pipes are used to send messages (ie., data) between processes.  The following is
 
 ### Creating a pipe
 
-When you create a pipe from the multiprocessing module, you receive both ends of the pipe.  They are called the parent and child connections in most programs.  (ie., the parent will send information using their connection and the child will receive information using their connection).  You can send information in both directions.  Just be careful that you don't have both processes waiting for information at the same time - deadlock.
+When you create a pipe from the multiprocessing module, you receive both ends of the pipe.  They are called the parent and child connections in most programming languages.  (ie., the parent will send information using their connection and the child will receive information using their connection).  You can send information in both directions.  Just be careful that you don't have both processes waiting for information at the same time (ie., deadlock)
 
 ```python
 import multiprocessing 

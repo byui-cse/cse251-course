@@ -2,25 +2,15 @@
 Course: CSE 251
 Lesson Week: 06
 File: assignment.py
-Author: Brother Comeau
-
+Author: <Your name here>
 Purpose: Processing Plant
-
 Instructions:
-
 - Implement the classes to allow gifts to be created.
-
 """
 
-from datetime import datetime, timedelta
 import random
-import json
-import threading
 import multiprocessing as mp
-from matplotlib.pylab import plt
-import numpy as np
 import os.path
-import datetime
 import time
 
 # Include cse 251 common Python files - Don't change
