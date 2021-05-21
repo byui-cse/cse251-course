@@ -1,9 +1,7 @@
 """
-Course: CSE ??
-Lesson Week: ??
-File: ??
-Author: Brother Comeau
-
+Course: CSE 251
+Lesson Week: 08
+File: team.py
 Instructions:
 - Look for TODO comments
 """
@@ -12,8 +10,6 @@ import time
 import random
 import threading
 import multiprocessing as mp
-from matplotlib.pylab import plt
-import numpy as np
 
 # Include cse 251 common Python files - Dont change
 import os, sys

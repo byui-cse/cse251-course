@@ -14,7 +14,6 @@ Instructions:
 import math
 from screen import Screen
 from maze import Maze
-
 import cv2
 
 # Include cse 251 common Python files - Dont change

@@ -4,13 +4,27 @@
 
 ## Overview
 
-This program will process a directory full of task files.  Each file will contain details on the task to be preformed.
+Your assignment will process a directory full of task files.  Each file will contain details on the task to be preformed.
 
 ## Assignment
 
 1. The assignment files is [found here](assignment/assignment.py) and the [create_tasks.py file](assignment/create_tasks.py).  You also need to download the file [words.txt](assignment/words.txt)
 1. Follow the instructions found in the `assignment.py`
 1. When you submit your assignment code file, describe the size of each process pool for each task type how to determined they the best values.
+1. run the Python program "create_tasks.py" to create the task files.
+1. There are 5 different tasks that need to be processed.  Each task needs to
+  have it's own process pool.  The number of processes in each pool is up to
+  you.  However, your goal is to process all of the tasks as quicky as possible
+  using these pools.  You will need to try out different pool sizes.
+1. The program will load a task one at a time and add it to the pool that is used
+  to process that task type.  You can't load all of the tasks into memory/list and
+  then pass them to a pool.
+1. You are required to use the function apply_async() for these 5 pools. You can't
+  use map(), or any other pool function.  You must use callback functions with
+  the apply_async() statement.
+1. Each pool will collect that results of their tasks into a global list.
+  (ie. result_primes, result_words, result_upper, result_sums, result_names)
+1. the task_* functions contain general logic of what needs to happen
 
 ### create_tasks.py program
 
@@ -62,7 +76,7 @@ Sample Output while using these test tasks files.
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit. The Assignment will be graded in broad categories according to the following:
 
-When you submit your assignment code file, describe the size of each process pool for each task type how to determined they the best values.
+When you submit your assignment code file, describe the size of each process pool for each task type how to determined them the best values.
 
 
 | Grade | Description |

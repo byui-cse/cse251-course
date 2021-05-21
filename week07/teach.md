@@ -2,12 +2,6 @@
 
 # 07 Teach: Using apply_async()
 
-## Instructions
-
-**Face-to-face** students will complete this activity in class.
-
-**Online students** should arrange for a one hour synchronous meeting to work through the activity together.
-
 ## Overview
 
 We will be learning about using the pool function apply_async().

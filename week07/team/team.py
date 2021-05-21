@@ -2,8 +2,6 @@
 Course: CSE 251
 Lesson Week: Week 07
 File: team.py
-Author: Brother Comeau
-
 Purpose: Week 05 Team Activity
 
 Instructions:

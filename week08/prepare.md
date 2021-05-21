@@ -12,7 +12,7 @@ A thread is a thread is a thread. However, there are two types of threads.  User
 
 A User thread is one that executes user-space code.  It is managed by you the programmer or in the case of Python, by the GIL.
 
-A Kernel thread is one that only runs kernel code and isn't associated with a user-space process.  These threads are controlled by the operating system.  You can not create or delete kernel threads.  Each OS has a ""kernel" or core.  Kernel threads do not match the number of CPUs on a computer.  The number of these threads can be high.
+A Kernel thread is one that only runs kernel code and isn't associated with a user-space process.  These threads are controlled by the operating system.  You can not create or delete kernel threads.  Each OS has a "kernel" or core.  Kernel threads do not match the number of CPUs on a computer.  The number of these threads can be high.
 
 Threads in processes/programs.  All threads must run in a process.  The definition of a process is a program that is loaded into memory and is running on an operating system.
 
@@ -101,6 +101,8 @@ We will be using recursion for the next assignment.
 > In computer science, recursion is a method of solving a problem where the solution depends on solutions to smaller instances of the same problem. Such problems can generally be solved by iteration, but this needs to identify and index the smaller instances at programming time. Recursion solves such recursive problems by using functions that call themselves from within their own code. The approach can be applied to many types of problems, and recursion is one of the central ideas of computer science.
 
 ### Links
+
+Review these links if you need to understand recursion more or need to refresh your memory.
 
 - [Recursion (computer science)](https://en.wikipedia.org/wiki/Recursion_\(computer_science\))
 - [Recursion in Python](https://realpython.com/python-thinking-recursively/#recursive-functions-in-python)

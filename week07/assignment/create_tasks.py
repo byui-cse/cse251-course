@@ -3,7 +3,6 @@ Course: CSE 251
 Lesson Week: 07
 File: create_tasks.py
 Author: Brother Comeau
-
 Purpose: Create task files
 """
 
@@ -25,7 +24,6 @@ words =[
     'purple', 'boundless', 'park', 'store', 'milky', 'pail', 'annoying', 
     'charge', 'ill-fated', 'pastoral', 'lamentable', 'panoramic', 'jelly', 'industry', 'fine', 'aromatic', 
     ]
-
 
 urls = [
     "http://swapi.dev/api/people/2/",
@@ -64,11 +62,14 @@ urls = [
     "http://swapi.dev/api/people/10/"
     ]
 
+files_created = 0
 
 def get_filename(file_count):
     return f'task{file_count}.task'
 
 def write_dict(file_count, dictionary):
+    global files_created
+    files_created += 1
     print(f'Saving {get_filename(file_count)}')
     with open(get_filename(file_count), 'w') as f:
         f.write(json.dumps(dictionary, indent=2))
@@ -126,7 +127,7 @@ def main():
 
     choice = input('Do you want all task files (y), or just a few for testing (n): ')
     if choice.upper() == 'Y':
-        number_tasks = 100
+        number_tasks = 1000
         for url in urls:
             create_name(get_task_num(numbers), url)
     else:
@@ -134,7 +135,7 @@ def main():
         create_name(get_task_num(numbers), urls[0])
 
     for i in range(number_tasks):
-        value = random.randint(1000000000000, 1000000000000000) 
+        value = random.randint(10000000000, 10000000000000) 
         if value % 2 == 0:
             value += 1
         if value % 5 == 0:
@@ -142,12 +143,14 @@ def main():
         create_prime(get_task_num(numbers), value)
 
         value1 = random.randint(0, 1000) 
-        value2 = random.randint(1000, 10000000) 
+        value2 = random.randint(1001, 1000000) 
         create_sum(get_task_num(numbers), value1, value2)
 
-        create_upper(get_task_num(numbers), words[i])
+        create_upper(get_task_num(numbers), random.choice(words))
 
-        create_word(get_task_num(numbers), words[i])
+        create_word(get_task_num(numbers), random.choice(words))
+
+    print(f'{files_created} files created')
 
 if __name__ == '__main__':
     main()

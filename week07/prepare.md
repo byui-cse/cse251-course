@@ -17,12 +17,12 @@ This week we will learn about asynchronous processing with process pools.  Pleas
 
 ## Asynchronous vs Synchronous Programming
 
-In programming, synchronous operations block instructions until the task is completed, while asynchronous operations can execute without blocking other operations. Asynchronous operations are generally completed by firing an event or by calling a provided callback function.
+In programming, synchronous operations block instructions until the task is completed, while asynchronous operations can execute without blocking. Asynchronous operations are generally completed by firing an event or by calling a provided callback function.
 
 
 **Asynchronous != Parallelism**
 
-It's important to understand that asynchronous program is not parallelism.  It's concurrency.
+It's important to understand that asynchronous program is not parallelism, It's concurrency.
 
 ### Coding examples using Process pools
 
@@ -33,7 +33,7 @@ In this first example, we are using the `map()` function to map a list to a func
 We will be using the function `apply_async()` with process pools for this week's assignment. Review the coding example below and the linked articles above in this document.
 
 ```python
-# Cube example using a pool map
+# Example using a pool map
 
 import multiprocessing as mp 
 
@@ -67,7 +67,7 @@ Output:
 This second example is using the function `apply_async()`  It is asynchronous meaning that the function will return before the processes are finished processes the data.
 
 ```python
-# Cube example using pool apply_asyc()
+# Example using pool apply_asyc()
 
 import multiprocessing as mp 
 
@@ -89,6 +89,7 @@ if __name__ == "__main__":
 
 	# do something else
 
+    # collect all of the results into a list
     output = [p.get() for p in results]
     log.stop_timer('Finished: ')
     print(output)
@@ -106,7 +107,7 @@ output:
 Review of the program example above:
 
 
-the `results` variable is a list of "future" work by the process pool.  This statement is quick to run as once the list is complete, Python will run the next line in your program.  At this point, some of the processes in the pool are starting to process the data.
+the `results` variable is a list of "future" work by the process pool.  This statement is quick to run as once the list is complete, Python will run the next line in your program.  At this point, some of the processes in the pool as been started and is processing the data.
 
 ```python
 results = [pool.apply_async(sum_all_values, args=(x,)) for x in range(10000, 10000 + 10)]
@@ -120,11 +121,11 @@ output = [p.get() for p in results]
 
 #### Example 3
 
-Here is the same program from example 2, however it is processing a larger range of values.  I this case, Python throws a RuntimeError.  I'm not sure why this is.  I think that the code creates two many asynchronous requests.
+Here is the same program from example 2 processing a larger range of values.
 
 
 ```python
-# Cube example using pool apply_asyc()
+# Example using pool apply_asyc()
 
 import multiprocessing as mp 
 
@@ -151,31 +152,21 @@ if __name__ == "__main__":
 Output:
 
 ```
-Traceback (most recent call last):
-  File "c:\Users\comeaul\OneDrive - BYU-Idaho\Courses\CSE251\course-notes\week07\cube2.py", line 18, in <module>
-    results = [pool.apply_async(sum_all_values, args=(x,)) for x in range(10000000, 100000000 + 100)]
-  File "c:\Users\comeaul\OneDrive - BYU-Idaho\Courses\CSE251\course-notes\week07\cube2.py", line 18, in <listcomp>
-    results = [pool.apply_async(sum_all_values, args=(x,)) for x in range(10000000, 100000000 + 100)]
-  File "C:\Users\comeaul\AppData\Local\Programs\Python\Python39\lib\multiprocessing\pool.py", line 456, in apply_async
-    result = ApplyResult(self, callback, error_callback)
-  File "C:\Users\comeaul\AppData\Local\Programs\Python\Python39\lib\multiprocessing\pool.py", line 746, in __init__
-    self._event = threading.Event()
-  File "C:\Users\comeaul\AppData\Local\Programs\Python\Python39\lib\threading.py", line 522, in __init__
-    self._cond = Condition(Lock())
-RuntimeError: can't allocate lock
+ Finished:  = 183.79569150
+[5000000050000000, 5000000150000001, 5000000250000003, 5000000350000006, 5000000450000010, 5000000550000015, 5000000650000021, 5000000750000028, 5000000850000036, 5000000950000045, 5000001050000055, 5000001150000066, 5000001250000078, 5000001350000091, 5000001450000105, 5000001550000120, 5000001650000136, 5000001750000153, 5000001850000171, 5000001950000190, 5000002050000210, 5000002150000231, 5000002250000253, 5000002350000276, 5000002450000300, 5000002550000325, 5000002650000351, 5000002750000378, 5000002850000406, 5000002950000435, 5000003050000465, 5000003150000496, 5000003250000528, 5000003350000561, 5000003450000595, 5000003550000630, 5000003650000666, 5000003750000703, 5000003850000741, 5000003950000780, 5000004050000820, 5000004150000861, 5000004250000903, 5000004350000946, 5000004450000990, 5000004550001035, 5000004650001081, 5000004750001128, 5000004850001176, 5000004950001225, 5000005050001275, 5000005150001326, 5000005250001378, 5000005350001431, 5000005450001485, 5000005550001540, 5000005650001596, 5000005750001653, 5000005850001711, 5000005950001770, 5000006050001830, 5000006150001891, 5000006250001953, 5000006350002016, 5000006450002080, 5000006550002145, 5000006650002211, 5000006750002278, 5000006850002346, 5000006950002415, 5000007050002485, 5000007150002556, 5000007250002628, 5000007350002701, 5000007450002775, 5000007550002850, 5000007650002926, 5000007750003003, 5000007850003081, 5000007950003160, 5000008050003240, 5000008150003321, 5000008250003403, 5000008350003486, 5000008450003570, 5000008550003655, 5000008650003741, 5000008750003828, 5000008850003916, 5000008950004005, 5000009050004095, 5000009150004186, 5000009250004278, 5000009350004371, 5000009450004465, 5000009550004560, 5000009650004656, 5000009750004753, 5000009850004851, 5000009950004950] 
 ```
 
 
 #### Example 4
 
-To get past the above run-time error and to still use the `apply_async()` function, there is an option to use a call back function.  The way that this works if that instead of having all of the tasks in a list and the results in a list, as each process finishes their job with the data, the call back function is called.  In this call back function, you can collect the results - one at a time for the process pool.
+In this example, the pool() using the method `apply_async()`.  The way that this works is that instead of having all of the tasks in a list and the results in a list, as each process finishes their job with the data, the call back function is called.  In this call back function, you can collect the results - one at a time for the process pool.
 
-When we have processes, global variables can't be used because they each have their own version of the GIL.  When using the call back function feature, that call back function is running in the main thread of the program where it can use any global variables of the program.
+When we have processes, global variables can't be used because they each have their own version of the GIL.  When using the call back function feature, that call back function is running in the main thread of the program where it can use any global variables of the program.  This means that there is no issue with shared data between processes.
 
 In order to know when the pool is finished, you need to have the statements `pool.close()` and `pool.join()`.
 
 ```python
-# Cube example using pool apply_asyc() and callback function
+# Example using pool apply_asyc() and callback function
 
 import multiprocessing as mp
 import time
@@ -239,7 +230,7 @@ Once a process pool is created, you are free to add jobs to the pool any time in
 The advantage of using a call back function with the process pool is that the program doesn't need to have all of the data collected in order for the pool to start doing something.
 
 ```python
-# Cube example using pool apply_asyc() and callback function
+# Example using pool apply_asyc() and callback function
 
 import multiprocessing as mp
 import time

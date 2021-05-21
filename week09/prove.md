@@ -16,11 +16,11 @@ There are two classes included in the assignment that you will be using.
 
 **Maze**
 
-This hold the maze of the program.  It is given a bitmap image of the maze.  You are able to get information about individual cells.  Please refer to the `maze.py` file for the methods that can be used.
+This hold the maze of the program.  It is given a bitmap image of the maze.  You are able to get information about individual cells (ie., color of a cell, is it a wall, etc.).  Please refer to the `maze.py` file for the methods that can be used.
 
 **Screen**
 
-This class is used by the Maze to save drawing commands while the program is finding a path or looking for the ending position.  The reason for this class is that only the main thread can draw to the screen.  Therefore, this class will save all of the drawing commands until asked to display them in your program.  You should not need to look at the code for your assignment.
+This class is used by the Maze to save drawing commands while the program is finding a path or looking for the ending position.  The reason for this class is that only the main thread can draw to the screen.  Therefore, this class will save all of the drawing commands until asked to display them in your program.  You should not need to look at this code for your assignment.
 
 ## Assignment
 
@@ -30,11 +30,11 @@ The assignment is broken into 2 sections.
 
 [Video Example of Finding a Path](find_path.mp4)
 
-The file `assignment09-p1.py` contains the starting point for this part of the assignment.  There are functions that you are not allowed to change.  
+The file `assignment09-p1.py` contains the starting point for this part of the assignment.  There are functions that you are not allowed to change so make sure you note which ones they are.
 
-The goal of this part of the assignment is to used recursion to find a path from the start to the ending exit.  In the above video, you can see that if you need to backtrack because a path is a dead end, you indicate the locations that you have been with the grey color. (Review the Maze class on the methods that you can call).
+The goal of this part of the assignment is to use recursion to find a path from the start to the exit.  In the above video, you can see that if you need to backtrack because a path is a dead end, you indicate the locations that you have been with the grey color. (Review the Maze class on the methods that you can call).
 
-In this part of the assignment, the base case of the recursion is finding the end exit position.
+In this part of the assignment, the base case of the recursion is finding the end exit position.  (Review recursion from the links at the end of this page).
 
 Here is a sample run (log file) of part 1.  For some of the mazes, your values will/might be different.
 
@@ -81,17 +81,17 @@ Here is a sample run (log file) of part 1.  For some of the mazes, your values w
 
 [Video Example of Finding the End Position](find_end_position.mp4)
 
-The file `assignment09-p2.py` contains the starting point for this part of the assignment.  There are functions that you are not allowed to change. 
+The file `assignment09-p2.py` contains the starting point for this part of the assignment.  There are functions that you are not allowed to change.  (Please note them) .
 
-In part 2 of the assignment, you will be using threads to find the end exit position.  You are not going to return a path from start to end.  When one of the threads finds the end position, that thread needs to stop all other threads.  Recursion is required for this part of the assignment.
+In part 2 of the assignment, you will be using threads to find the exit position.  You are not going to return a path from start to end.  
 
-When a thread comes to a fork or division in the maze, it will create a thread for each path except for one.  The thread that found the fork in the path will take one of the paths.
+When a thread comes to a fork or division in the maze, it will create a thread for each path except for one.  The thread that found the fork in the path will take one of the paths. The other paths will be searched by the newly created threads.  When one of the threads finds the end position, that thread needs to stop all other threads.  Recursion is required for this part of the assignment.
 
-In the example image below, the red thread starts the maze.  It moves along until it comes to a fork.  It created a thread (color blue) and that new thread continue down one of the paths.  The red thread continues down the other path.  Note that in some of the mazes, there can be 3 different paths.
+In the example image below, the red thread starts the maze.  It moves along until it comes to a fork.  It created a thread (color blue) and that new thread continue down one of the paths.  The red thread continues down the other path.  Note that in some of the mazes, there can be 3 different paths at a fork.
 
 In the sample below, there are a total of 7 threads created.
 
-Here the orange colored thread found the end exit position.  When that happens, it needs to tell the other threads to stop.
+In this example, the orange colored thread found the exit position.  When that happens, it needs to tell the other threads to stop.
 
 In order to receive full points for this part of the assignment, threads need to be moving through the maze concurrently.  Watch the video above to see an example.
 
@@ -165,5 +165,5 @@ The Assignment will be graded in broad categories according to the following:
 
 When finished
 
-- upload your Python files to Canvas (part 1 and part 2). Note that in the header section of the part 2 Python file, are 2 questions that need to be answered.
-- upload log file from each part.
+- Upload your Python files to Canvas (part 1 and part 2). Note that in the header section of the part 2 Python file, are 2 questions that need to be answered.
+- Upload the log file from each part.

@@ -3,31 +3,15 @@ Course: CSE 251
 Lesson Week: 07
 File: assingnment.py
 Author: <Your name here>
-
 Purpose: Process Task Files
 
-Instructions:
-
-- run the Python program "create_tasks.py" to create the task files.
-- There are 5 different tasks that need to be processed.  Each task needs to
-  have it's own process pool.  The number of processes in each pool is up to
-  you.  However, your goal is to process all of the tasks as quicky as possible
-  using these pools.  You will need to try out different pool sizes.
-- The program will load a task one at a time and add it to the pool that is used
-  to process that task type.  You can't load all of the tasks into memory/list and
-  then pass them to a pool.
-- You are required to use the function apply_async() for these 5 pools. You can't
-  use map(), or any other pool function.  You must use callback functions with
-  the apply_async() statement.
-- Each pool will collect that results of their tasks into a global list.
-  (ie. result_primes, result_words, result_upper, result_sums, result_names)
-- the task_* functions contain general logic of what needs to happen
-
+Instructions:  See I-Learn
 
 TODO
 
 Add you comments here on the pool sizes that you used for your assignment and
 why they were the best choices.
+
 
 """
 

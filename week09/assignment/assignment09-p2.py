@@ -14,7 +14,7 @@ Instructions:
 
 This code is not interested in finding a path to the end position,
 However, once you have completed this program, describe how you could 
-change the program to display the found path to the end position.
+change the program to display the found path to the exit position.
 
 What would be your strategy?  
 
