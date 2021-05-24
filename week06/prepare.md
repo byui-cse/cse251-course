@@ -82,6 +82,8 @@ Normally variables can't be shared between processes because each process has a 
 
 Here is an example from [the Python documentation website](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes)
 
+[Data types for Value() function](https://docs.python.org/3/library/array.html#module-array)
+
 ```python
 from multiprocessing import Process, Value, Array
 
