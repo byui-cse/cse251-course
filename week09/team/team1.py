@@ -36,10 +36,9 @@ Instructions:
 
 - You have Locks and Semaphores that you can use.
 - Remember that lock.acquire() has an argument called timeout.
-- philosophers need to think for 5 to 10 seconds when they get both forks.  
+- philosophers need to think for 3 to 5 seconds when they get both forks.  
   When the number of philosophers has eaten MAX_MEALS times, stop the philosophers
   from trying to eat and any philosophers eating will put down their forks when finished.
-- philosophers will think for 5 to 10 seconds.  They can only think after eating.
 - You want as many philosophers to eat and think concurrently.
 - Design your program to handle N philosophers.
 - Use threads for this problem.
