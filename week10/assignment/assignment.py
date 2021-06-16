@@ -14,7 +14,6 @@ Instructions:
   The values sent to the readers will be in consecutive order starting
   at value 1.
 
-
 - reader: a process that receive numbers sent by the writer.  The reader will
   accept values until indicated by the writer that there are no more values to
   process.
@@ -23,7 +22,7 @@ Instructions:
 
 - Create 2 reader processes
 
-- You use any sleep() statements for any process.
+- You can use sleep() statements for any process.
 
 - You are able to use lock(s) and semaphores(s).  When using locks, you can't
   use the arguments "block=False" or "timeout".  Your goal is to make your

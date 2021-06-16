@@ -2,6 +2,9 @@
 
 # 10 Prepare: PThreads, MMap and Shared Memory
 
+> If you don't have a C++ compiler on your computer, you can create a free account at [replit.com.](www.replit.com) that will allow you to write, compile and run C++, Python, Java programs.
+
+
 ## PThreads
 
 > POSIX Threads, usually referred to as pthreads, is an execution model that exists independently from a language, as well as a parallel execution model. It allows a program to control multiple different flows of work that overlap in time. Each flow of work is referred to as a thread, and creation and control over these flows is achieved by making calls to the POSIX Threads API.
@@ -48,73 +51,76 @@ Here is another example that contains 3 different uses for pthreads.
 
 **example1()** This function create 1 thread and wait for it to finish.
 
-**example2()** This example creates two threads and passes an integer as an argument.  The integer is displaying to the console.
+**example2()** This example creates 10 threads and passes an integer as an argument.  The integer is displaying to the console.
 
 **example3()** This example shows how you can return values from a thread.
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
+```c++
+#include <iostream>
+#include <cstdlib>
 #include <pthread.h>
-#include <string.h>
+
+using namespace std;
 
 // **************************************************************************
-
 /* function to be run as a thread always must have the same signature:
    it has one void* parameter and returns void */
 void *threadFunction1(void *arg)
 {
-  printf("Hello, World!\n");
-  return 0;
+    cout << "Hello, World!\n";
+    return 0;
 }
 
 void example1()
 { 
-  printf("*************************\n");
-  printf("Example 1 - single thread\n");
+    cout << "*************************\n";
+    cout << "Example 1 - single thread\n";
 
-  pthread_t thread;
-  int createerror = pthread_create(&thread, NULL, threadFunction1, NULL);
-  /*creates a new thread with default attributes and NULL passed as the argument to the start routine*/
-  if (!createerror) /*check whether the thread creation was successful*/
-  {
+    pthread_t thread;
+    int createerror = pthread_create(&thread, NULL, threadFunction1, NULL);
+    /*creates a new thread with default attributes and NULL passed as the argument to the start routine*/
+    if (!createerror) /*check whether the thread creation was successful*/
+    {
     pthread_join(thread, NULL); /*wait until the created thread terminates*/
-  }
-  else
-  {
-    printf("Error in creating thread\n");
-  }
+    }
+    else
+    {
+    cout << "Error in creating thread\n";
+    }
 
-  printf("Example 1 completed\n");
+    cout << "Example 1 completed\n";
 }
 
 // **************************************************************************
 
 void *threadFunction2(void *arg)
 {
-    printf("I am thread #%d\n", *(int *)arg);
+    cout << "I am thread #" << *(int *)arg << endl;
     return NULL;
 }
 
 void example2()
 {
-  printf("*****************************\n");
-  printf("Example 2 - passing arguments\n");
+    cout << "*****************************\n";
+    cout << "Example 2 - passing arguments\n";
 
-    pthread_t t1, t2;
-    int i = 1;
-    int j = 2;
+    pthread_t threads[10];
+    int ids[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
     /* Create 2 threads t1 and t2 with default attributes which will execute
     function "thread_func()" in their own contexts with specified arguments. */
-    pthread_create(&t1, NULL, &threadFunction2, &i);
-    pthread_create(&t2, NULL, &threadFunction2, &j);
+    for (int i = 0; i < 10; ++i)
+    {
+        pthread_create(&threads[i], NULL, &threadFunction2, &ids[i]);
+    }
 
     /* This makes the main thread wait on the death of t1 and t2. */
-    pthread_join(t1, NULL);
-    pthread_join(t2, NULL);
+    for (int i = 0; i < 10; ++i)
+    {
+        pthread_join(threads[i], NULL);
+    }
 
-    printf("Example 2 completed\n");
+    cout << "Example 2 completed\n";
 }
 
 // **************************************************************************
@@ -132,9 +138,9 @@ struct thread_result
 
 void *thread_func(void *args_void)
 {
-    struct thread_args *args = args_void;
+    struct thread_args *args = (struct thread_args *)args_void;
     /* The thread cannot return a pointer to a local variable */
-    struct thread_result *res = malloc(sizeof *res);
+    struct thread_result *res = (struct thread_result *)malloc(sizeof *res);
 
     res->x  = 10 + args->a;
     res->y = args->a * args->b;
@@ -143,28 +149,28 @@ void *thread_func(void *args_void)
 
 void example3()
 {
-  printf("*****************************************\n");
-  printf("Example 3 - returning values from threads\n");
+    cout << "*****************************************\n";
+    cout << "Example 3 - returning values from threads\n";
 
-  pthread_t threadL;
-  struct thread_args in = { .a = 10, .b = 3.141592653 };
-  void *out_void;
-  struct thread_result *out;
+    pthread_t threadL;
+    struct thread_args in = { .a = 10, .b = 3.141592653 };
+    void *out_void;
+    struct thread_result *out;
 
-  pthread_create(&threadL, NULL, thread_func, &in);
-  pthread_join(threadL, &out_void);
-  out = out_void;
-  printf("out -> x = %ld\tout -> b = %f\n", out->x, out->y);
-  free(out);
+    pthread_create(&threadL, NULL, thread_func, &in);
+    pthread_join(threadL, &out_void);
+    out = (struct thread_result *)out_void;
+    cout << "out -> x = " << out->x << "\tout -> b = " << out->y << endl;
+    free(out);
 
-  printf("Example 3 completed\n");
+    cout << "Example 3 completed\n";
 }
 
 int main(void)
 {
-  example1();
-  example2();
-  example3();
+    example1();
+    example2();
+    example3();
 }
 ```
 
@@ -179,10 +185,18 @@ Example 1 completed
 Example 2 - passing arguments
 I am thread #1
 I am thread #2
+I am thread #3
+I am thread #4
+I am thread #6
+I am thread #5
+I am thread #8
+I am thread #9
+I am thread #7
+I am thread #10
 Example 2 completed
 *****************************************
 Example 3 - returning values from threads
-out -> x = 20   out -> b = 31.415927
+out -> x = 20   out -> b = 31.4159
 Example 3 completed
 ```
 
@@ -196,7 +210,7 @@ What is MMap?
 
 Memory mapping is used for speed.  The operating system will "map" a file to a memory.  You can then access the contents of the file just by access that memory.  If your program makes a change in the memory, the OS will ensure that the change is written back to the file when the file is unmapped.
 
-Memory mapping can also be used to share memory between processes.
+Memory mapping can also be used to share memory between processes on the same computer.
 
 ### Example 1
 

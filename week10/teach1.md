@@ -4,21 +4,21 @@
 
 ## Overview
 
-You will be creating a C program to search for prime numbers in an array
+You will be creating a C++ program to search for prime numbers in an array
 
 ## Assignment
 
-The file `team1.c` contains instructions on this team activity.
+The file `team1.cpp` contains instructions on this team activity.
 
-## Compiling C Programs
+## Compiling C++ Programs
 
-### Using online repl.it
+### Using online replit.com
 
-Note: This is an option for compiling c programs if you don't have a compiler on your computer.
+Note: This is an option for compiling C++ programs if you don't have a compiler on your computer.
 
-1) Create a free account at repl.it
+1) Create a free account at [replit.com](www.replit.com)
 
-2) Select C option for a project.
+2) Select C++ option for a project.
 
 ![](replit1.png)
 
@@ -26,13 +26,13 @@ Note: This is an option for compiling c programs if you don't have a compiler on
 
 ![](replit2.png)
 
-4) Copy `team1.c` content to `main.c` in repl.it
+4) Copy `team1.cpp` content to `main.cpp` in repl.it
 
 
 ### Issues with using Visual Studio 2019
 
 1. Create a console empty project
-2. create team1.c and copy the content from team1.c from Github
+2. create team1.cpp and copy the content from team1.cpp from Github
 3. You will need to install pthreads
    1. project -> Manage Nuget Packages
    1. In browse Tab search for 'pthread'

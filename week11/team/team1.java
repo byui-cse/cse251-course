@@ -1,6 +1,6 @@
 /************************************
 Course: cse 251
-File: Main.java
+File: team1.java
 Week: week 11 - team activity 1
 
 Instructions:

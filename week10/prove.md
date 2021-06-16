@@ -25,7 +25,5 @@ The Assignment will be graded in broad categories according to the following:
 
 ## Submission
 
-When finished
-
-- upload your Python files to Canvas.
+When finished upload your Python files to I-Learn.
 

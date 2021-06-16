@@ -12,7 +12,7 @@ Note: this is a team activity, you should take turns coding each week.  If a tea
 
 ### Using online replit.com
 
-Note: This is an option for writing and running Java programs if you don't have a compiler on your computer.
+This is an option for writing and running Java programs if you don't have a compiler on your computer.
 
 1) Create a free account at replit.com
 

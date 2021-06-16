@@ -4,6 +4,9 @@
 
 Most of this lesson will be going over Java program examples.  Please take the time to copy these examples to your computer and run them.
 
+> If you don't have a Java compiler on your computer, you can create a free account at [replit.com.](www.replit.com) that will allow you to write, compile and run Java programs.
+
+
 ## How does Java run programs
 
 A Java program is compiled into an executable.  However, that executable is made of bytes called Java Bytecode.  Once a you have the program in bytecode, there is a Java Interpreter for each type of operating system - as you can see in the figure below.  Python has the same structure except Python programs are not compiled but interpreted when run.
@@ -35,7 +38,7 @@ Java program has a main thread.  Just like PThreads, Java threads run in paralle
 
 ## Threading using a class
 
-There are a few different ways you can use threads in Java.  The first method is to create a class that is sub-classed from the Java Thread class.  Here you override the `run()` method.
+There are a few different ways you can use threads in Java.  The first method is to create a class that is sub-classed from the Java Thread class.  Here you override the `run()` method.  **Thread.currentThread().getId()** returns the id of the current thread.  These ids are random but not consistent for the life of the program while running.
 
 ```java
 class MyThread extends Thread {  
@@ -69,13 +72,13 @@ thread is running...14
 ```
 
 ---
-Example of a constructor in a threaded class where the name of the thread is given.
+Example of a constructor in a threaded class where the name of the thread is an argument.
 
 ```java
 class MyThread2 extends Thread {  
 
     MyThread2(String name) {
-        // Pass the name to the parent class
+        // Consturctor: Pass the name to the parent class
         super(name);
     }
     
