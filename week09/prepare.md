@@ -224,5 +224,5 @@ StarCluster has been designed to automate and simplify the process of building, 
 
 ### Links to Articles
 
-[6 Python libraries for parallel processing](https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html)
-[Parallel Processing and Multiprocessing in Python](https://wiki.python.org/moin/ParallelProcessing))
+- [6 Python libraries for parallel processing](https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html)
+- [Parallel Processing and Multiprocessing in Python](https://wiki.python.org/moin/ParallelProcessing))
