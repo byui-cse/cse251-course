@@ -33,13 +33,13 @@ Here are some of the advantages of Goroutines over threads:
 - You can write massively concurrent servers without having to resort to evented programming.
 
 
-You can run more of them.
+### You can run more of them.
 
 On Java you can run 1000’s or tens of 1000’s threads. On Go you can run hundreds of thousands or millions of goroutines.
 
 Java threads map directly to OS threads, and are relatively heavyweight. Part of the reason they are heavyweight is their rather large fixed stack size. This caps the number of them you can run in a single VM due to the increasing memory overhead.
 
-Go OTOH has a segmented stack that grows as needed. They are “Green threads”, which means the Go runtime does the scheduling, not the OS. The runtime multiplexes the goroutines onto real OS threads, the number of which is controlled by GOMAXPROCS. Typically you’ll want to set this to the number of cores on your system, to maximize potential parellelism.
+Go has a segmented stack that grows as needed. They are “Green threads”, which means the Go runtime does the scheduling, not the OS. The runtime multiplexes the goroutines onto real OS threads, the number of which is controlled by GOMAXPROCS. Typically you’ll want to set this to the number of cores on your system, to maximize potential parallelism.
 
 
 https://rcoh.me/posts/why-you-can-have-a-million-go-routines-but-only-1000-java-threads/
@@ -53,7 +53,7 @@ https://rcoh.me/posts/why-you-can-have-a-million-go-routines-but-only-1000-java-
 
 ## Examples of Go programs
 
-This it's a course on Go, so we best method to learning a new computer language is to see and run examples.
+This isn't a course on Go, so we best method to learning a new computer language is to see and run examples.
 
 I used the command line terminal window to run the following examples.  For example, the `hello.go` program below was run using `go run hello.go`
 
@@ -136,13 +136,13 @@ import "fmt"
 
 func main() {
 
-    if 7%2 == 0 {
+    if 7 % 2 == 0 {
         fmt.Println("7 is even")
     } else {
         fmt.Println("7 is odd")
     }
 
-    if 8%4 == 0 {
+    if 8 % 4 == 0 {
         fmt.Println("8 is divisible by 4")
     }
 
@@ -263,24 +263,24 @@ func plusPlus(a, b, c int) int {
 func main() {
 
     res := plus(1, 2)
-    fmt.Println("1+2 =", res)
+    fmt.Println("1 + 2 =", res)
 
     res = plusPlus(1, 2, 3)
-    fmt.Println("1+2+3 =", res)
+    fmt.Println("1 + 2 + 3 =", res)
 }
 ```
 
 Output:
 
 ```
-1+2 = 3
-1+2+3 = 6
+1 + 2 = 3
+1 + 2 + 3 = 6
 ```
 
 ---
 ### Functions returning multiple values
 
-Just as you can do in Python, functions in Go can return multiple values.  Notice the use of the `_` character below.
+Just as you can do in Python, functions in Go can return multiple values.  Notice the use of the `_` character below (Meaning that we don't care to keep the value returned by the function).
 
 ```go
 package main
@@ -535,7 +535,7 @@ Output:
 
 In this example, the goroutine `fibonacci()` will place values in a channel.  The main function will use a `for range` statement to go through each value in the channel.  
 
-Note that the goroutine `fibonacci()` closes the channel when it is finished.  This is important for the `for range` statement in main.
+Note that the goroutine `fibonacci()` closes the channel when it is finished.  This is important for the `for range` statement in main as the `for` loop would not know when the channel is finished being used.
 
 ```go
 package main
