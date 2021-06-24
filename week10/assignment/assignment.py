@@ -16,7 +16,7 @@ Instructions:
 
 - reader: a process that receive numbers sent by the writer.  The reader will
   accept values until indicated by the writer that there are no more values to
-  process.
+  process.  Display the numbers received by printing them to the console.
 
 - Create 2 writer processes
 
@@ -57,7 +57,7 @@ BUFFER_SIZE = 10
 def main():
 
     # This is the number of values that the writer will send to the reader
-    items_to_send = random.randint(10000, 100000)
+    items_to_send = random.randint(1000, 10000)
 
     smm = SharedMemoryManager()
     smm.start()

@@ -32,7 +32,7 @@ Example of PThreads.  The difference between Python and PThreads is that when yo
 void *myThreadFun(void *vargp) 
 { 
     sleep(1); 
-    printf("Printing GeeksQuiz from Thread \n"); 
+    printf("Printing from Thread \n"); 
     return NULL; 
 } 
    
