@@ -11,12 +11,12 @@ In this team activity, you will be creating Queue, Pipe and Stack classes.
 There are two parts to this team activity.  Download the file `team2.py` from the folder `week11/team` in Github.
 
 Part 1:
-- Create classes for Queue_t, Pipe_t and Stack_t that are thread safe.
+- Create classes for Queue_t and Stack_t that are thread safe.
 - You can use the List() data structure in your classes.
 - Once written, test them using multiple threads.
 
 Part 2
-- Create classes for Queue_p, Pipe_p and Stack_p that are process safe.
+- Create classes for Queue_p and Stack_p that are process safe.
 - You can use the List() data structure in your classes.
 - Once written, test them using multiple processes.
 

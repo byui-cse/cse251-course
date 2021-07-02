@@ -35,7 +35,8 @@ Steps:
 3) Implement Stack_t and test it 
 4) Implement Stack_p and test it 
 
-Note: Testing means having lots of concurrency/parallelism happening
+Note: Testing means having lots of concurrency/parallelism happening.  Also
+some methods for lists are thread safe - some are not.
 
 """
 import time
