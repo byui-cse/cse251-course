@@ -40,7 +40,7 @@ def guest_partying(id):
     time.sleep(random.uniform(0, 1))
 
 # -----------------------------------------------------------------------------
-def cleaner(id, lock, count, start):
+def cleaner():
     """
     do the following for TIME seconds
     cleaner will wait to try to clean the room (cleaner_waiting())
@@ -52,7 +52,7 @@ def cleaner(id, lock, count, start):
     pass
 
 # -----------------------------------------------------------------------------
-def guest(id, lock_cleaner, lock_guest, count, in_the_party, start):
+def guest():
     """
     do the following for TIME seconds
     guest will wait to try to get access to the room (guest_waiting())
