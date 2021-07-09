@@ -48,7 +48,9 @@ TOP_API_URL = 'http://127.0.0.1:8123'
 
 
 # ----------------------------------------------------------------------------
+# Do not change this class
 class Person:
+
     def __init__(self, data):
         super().__init__()
         self.id = data['id']
@@ -66,6 +68,7 @@ class Person:
         return output
 
 # ----------------------------------------------------------------------------
+# Do not change this class
 class Family:
 
     def __init__(self, id, data):
@@ -87,6 +90,7 @@ class Family:
         return output
 
 # -----------------------------------------------------------------------------
+# Do not change this class
 class Tree:
 
     def __init__(self, start_family_id):
@@ -132,6 +136,7 @@ class Tree:
         return id in self.families
 
     def display(self, log):
+        log.write('*' * 60)
         log.write('Tree Display')
         for family_id in self.families:
             fam = self.families[family_id]
@@ -269,7 +274,8 @@ class Request_thread(threading.Thread):
 
 
 # -----------------------------------------------------------------------------
-# Change this function to speed it up
+# TODO - Change this function to speed it up.  Your goal is to create the complete
+#        tree faster.
 def depth_fs_pedigree(family_id, tree):
     if family_id == None:
         return
@@ -324,7 +330,7 @@ def depth_fs_pedigree(family_id, tree):
         depth_fs_pedigree(wife.parents, tree)
 
 # -----------------------------------------------------------------------------
-# You should not change this function
+# You must not change this function
 def part1(log, start_id, generations):
     tree = Tree(start_id)
 
@@ -358,7 +364,7 @@ def breadth_fs_pedigree(start_id, tree):
     pass
 
 # -----------------------------------------------------------------------------
-# You should not change this function
+# You must not change this function
 def part2(log, start_id, generations):
     tree = Tree(start_id)
 

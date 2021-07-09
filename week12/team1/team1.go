@@ -121,7 +121,7 @@ func main() {
 	}
 
 	for _, url := range urls {
-		go getPerson(url)
+		getPerson(url)
 	}
 
 	fmt.Println("All done!")
