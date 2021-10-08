@@ -16,7 +16,7 @@ The Python file contains the following classes:
 
 **Car**: This is the car that the factory will create.  When a car is created, it randomly selects a make, model and year.
 
-**Factor**: This threaded class creates the cars for the dealerships.  After a car is created, the factory uses a short delay between creating another one.
+**Factory**: This threaded class creates the cars for the dealerships.  After a car is created, the factory uses a short delay between creating another one.
 
 **Dealer**: This is the dealership retrieves cars created by the factory to be sold. After a car is received, the dealership uses a short delay to sell the car.  The dealership only has room for 10 cars, therefore, if the dealership is full, the factory must until a car is sold before creating another car.
 
