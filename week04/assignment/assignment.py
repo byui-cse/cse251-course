@@ -100,8 +100,8 @@ class Dealer(threading.Thread):
     """ This is a dealer that receives cars """
 
     def __init__(self):
-        # TODO, you need to add arguments that pass all of data that 1 factory needs
-        # to create cars and to place them in a queue
+        # TODO, you need to add arguments that pass all of data that 1 dealer needs
+        # to sell cars and signal the factory that there is an empty slot in the queue
         pass
 
     def run(self):
