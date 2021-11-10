@@ -87,7 +87,7 @@ if __name__ == "__main__":
     pool = mp.Pool(4)
     results = [pool.apply_async(sum_all_values, args=(x,)) for x in range(10000, 10000 + 10)]
 
-	# do something else
+    # do something else
 
     # collect all of the results into a list
     output = [p.get() for p in results]
@@ -198,15 +198,15 @@ def apply_async_with_callback():
         pool.apply_async(sum_all_values, args = (i, ), callback = log_result)
     log.step_timer('After For loop')
 
-	# Do something while the processes are doing their work
+    # Do something while the processes are doing their work
 
-	# Need to know when the pool is finished
+    # Need to know when the pool is finished
     pool.close()
     pool.join()
 
     log.stop_timer('Finished: ')
 
-	# display the global variable of the results from the pool
+    # display the global variable of the results from the pool
     print(result_list)
 
 if __name__ == '__main__':
@@ -272,15 +272,15 @@ def apply_async_with_callback():
 
     pool.apply_async(sum_all_values, args = (100000003, ), callback = log_result)
 
-	# Do something while the processes are doing their work
+    # Do something while the processes are doing their work
 
-	# Need to know when the pool is finished
+    # Need to know when the pool is finished
     pool.close()
     pool.join()
 
     log.stop_timer('Finished: ')
 
-	# display the global variable of the results from the pool
+    # display the global variable of the results from the pool
     print(result_list)
 
 if __name__ == '__main__':

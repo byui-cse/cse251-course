@@ -66,8 +66,8 @@ def copy_file(log, filename1, filename2):
 
     stop_time = log.get_time()
 
-    log.stop_timer(f'Total time to transfer content = {PUT YOUR COUNT VARIABLE HERE}: ')
-    log.write(f'items / second = {PUT YOUR COUNT VARIABLE HERE / (stop_time - start_time)}')
+    log.stop_timer(f'Total time to transfer content = {PUT YOUR VARIABLE HERE}: ')
+    log.write(f'items / second = {PUT YOUR VARIABLE HERE / (stop_time - start_time)}')
 
     if are_files_same(filename1, filename2):
         log.write(f'{filename1} - Files are the same')

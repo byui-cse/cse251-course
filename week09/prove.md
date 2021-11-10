@@ -148,6 +148,14 @@ Here is a example log file output.  Your values might/will be different for some
 - [What on Earth is Recursion? - Computerphile](https://www.youtube.com/watch?v=Mv9NEXX1VHc)
 
 
+## Software module requirements
+
+You must install the module `opencv`.  Use the same technque that you used to install `numpy` and `matplotlib`.  The module's name is `opencv-python`.
+
+```
+<path of python> -m pip install opencv-python
+```
+
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
