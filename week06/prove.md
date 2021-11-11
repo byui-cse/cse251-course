@@ -77,7 +77,19 @@ Created - 11:51:14.919218: Large marble: Winner, marbles: Ruby, Rose Dust, Terra
 Created - 11:51:15.030378: Large marble: Sure Shot, marbles: Tuscan Brown, Neon Pink, Rose Dust, Ruby, Bistre Brown, Orange Peel, Spanish Pink
 
 ```
+        
+## Rubric
 
+Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
+The Assignment will be graded in broad categories according to the following:
+
+| Grade | Description |
+|-------|-------------|
+| 0% | Nothing submitted or no meaningful attempt made |
+| 50% | Meaningful attempt made or doesn't compile |
+| 75% | Developing (but significantly deficient) |
+| 85% | Slightly deficient |
+| 93% to 100% | Meets requirements |
 
 ## Submission
 To submit your assignment, you need to do two things:
@@ -85,10 +97,3 @@ To submit your assignment, you need to do two things:
 1. Upload your program (the .py file) to I-Learn for feedback.
 1. Upload your `boxes.txt` to I-Learn for feedback.
 1. Add a submission comment that specifies the grading category that best describes your assignment along with a 1-2 sentence justification for your choice. (Make sure to highlight anything you did to make it your own!) The grading criteria are:
-        
-   1. Some attempt made
-   2. Developing (but significantly deficient)
-   3. Slightly deficient
-   4. Meets requirements
-   5. Made it your own
-
