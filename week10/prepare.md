@@ -77,15 +77,18 @@ void example1()
     cout << "Example 1 - single thread\n";
 
     pthread_t thread;
+
     int createerror = pthread_create(&thread, NULL, threadFunction1, NULL);
-    /*creates a new thread with default attributes and NULL passed as the argument to the start routine*/
+
+    // creates a new thread with default attributes and NULL passed as the 
+    // argument to the start routine
     if (!createerror) /*check whether the thread creation was successful*/
     {
-    pthread_join(thread, NULL); /*wait until the created thread terminates*/
+        pthread_join(thread, NULL); /*wait until the created thread terminates*/
     }
     else
     {
-    cout << "Error in creating thread\n";
+        cout << "Error in creating thread\n";
     }
 
     cout << "Example 1 completed\n";
@@ -107,8 +110,8 @@ void example2()
     pthread_t threads[10];
     int ids[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    /* Create 2 threads t1 and t2 with default attributes which will execute
-    function "thread_func()" in their own contexts with specified arguments. */
+    // Create 2 threads t1 and t2 with default attributes which will execute
+    // function "thread_func()" in their own contexts with specified arguments.
     for (int i = 0; i < 10; ++i)
     {
         pthread_create(&threads[i], NULL, &threadFunction2, &ids[i]);
@@ -139,7 +142,7 @@ struct thread_result
 void *thread_func(void *args_void)
 {
     struct thread_args *args = (struct thread_args *)args_void;
-    /* The thread cannot return a pointer to a local variable */
+    // The thread cannot return a pointer to a local variable
     struct thread_result *res = (struct thread_result *)malloc(sizeof *res);
 
     res->x  = 10 + args->a;

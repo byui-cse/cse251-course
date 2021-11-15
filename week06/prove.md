@@ -96,4 +96,4 @@ To submit your assignment, you need to do two things:
 
 1. Upload your program (the .py file) to I-Learn for feedback.
 1. Upload your `boxes.txt` to I-Learn for feedback.
-1. Add a submission comment that specifies the grading category that best describes your assignment along with a 1-2 sentence justification for your choice. (Make sure to highlight anything you did to make it your own!) The grading criteria are:
+1. Add a submission comment that specifies the grading category that best describes your assignment along with a 1-2 sentence justification for your choice. The grading criteria are:

@@ -18,7 +18,7 @@ Note: This is an option for writing and running Go programs if you don't have a 
 
 1) Create a free account at replit.com
 
-2) Select Java option for a project.
+2) Select Go option for a project.
 
 3) Give you project a name
 
