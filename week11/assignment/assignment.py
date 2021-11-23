@@ -66,7 +66,7 @@ def guest():
 # -----------------------------------------------------------------------------
 def main():
     # TODO - add any variables, data structures, processes you need
-    # TODO - add any arguments to cleaner() and geust() that you need
+    # TODO - add any arguments to cleaner() and guest() that you need
 
     # Start time of the running of the program. 
     start_time = time.time()
