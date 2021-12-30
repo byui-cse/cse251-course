@@ -25,9 +25,8 @@ import threading
 import random
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 # Global Consts
 MAX_QUEUE_SIZE = 10

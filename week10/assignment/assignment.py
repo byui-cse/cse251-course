@@ -17,11 +17,13 @@ Instructions:
 
 - reader: a process that receive numbers sent by the writer.  The reader will
   accept values until indicated by the writer that there are no more values to
-  process.  Display the numbers received by printing them to the console.
+  process.  
+  
+- Display the numbers received by the reader printing them to the console.
 
-- Create 2 writer processes
+- Create WRITERS writer processes
 
-- Create 2 reader processes
+- Create READERS reader processes
 
 - You can use sleep() statements for any process.
 
@@ -54,6 +56,8 @@ from multiprocessing.managers import SharedMemoryManager
 import multiprocessing as mp
 
 BUFFER_SIZE = 10
+READERS = 2
+WRITERS = 2
 
 def main():
 

@@ -18,9 +18,8 @@ import requests
 import json
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 RETRIEVE_THREADS = 4        # Number of retrieve_threads
 NO_MORE_VALUES = 'No more'  # Special value to indicate no more items in the queue

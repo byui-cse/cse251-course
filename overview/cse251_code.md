@@ -2,8 +2,15 @@
 
 # Course Functions and Objects
 
-The file `cse251.py` contains common course functions and objects that will be used during the course.  The file is found in the `code` directory in GtiHub.  [Common Code File](../code/cse251.py)
+Run in the console.  Make sure that you use the same Python version that Visual Code is using when you are running your programs.
 
+```
+Mac:
+python3 -m pip install git+https://github.com/byui-cse/cse251-course-files.git
+
+Windows:
+python -m pip install git+https://github.com/byui-cse/cse251-course-files.git
+```
 
 # Functions
 
@@ -18,11 +25,11 @@ A class called Log has be created for the course.  It will allow you to create l
 
 The file is called cse251.py and is imported in your programs by using the following code.  Refer to the file on [directory structure](directory_structure.md)
 
+
 ```python
-# Include CSE 251 common Python files
-import os, sys
-sys.path.append('../../code')
+# Include cse 251 common Python files
 from cse251 import *
+set_working_directory(__file__)
 ```
 
 Example of creating and using the Log class.

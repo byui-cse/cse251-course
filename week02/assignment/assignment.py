@@ -33,9 +33,8 @@ import json
 import threading
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 # Const Values
 TOP_API_URL = r'https://swapi.dev/api'

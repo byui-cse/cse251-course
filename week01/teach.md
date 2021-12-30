@@ -19,7 +19,6 @@ Review the documentation on [directory structure](../overview/directory_structur
 ### Core Requirements
 
 1. Install all of the [software required](../overview/software.md) for the course.  Create the folders for the course and copy the required files from GitHub to allow you to write programs in this course.  Each team member needs to complete this step.
-   - `code` folder is found at [link](../code/)
    - Team activity files are found at [link](team/)
 2. Open the folder "week01/team" and get the program file `team.py` to run.  It will create a log file and display that it found 4,306 primes.  
    - Note that each time you run the program, a new log file will be created.  You can delete any that you don't need.

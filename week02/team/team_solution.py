@@ -13,9 +13,8 @@ import requests
 import json
 
 # # Include cse 251 common Python files
-# import os, sys
-# sys.path.append('../../code')
-# from cse251 import *
+from cse251 import *
+set_working_directory(__file__)
 
 class Request_thread(threading.Thread):
 

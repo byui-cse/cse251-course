@@ -20,9 +20,8 @@ from multiprocessing import Value, Process
 import filecmp 
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 def sender():
     """ function to send messages to other end of pipe """

@@ -12,9 +12,8 @@ import threading
 import multiprocessing as mp
 
 # Include cse 251 common Python files - Dont change
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 # -----------------------------------------------------------------------------
 # Python program for implementation of MergeSort

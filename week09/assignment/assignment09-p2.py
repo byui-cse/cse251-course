@@ -34,9 +34,8 @@ from maze import Maze
 import cv2
 
 # Include cse 251 common Python files - Dont change
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 SCREEN_SIZE = 800
 COLOR = (0, 0, 255)

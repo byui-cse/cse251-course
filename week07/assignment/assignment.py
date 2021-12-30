@@ -24,9 +24,8 @@ import glob
 import math 
 
 # Include cse 251 common Python files - Dont change
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 TYPE_PRIME  = 'prime'
 TYPE_WORD   = 'word'

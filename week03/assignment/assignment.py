@@ -24,9 +24,8 @@ import timeit
 import multiprocessing as mp
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 # 4 more than the number of cpu's on your computer
 CPU_COUNT = mp.cpu_count() + 4  

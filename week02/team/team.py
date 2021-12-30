@@ -18,9 +18,8 @@ import requests
 import json
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 # TODO Create a class based on (threading.Thread) that will
 # make the API call to request data from the website

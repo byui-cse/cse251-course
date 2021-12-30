@@ -16,9 +16,8 @@ import requests
 import json
 
 # Include cse 251 common Python files
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 if __name__ == '__main__':
 

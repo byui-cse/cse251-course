@@ -14,9 +14,8 @@ import os.path
 import time
 
 # Include cse 251 common Python files - Don't change
-import os, sys
-sys.path.append('../../code')   # Do not change the path.
 from cse251 import *
+set_working_directory(__file__)
 
 CONTROL_FILENAME = 'settings.txt'
 BOXES_FILENAME   = 'boxes.txt'
