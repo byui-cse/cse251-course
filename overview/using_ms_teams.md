@@ -7,7 +7,7 @@ Microsoft Teams is cloud-based team collaboration software that is part of the O
 
 You can download MS Teams from: [Download Page](https://teams.microsoft.com/downloads)
 
-Here is the Teams group for this course: [MS Teams group](https://teams.microsoft.com/l/team/19%3a1CVr7xK7DgHhmAFjq4D443rkCtuw_Sw_dhkBHYRULCU1%40thread.tacv2/conversations?groupId=01196c9a-2680-4307-9af3-618b520e8786&tenantId=e6ac1d1f-d695-4ef1-91d4-94cddef8be11)
+The Teams group for this course can be found on the home page in I-Learn.
 
 ## Channels
 
