@@ -2,14 +2,14 @@
 
 # Course Functions and Objects
 
-Run in a terminal.  Make sure that you use the same Python version that Visual Code is using when you are running your programs.
+Run the following a terminal.  Make sure that you use the same Python version that Visual Code is using when you are running your programs.
 
 ```
 Mac:
 python3 -m pip install git+https://github.com/byui-cse/cse251-course-files.git
 
 Windows:
-python -m pip install git+https://github.com/byui-cse/cse251-course-files.git
+<python path used in VS Code> -m pip install git+https://github.com/byui-cse/cse251-course-files.git
 ```
 
 The following code will include the common files for the course.
@@ -30,8 +30,6 @@ This function is used while debugging your programs where it will print a dictio
 # Log Class
 
 A class called Log has be created for the course.  It will allow you to create log files while running your programs.  Some of these log files will be required for your assignments.  It has built in timing methods to help will timing your functions and code.  
-
-The file is called cse251.py and is imported in your programs by using the following code.  Refer to the file on [directory structure](directory_structure.md)
 
 
 Example of creating and using the Log class.
