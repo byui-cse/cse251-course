@@ -8,9 +8,8 @@ The website `swapi.dev` contains details of all of the Star Wars films.  You can
 
 ## Instructions
 
-1. Review the [directory structure document](../overview/directory_structure.md)
-2. In your "week02/assignment" folder, download the [assignment.py](assignment/assignment.py) file from GitHub.
-4. Your goal is to retrieve the information from the website as fast as you can.
+1. In your "week02/assignment" folder, download the [assignment.py](assignment/assignment.py) file from GitHub.
+1. Your goal is to retrieve the information from the website as fast as you can.
 
 **Coding Instructions**
 

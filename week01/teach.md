@@ -8,14 +8,6 @@ Programs can run with and without threads.  In the team activity today, you will
 
 ## Assignment
 
-Review the documentation on [directory structure](../overview/directory_structure.md).  Create the following directories for the course:
-
-- Main folder for the course.  Place it anywhere on your computer.
-- The "code" folder and copy the file(s) from github's "code" folder to this folder.
-- A "week01" folder
-- A "week01/team" folder where you will be placing the `team.py` file for this activity. Don't forget to open the "week01/team" folder in VSCode.
-- The file `team.py` contains code to find all of the prime numbers within a range of values.
-
 ### Core Requirements
 
 1. Install all of the [software required](../overview/software.md) for the course.  Create the folders for the course and copy the required files from GitHub to allow you to write programs in this course.  Each team member needs to complete this step.
