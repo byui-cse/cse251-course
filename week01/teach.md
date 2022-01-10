@@ -23,7 +23,7 @@ Programs can run with and without threads.  In the team activity today, you will
 
 1. Convert your program to use 10 threads to find these prime numbers.  You should get the same results as the original program.  Your program needs to display the primes that it finds.
    - Keep track on how long it takes for the program to run.
-2. Question: compare the run times of the original non-threaded program with the 10 threaded version.  Talk with your team members to explain the difference.  Also, why don't we need a lock to protect the global variables `prime_count` and `numbers_processed`?
+2. Question: compare the run times of the original non-threaded program with the 10 threaded version.  Talk with your team members to explain the difference.  Also, do we need a lock to protect the global variables `prime_count` and `numbers_processed`?
 3. Remove (comment out) the `print` statements that display when a prime is found.  Test the non-threaded and threaded program and compare run times. 
     - Why is the program faster when you don't print out the found primes?
     - Why is there a greater time difference when you remove print statements from the threaded program when compared to the non-threaded version. (ie., run each program with and without the print statements and review the log files).  The following is my test results.  Do you get the same results?

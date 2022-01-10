@@ -156,9 +156,9 @@ Output:
 
 #### Example 4
 
-In this example, the pool() using the method `apply_async()`.  The way that this works is that instead of having all of the tasks in a list and the results in a list, as each process finishes their job with the data, the call back function is called.  In this call back function, you can collect the results - one at a time for the process pool.
+In this example, the pool() using the method `apply_async()`.  The way that this works is that instead of having all of the tasks in a list and the results in a list, as each process finishes their job with the data, the callback function is called.  In this callback function, you can collect the results - one at a time for the process pool.
 
-When we have processes, global variables can't be used because they each have their own version of the GIL.  When using the call back function feature, that call back function is running in the main thread of the program where it can use any global variables of the program.  This means that there is no issue with shared data between processes.
+When we have processes, global variables can't be used because they each have their own version of the GIL.  When using the callback function feature, that callback function is running in the main thread of the program where it can use any global variables of the program.  This means that there is no issue with shared data between processes.
 
 In order to know when the pool is finished, you need to have the statements `pool.close()` and `pool.join()`.
 
