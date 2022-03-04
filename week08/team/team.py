@@ -95,9 +95,9 @@ def main():
 
     for merge_function, desc in merges:
         # Create list of random values to sort
-        arr = [random.randint(1, 10000000) for _ in range(1000000)]
+        arr = [random.randint(1, 10_000_000) for _ in range(1_000_000)]
 
-        print(f'\n{desc:-^90}')
+        print(f'\n{desc:-^70}')
         print(f'Before: {str(arr[:5])[1:-1]} ... {str(arr[-5:])[1:-1]}')
         start_time = time.perf_counter()
 
@@ -107,7 +107,7 @@ def main():
         print(f'Sorted: {str(arr[:5])[1:-1]} ... {str(arr[-5:])[1:-1]}')
 
         print('Array is sorted' if is_sorted(arr) else 'Array is NOT sorted')
-        print(f'Time to sort = {end_time - start_time}')
+        print(f'Time to sort = {end_time - start_time:.14f}')
 
 
 # -----------------------------------------------------------------------------

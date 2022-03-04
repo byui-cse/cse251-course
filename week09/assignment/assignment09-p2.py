@@ -30,7 +30,7 @@ import math
 import threading 
 from screen import Screen
 from maze import Maze
-
+import sys
 import cv2
 
 # Include cse 251 common Python files - Dont change

@@ -36,27 +36,25 @@ Instructions:
 
 - You have Locks and Semaphores that you can use.
 - Remember that lock.acquire() has an argument called timeout.
-- philosophers need to eat for 3 to 5 seconds when they get both forks.  
+- philosophers need to eat for 1 to 3 seconds when they get both forks.  
   When the number of philosophers has eaten MAX_MEALS times, stop the philosophers
   from trying to eat and any philosophers eating will put down their forks when finished.
+- philosophers need to think for 1 to 3 seconds when they are finished eating.  
 - You want as many philosophers to eat and think concurrently.
-- Design your program to handle N philosophers.
+- Design your program to handle N philosophers and N forks after you get it working for 5.
 - Use threads for this problem.
 - When you get your program working, how to you prove that no philosopher will starve?
   (Just looking at output from print() statements is not enough)
 - Are the philosophers each eating and thinking the same amount?
 - Using lists for philosophers and forks will help you in this program.
   for example: philosophers[i] needs forks[i] and forks[i+1] to eat
-
-
 """
+
 import time
 import threading
 
-
 PHILOSOPHERS = 5
 MAX_MEALS = PHILOSOPHERS * 5
-
 
 def main():
     # TODO - create the forks
@@ -65,8 +63,6 @@ def main():
     # TODO - Display how many times each philosopher ate
 
     pass
-
-
 
 if __name__ == '__main__':
     main()
