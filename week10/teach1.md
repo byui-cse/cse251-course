@@ -29,6 +29,21 @@ Note: This is an option for compiling C++ programs if you don't have a compiler 
 4) Copy `team1.cpp` content to `main.cpp` in repl.it
 
 
+### Compiling programs in replit.com (if the RUN button doesn't work)
+
+1) In the terminal window, type the following (It is dash small L, not dash one):
+
+```
+   > g++ <filename of your program>.cpp -lpthread
+```
+
+2) To run your program, type:
+
+```
+   > ./a.out
+```
+
+
 ### Issues with using Visual Studio 2019
 
 1. Create a console empty project
