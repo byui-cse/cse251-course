@@ -22,6 +22,10 @@ This is an option for writing and running Java programs if you don't have a comp
 
 4) Copy `team1.java` content to `Main.java` in replit.com
 
+### Using Online Java Compiler
+
+Go to the webiste https://www.jdoodle.com/online-java-compiler/.  Note that you might need to add "public" to the beginning of the main class in your Java file.
+
 ## Sample Solution
 
 No solution provided.
