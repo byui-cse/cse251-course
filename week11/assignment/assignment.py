@@ -21,25 +21,20 @@ STOPPING_PARTY_MESSAGE  = 'Turning off the lights  ^^^^^^^^^^^^^^^^^^^^^^^^^^'
 STARTING_CLEANING_MESSAGE =  'Starting to clean the room >>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
 STOPPING_CLEANING_MESSAGE  = 'Finish cleaning the room <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'
 
-# -----------------------------------------------------------------------------
 def cleaner_waiting():
     time.sleep(random.uniform(0, 2))
 
-# -----------------------------------------------------------------------------
 def cleaner_cleaning(id):
     print(f'Cleaner {id}')
     time.sleep(random.uniform(0, 2))
 
-# -----------------------------------------------------------------------------
 def guest_waiting():
     time.sleep(random.uniform(0, 2))
 
-# -----------------------------------------------------------------------------
 def guest_partying(id):
     print(f'Guest {id}')
     time.sleep(random.uniform(0, 1))
 
-# -----------------------------------------------------------------------------
 def cleaner():
     """
     do the following for TIME seconds
@@ -51,7 +46,6 @@ def cleaner():
     """
     pass
 
-# -----------------------------------------------------------------------------
 def guest():
     """
     do the following for TIME seconds
@@ -63,7 +57,6 @@ def guest():
     """
     pass
 
-# -----------------------------------------------------------------------------
 def main():
     # TODO - add any variables, data structures, processes you need
     # TODO - add any arguments to cleaner() and guest() that you need
