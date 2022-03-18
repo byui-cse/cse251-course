@@ -1,10 +1,10 @@
 ![](../site/banner.png)
 
-# 11 Teach: Queue, Pipe and Stack
+# 11 Teach: Queue and Stack
 
 ## Overview
 
-In this team activity, you will be creating Queue, Pipe and Stack classes.
+In this team activity, you will be creating Queue and Stack classes.
 
 ## Assignment
 
