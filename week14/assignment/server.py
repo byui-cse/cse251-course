@@ -1,6 +1,6 @@
 """
 Course: CSE 251
-Lesson Week: 13
+Lesson Week: 14
 File: server.py
 Author: Brother Comeau
 Purpose: Assignment 14 - Family Search
@@ -71,6 +71,7 @@ surnames = ('Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller', 'Davis',
             'Cruz', 'Morales', 'Gutiérrez', 'Reyes', 'Ruíz', 'Jiménez')
 
 max_thread_count = 0
+call_count = 0
 thread_count = 0
 lock = threading.Lock()
 
@@ -300,12 +301,14 @@ class Handler(BaseHTTPRequestHandler):
         global thread_count
         global lock
         global max_thread_count
+        global call_count
         global family_request_order
         global log
         global generations_created
 
         with lock:
             thread_count += 1
+            call_count += 1
             if thread_count > max_thread_count:
                 max_thread_count = thread_count
             print(f'Current: active threads / max count: {thread_count} / {max_thread_count}')
@@ -344,6 +347,7 @@ class Handler(BaseHTTPRequestHandler):
 
             max_thread_count = 1
             thread_count = 1
+            call_count = 1
 
             json_data = '{"status":"OK"}'
 
@@ -366,6 +370,9 @@ class Handler(BaseHTTPRequestHandler):
             output = str(family_request_order)[1:-1]
             print(output)
             log.write(output)
+
+            print(f'Total number of API calls: {call_count}')
+            log.write(f'Total number of API calls: {call_count}')
 
             print(f'Final thread count (max count): {max_thread_count}')
             log.write(f'Final thread count (max count): {max_thread_count}')
@@ -432,11 +439,11 @@ class Handler(BaseHTTPRequestHandler):
         with lock:
             thread_count -= 1
 
-class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
-    """Handle requests in a separate thread."""
+class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
+    pass
 
 if __name__ == '__main__':
-    random.seed(101)
+    # random.seed(101)
 
     # for id in people:
     #     print(people[id])
@@ -444,7 +451,7 @@ if __name__ == '__main__':
     # for id in families:
     #     print(families[id])
 
-
-    server = ThreadedHTTPServer((hostName, serverPort), Handler)
+    server = ThreadingSimpleServer((hostName, serverPort), Handler)
     print('Starting server, use <Ctrl-C> or <Command-C> to stop')
     server.serve_forever()
+
