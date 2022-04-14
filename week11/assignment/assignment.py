@@ -38,8 +38,8 @@ def guest_partying(id):
 def cleaner():
     """
     do the following for TIME seconds
-    cleaner will wait to try to clean the room (cleaner_waiting())
-    get access to the room
+        cleaner will wait to try to clean the room (cleaner_waiting())
+        get access to the room
         display message STARTING_CLEANING_MESSAGE
         Take some time cleaning (cleaner_cleaning())
         display message STOPPING_CLEANING_MESSAGE
@@ -49,8 +49,8 @@ def cleaner():
 def guest():
     """
     do the following for TIME seconds
-    guest will wait to try to get access to the room (guest_waiting())
-    get access to the room
+        guest will wait to try to get access to the room (guest_waiting())
+        get access to the room
         display message STARTING_PARTY_MESSAGE if this guest is the first one in the room
         Take some time partying (guest_partying())
         display message STOPPING_PARTY_MESSAGE if the guest is the last one leaving in the room
@@ -58,11 +58,11 @@ def guest():
     pass
 
 def main():
-    # TODO - add any variables, data structures, processes you need
-    # TODO - add any arguments to cleaner() and guest() that you need
-
     # Start time of the running of the program. 
     start_time = time.time()
+
+    # TODO - add any variables, data structures, processes you need
+    # TODO - add any arguments to cleaner() and guest() that you need
 
     # Results
     print(f'Room was cleaned {cleaned_count} times, there were {party_count} parties')

@@ -4,7 +4,7 @@
 
 ## Overview
 
-The website `swapi.dev` contains details of all of the Star Wars films.  You can access this information by making Internet GET requests.  You will be retrieving the details of the 6th Star Wars film.
+The python server in this assignment contains details of all of the Star Wars films.  You can access this information by making GET requests.  You will be retrieving the details of the 6th Star Wars film.
 
 ## Instructions
 
@@ -15,20 +15,25 @@ The website `swapi.dev` contains details of all of the Star Wars films.  You can
 
 - Each API call must only retrieve one piece of information
 - You are not allowed to use any other modules/packages except for the ones used in this assignment.
-- The only "fixed" or hard coded URL that you can use is TOP_API_URL.  Use this URL to retrieve other URLs that you can use to retrieve information form the website.
-- You are limited to about 10,000 calls to the swapi website.  That sounds like   a lot, but you can reach this limit. If you leave this assignment to the last day it's due, you might be locked out of the website and you will have to submit what you have at that point.  There are no extensions because you reached this server limit. Work ahead and spread working on the assignment over multiple days.
-- You need to match the output outlined in the description of the assignment.  Note that the names are sorted.
-- You are required to use a threaded class (inherited from threading.Thread) for this assignment.  You can define your class within this Python file (ie., no need to have a separate file for the class).  This class will only make **one** Internet request and then return the results.
+- Run the server.py program from a terminal/console program.  Simply type `python server.py`.  Note that you also need to download the file `data.txt` in order for the server to work. 
+- The only **fixed** or hard coded URL that you can use is TOP_API_URL.  Use this URL to retrieve other URLs that you can use to retrieve information from the server.
+- You need to match the output outlined in the decription of the assignment. Note that the names are sorted.
+- You are requied to use a threaded class (inherited from threading.Thread) for this assignment.  This object will make the API calls to the server. You can define your class within this Python file (ie., no need to have a seperate file for the class)
 - Do not add any global variables except for the ones included in this program.
 - The main goal of the program is to create as many threads objects (In different parts of your program) as you can, then start them all, then wait for all of them to finish.
 
+The call to TOP_API_URL will return the following Dictionary(JSON).  Do NOT have
+this dictionary hard coded - use the API call to get this.  Then you can use
+this dictionary to make other API calls for data.
+
+
 ## Sample Output (Log file)
 
-The following is the **required** output of your assignment.  Notice that the names of characters, planets, etc... are **sorted**.  Don't worry about the blank lines or the extra "," you might get while printing the names.
+The following is the **required** output of your assignment.  Notice that the names of characters, planets, etc... are **sorted**.  Don't worry about the blank lines or the extra "," you might get while printing the names. Also, the exact number of calls do not need to match 94 that is in this example (but it should be very close to it).
 
 ```text
-16:57:24| Starting to retrieve data from swapi.dev
-16:57:35| ----------------------------------------
+16:57:24| Starting to retrieve data from the server
+16:57:35| -----------------------------------------
 16:57:35| Title   : Revenge of the Sith
 16:57:35| Director: George Lucas
 16:57:35| Producer: Rick McCallum
@@ -50,26 +55,26 @@ The following is the **required** output of your assignment.  Notice that the na
 16:57:35| Cerean, Chagrian, Clawdite, Droid, Geonosian, Human, Iktotchi, Kaleesh, Kel Dor, Mirialan, Muun, Pau'an, Quermian, Skakoan, Tholothian, Togruta, Toong, Twi'lek, Wookie, Yoda's species,
 16:57:35|
 16:57:35| Total Time To complete = 10.76325120
-16:57:35| There were 94 calls to swapi server
+16:57:35| There were 94 calls to the server
 
 ```
 
 ## How to use the requests package
 
-There are a number of Python packages that can help you make Internet calls.  We will be using the package `requests`.
+There are a number of Python packages that can help you make URL calls.  We will be using the package `requests`.
 
 ### Install Package
 
 This package needs to be installed.  Read the details on how to install packages in the `resources/software` section of the course.  Using pip, the command is `pip install requests`.  Using Python, it's `python -m pip install requests`.  (Mac users might need to use pip3)
 
-### How to make an Internet call
+### How to make an URL call to the server
 
 ```python
 import requests
 import json
 
 # Const Values
-TOP_API_URL = r'https://swapi.dev/api'
+TOP_API_URL = r'http://127.0.0.1:8790'
 
 if __name__ == '__main__':
 
@@ -89,25 +94,23 @@ if __name__ == '__main__':
 Output:
 
 ```
-{'people': 'http://swapi.dev/api/people/', 'planets': 'http://swapi.dev/api/planets/', 'films': 'http://swapi.dev/api/films/', 'species': 'http://swapi.dev/api/species/', 'vehicles': 'http://swapi.dev/api/vehicles/', 'starships': 'http://swapi.dev/api/starships/'}
+{
+   "people": "http://127.0.0.1:8790/people/", 
+   "planets": "http://127.0.0.1:8790/planets/", 
+   "films": "http://127.0.0.1:8790/films/",
+   "species": "http://127.0.0.1:8790/species/", 
+   "vehicles": "http://127.0.0.1:8790/vehicles/", 
+   "starships": "http://127.0.0.1:8790/starships/"
+}
 
-Here is the people url: http://swapi.dev/api/people/
+Here is the people url: http://127.0.0.1:8790/people/
 ```
 
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
 
-The Assignment will be graded in broad categories according to the following:
-
-| Grade | Description |
-|-------|-------------|
-| 0% | Nothing submitted or no meaningful attempt made |
-| 50% | Meaningful attempt made or doesn't compile |
-| 75% | Developing (but significantly deficient) |
-| 85% | Slightly deficient |
-| 93% to 100% | Meets requirements |
-
+Assignments are individual and not team based.  Any assignments found to be  plagiarised will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
 
 ## Submission
 

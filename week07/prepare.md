@@ -38,7 +38,6 @@ We will be using the function `apply_async()` with process pools for this week's
 import multiprocessing as mp 
 
 from cse251 import *
-set_working_directory(__file__)
 
 def sum_all_values(x):
     total = 0
@@ -71,7 +70,6 @@ This second example is using the function `apply_async()`  It is asynchronous me
 import multiprocessing as mp 
 
 from cse251 import *
-set_working_directory(__file__)
 
 def sum_all_values(x):
     total = 0
@@ -128,7 +126,6 @@ Here is the same program from example 2 processing a larger range of values.
 import multiprocessing as mp 
 
 from cse251 import *
-set_working_directory(__file__)
 
 def sum_all_values(x):
     total = 0
@@ -169,7 +166,6 @@ import multiprocessing as mp
 import time
 
 from cse251 import *
-set_working_directory(__file__)
 
 result_list = []
 
@@ -232,7 +228,6 @@ import multiprocessing as mp
 import time
 
 from cse251 import *
-set_working_directory(__file__)
 
 result_list = []
 

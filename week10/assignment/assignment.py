@@ -29,7 +29,7 @@ Instructions:
 
 - You are able (should) to use lock(s) and semaphores(s).  When using locks, you can't
   use the arguments "block=False" or "timeout".  Your goal is to make your
-  program as parallel as you can.  Over use of lock(s) or lock(s) in the wrong
+  program as parallel as you can.  Over use of lock(s), or lock(s) in the wrong
   place will slow down your code.
 
 - You must use ShareableList between the two processes.  This shareable list

@@ -21,13 +21,8 @@ Download the file [team.py](team/team.py) to your computer.  Place it based on t
 
 1. Download the `team.py` file and make sure it runs on your computer.  The program will display the board before and after finding the words in it.  Read the header in the program for any other instructions.
 2. Discuss with your team members ideas on how to improve this program with regards to speed.
-
-
-### Stretch Challenge
-
-1. Try to improve the speed of the program using threads.
-1. Try to improve the speed of the program using processes.
-1. Time your changes.  What worked and what didn't?  Was it worth the effort?
+3. Make the program faster - use any technique (ie, threads, processes, algorithm analysis, etc...) 
+4. Time your changes.  What worked and what didn't?  Was it worth the effort?
 
 ## Sample Solution
 

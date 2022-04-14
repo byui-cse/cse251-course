@@ -24,7 +24,6 @@ import time
 
 # Include cse 251 common Python files
 from cse251 import *
-set_working_directory(__file__)
 
 words = ['BOOKMARK', 'SURNAME', 'RETHINKING', 'HEAVY', 'IRONCLAD', 'HAPPY', 
         'JOURNAL', 'APPARATUS', 'GENERATOR', 'WEASEL', 'OLIVE', 
@@ -57,7 +56,7 @@ class Board():
         (-1, 1),  # SW
         (-1, 0),  # W
         (-1, -1), # NW
-        (0, -1),   # N
+        (0, -1),  # N
         (1, -1)   # NE
     )
 
@@ -154,6 +153,7 @@ class Board():
 def main():
     board = Board(25)
     board.place_words(words)
+
     print('Board with placed words')
     board.display()
     board.fill_in_dots()
@@ -163,6 +163,7 @@ def main():
     for word in words:
         if not board.find_word(word):
             print(f'Error: Could not find "{word}"')
+    
     total_time = time.perf_counter() - start
 
     board.display()

@@ -62,14 +62,11 @@ print('Hello World')
 ![](running-python.png)
 
 
-3. Select and copy the full Python path and paste it in that terminal window.  Include any quotes that might be around this path.  Then add the options `-m pip install <package>` where `<package>` is the name of the package you want to install.  For example: In the case of numpy, it would be `-m pip install numpy`.
+3. Select and copy the full Python path and paste it in that terminal window.  Include any quotes that might be around this path.  In most cases for Mac users, the python path will just be `python3`.  You will have quotes if the path has spaces in it.  Then add the options `-m pip install <package>` where `<package>` is the name of the package you want to install.  For example: In the case of numpy, it would be `-m pip install numpy`.  
 
 ![](running-python2.png)
 
 Note that Mac users might need to add `--user` to the install command line.  Also, Mac users can try `pip3 install --user <package>` in the terminal app to see if that works on their computer.
-
-
-4. Install `numpy` and `matplotlib` using the above steps.
 
 
 ### Packages that are installed with Python

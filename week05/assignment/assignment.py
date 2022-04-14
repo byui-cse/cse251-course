@@ -26,11 +26,10 @@ import random
 
 # Include cse 251 common Python files
 from cse251 import *
-set_working_directory(__file__)
 
 # Global Consts
 MAX_QUEUE_SIZE = 10
-SLEEP_REDUCE_FACTOR = 5000
+SLEEP_REDUCE_FACTOR = 50
 
 # NO GLOBAL VARIABLES!
 

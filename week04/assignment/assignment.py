@@ -18,7 +18,6 @@ import random
 
 # Include cse 251 common Python files
 from cse251 import *
-set_working_directory(__file__)
 
 # Global Consts - Do not change
 CARS_TO_PRODUCE = 500

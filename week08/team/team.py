@@ -13,7 +13,6 @@ import multiprocessing as mp
 
 # Include cse 251 common Python files - Dont change
 from cse251 import *
-set_working_directory(__file__)
 
 # -----------------------------------------------------------------------------
 # Python program for implementation of MergeSort

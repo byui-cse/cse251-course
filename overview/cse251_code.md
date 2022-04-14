@@ -4,6 +4,8 @@
 
 Run the following a terminal.  Make sure that you use the same Python version that Visual Code is using when you are running your programs.
 
+You need to have `git` installed on your computer. [Instructions to installing git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
 ```
 Mac:
 python3 -m pip install git+https://github.com/byui-cse/cse251-course-files.git
@@ -17,7 +19,6 @@ The following code will include the common files for the course.
 ```python
 # Include cse 251 common Python files
 from cse251 import *
-set_working_directory(__file__)
 ```
 
 # Functions

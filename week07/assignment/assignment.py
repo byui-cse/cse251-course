@@ -25,7 +25,6 @@ import math
 
 # Include cse 251 common Python files - Dont change
 from cse251 import *
-set_working_directory(__file__)
 
 TYPE_PRIME  = 'prime'
 TYPE_WORD   = 'word'
@@ -157,11 +156,11 @@ def main():
     log.write(f'Names: {len(result_names)}')
     log_list(result_names, log)
 
-    log.write(f'Primes: {len(result_primes)}')
-    log.write(f'Words: {len(result_words)}')
-    log.write(f'Uppercase: {len(result_upper)}')
-    log.write(f'Sums: {len(result_sums)}')
-    log.write(f'Names: {len(result_names)}')
+    log.write(f'Number of Primes tasks: {len(result_primes)}')
+    log.write(f'Number of Words tasks: {len(result_words)}')
+    log.write(f'Number of Uppercase tasks: {len(result_upper)}')
+    log.write(f'Number of Sums tasks: {len(result_sums)}')
+    log.write(f'Number of Names tasks: {len(result_names)}')
     log.stop_timer(f'Finished processes {count} tasks')
 
 if __name__ == '__main__':

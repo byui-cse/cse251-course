@@ -12,10 +12,10 @@ import random
 import multiprocessing as mp
 import os.path
 import time
+import datetime
 
 # Include cse 251 common Python files - Don't change
 from cse251 import *
-set_working_directory(__file__)
 
 CONTROL_FILENAME = 'settings.txt'
 BOXES_FILENAME   = 'boxes.txt'
@@ -31,7 +31,7 @@ WRAPPER_DELAY = 'wrapper-delay'
 # No Global variables
 
 class Bag():
-    """ bag of marbles - Don't change for the 93% """
+    """ bag of marbles - Don't change """
 
     def __init__(self):
         self.items = []
@@ -47,7 +47,7 @@ class Bag():
 
 
 class Gift():
-    """ Gift of a large marble and a bag of marbles - Don't change for the 93% """
+    """ Gift of a large marble and a bag of marbles - Don't change """
 
     def __init__(self, large_marble, marbles):
         self.large_marble = large_marble

@@ -2,7 +2,7 @@
 
 # 13 Prepare: File Systems
 
-The reason to learn about file systems is that they effect execution times of programs.  In particular concurrent and parallel programs.
+The reason to learn about file systems is that they effect execution times of programs.  In particular, concurrent and parallel programs.
 
 ## File Systems
 
@@ -104,7 +104,7 @@ Spinning hard drives how the following parts.  Note that all of the heads move a
 
 ### Windows chkdsk program
 
-Running the Windows program chddsk on my 3TB drive, produced this information.  It displays the 4KB file blocks, total blocks used and available.
+Running the Windows program `chddsk` on my 3TB drive, produced this information.  It displays the 4KB file blocks, total blocks used and available.
 
 ```
    3815245 MB total disk space.

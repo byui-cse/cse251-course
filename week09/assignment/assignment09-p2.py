@@ -35,7 +35,6 @@ import cv2
 
 # Include cse 251 common Python files - Dont change
 from cse251 import *
-set_working_directory(__file__)
 
 SCREEN_SIZE = 800
 COLOR = (0, 0, 255)
@@ -76,7 +75,6 @@ def get_color():
 def solve_find_end(maze):
     """ finds the end position using threads.  Nothing is returned """
     # When one of the threads finds the end position, stop all of them
-
 
     pass
 

@@ -8,7 +8,7 @@ Your assignment will process a directory full of task files.  Each file will con
 
 ## Assignment
 
-1. The assignment files is [found here](assignment/assignment.py) and the [create_tasks.py file](assignment/create_tasks.py).  You also need to download the file [words.txt](assignment/words.txt)
+1. The assignment files is [found here](assignment/assignment.py), [create_tasks.py file](assignment/create_tasks.py) and [server.py file](assignment/server.py).  You also need to download the file [words.txt](assignment/words.txt) and [data.txt](assignment/data.txt)
 1. Follow the instructions found in the `assignment.py`
 1. When you submit your assignment code file, describe the size of each process pool for each task type and you determined the best size of that pool.
 1. run the Python program **create_tasks.py** to create the task files.
@@ -17,6 +17,7 @@ Your assignment will process a directory full of task files.  Each file will con
 1. You are required to use the function apply_async() for these 5 pools. You can't use map(), or any other pool function.  You must use callback functions with the apply_async() statement.
 1. Each pool will collect that results of their tasks into a global list. (ie. result_primes, result_words, result_upper, result_sums, result_names)
 1. the task_* functions contain general logic of what needs to happen
+1. Run the server.py program from a terminal/console program.  Simply type `python server.py`.  This server is the same one used for assignment 2.  Refer to assignment 2's documention on how to start and use the server,
 
 ### create_tasks.py program
 
@@ -35,7 +36,7 @@ Sample Output while using these test tasks files.
 {'task': 'sum', 'start': 677, 'end': 1494917}
 {'task': 'word', 'word': 'vessel'}
 {'task': 'upper', 'text': 'vessel'}
-{'task': 'name', 'url': 'http://swapi.dev/api/people/2/'}
+{'task': 'name', 'url': 'http://127.0.0.1:8790/people/2/'}
 12:19:00| --------------------------------------------------------------------------------
 12:19:00| Primes: 1
 12:19:00| 617,185,517,107,683 is not prime
@@ -54,27 +55,21 @@ Sample Output while using these test tasks files.
 12:19:00|
 12:19:00| --------------------------------------------------------------------------------
 12:19:00| Names: 1
-12:19:00| http://swapi.dev/api/people/2/ has name C-3PO
+12:19:00| http://127.0.0.1:8790/people/2/ has name C-3PO
 12:19:00|
-12:19:00| Primes: 1
-12:19:00| Words: 1
-12:19:00| Uppercase: 1
-12:19:00| Sums: 1
-12:19:00| Names: 1
+12:19:00| Number of Primes tasks: 1
+12:19:00| Number of Words tasks: 1
+12:19:00| Number of Uppercase tasks: 1
+12:19:00| Number of Sums tasks: 1
+12:19:00| Number of Names tasks: 1
 12:19:00| Finished processes 5 tasks = 4.26428800
 ```
 
 ## Submission
 
-Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit. The Assignment will be graded in broad categories according to the following:
+Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit. 
+
+Assignments are individual and not team based.  Any assignments found to be  plagiarised will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
 
 When you submit your assignment code file, describe the size of each process pool for each task type how to determined them the best values.
 
-
-| Grade | Description |
-|-------|-------------|
-| 0% | Nothing submitted or no meaningful attempt made |
-| 50% | Meaningful attempt made or doesn't compile |
-| 75% | Developing (but significantly deficient) |
-| 85% | Slightly deficient |
-| 93% - 100%| Meets requirements |

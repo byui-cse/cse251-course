@@ -48,7 +48,6 @@ import requests
 
 # Include cse 251 common Python files - Dont change
 from cse251 import *
-set_working_directory(__file__)
 
 
 TOP_API_URL = 'http://127.0.0.1:8123'

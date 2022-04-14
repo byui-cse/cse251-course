@@ -11,6 +11,7 @@ import random
 import os
 import glob
 
+
 words =[
     'vessel', 'threat', 'detail', 'inquiry', 'marsh', 'revise', 'amber', 'welfare', 'enlarge', 'conglomerate', 'betray', 'falseify', 
     'exploration', 'theorist', 'regret', 'strange', 'ignite', 'recycle', 'leaf', 'excavate', 'angwer', 'install', 'latest', 'cruel', 
@@ -23,44 +24,44 @@ words =[
     'old-fashioned', 'snake', 'man', 'end', 'bed', 'brainy', 'pushy', 
     'purple', 'boundless', 'park', 'store', 'milky', 'pail', 'annoying', 
     'charge', 'ill-fated', 'pastoral', 'lamentable', 'panoramic', 'jelly', 'industry', 'fine', 'aromatic', 
-    ]
+]
 
 urls = [
-    "http://swapi.dev/api/people/2/",
-    "http://swapi.dev/api/people/64/",
-    "http://swapi.dev/api/people/79/",
-    "http://swapi.dev/api/people/53/",
-    "http://swapi.dev/api/people/13/",
-    "http://swapi.dev/api/people/46/",
-    "http://swapi.dev/api/people/51/",
-    "http://swapi.dev/api/people/20/",
-    "http://swapi.dev/api/people/21/",
-    "http://swapi.dev/api/people/75/",
-    "http://swapi.dev/api/people/68/",
-    "http://swapi.dev/api/people/80/",
-    "http://swapi.dev/api/people/33/",
-    "http://swapi.dev/api/people/67/",
-    "http://swapi.dev/api/people/12/",
-    "http://swapi.dev/api/people/35/",
-    "http://swapi.dev/api/people/1/",
-    "http://swapi.dev/api/people/56/",
-    "http://swapi.dev/api/people/6/",
-    "http://swapi.dev/api/people/55/",
-    "http://swapi.dev/api/people/5/",
-    "http://swapi.dev/api/people/82/",
-    "http://swapi.dev/api/people/78/",
-    "http://swapi.dev/api/people/83/",
-    "http://swapi.dev/api/people/11/",
-    "http://swapi.dev/api/people/58/",
-    "http://swapi.dev/api/people/4/",
-    "http://swapi.dev/api/people/7/",
-    "http://swapi.dev/api/people/54/",
-    "http://swapi.dev/api/people/3/",
-    "http://swapi.dev/api/people/81/",
-    "http://swapi.dev/api/people/63/",
-    "http://swapi.dev/api/people/52/",
-    "http://swapi.dev/api/people/10/"
-    ]
+    "http://127.0.0.1:8790/people/2/",
+    "http://127.0.0.1:8790/people/64/",
+    "http://127.0.0.1:8790/people/79/",
+    "http://127.0.0.1:8790/people/53/",
+    "http://127.0.0.1:8790/people/13/",
+    "http://127.0.0.1:8790/people/46/",
+    "http://127.0.0.1:8790/people/51/",
+    "http://127.0.0.1:8790/people/20/",
+    "http://127.0.0.1:8790/people/21/",
+    "http://127.0.0.1:8790/people/75/",
+    "http://127.0.0.1:8790/people/68/",
+    "http://127.0.0.1:8790/people/80/",
+    "http://127.0.0.1:8790/people/33/",
+    "http://127.0.0.1:8790/people/67/",
+    "http://127.0.0.1:8790/people/12/",
+    "http://127.0.0.1:8790/people/35/",
+    "http://127.0.0.1:8790/people/1/",
+    "http://127.0.0.1:8790/people/56/",
+    "http://127.0.0.1:8790/people/6/",
+    "http://127.0.0.1:8790/people/55/",
+    "http://127.0.0.1:8790/people/5/",
+    "http://127.0.0.1:8790/people/82/",
+    "http://127.0.0.1:8790/people/78/",
+    "http://127.0.0.1:8790/people/83/",
+    "http://127.0.0.1:8790/people/11/",
+    "http://127.0.0.1:8790/people/58/",
+    "http://127.0.0.1:8790/people/4/",
+    "http://127.0.0.1:8790/people/7/",
+    "http://127.0.0.1:8790/people/54/",
+    "http://127.0.0.1:8790/people/3/",
+    "http://127.0.0.1:8790/people/81/",
+    "http://127.0.0.1:8790/people/63/",
+    "http://127.0.0.1:8790/people/52/",
+    "http://127.0.0.1:8790/people/10/"
+]
 
 files_created = 0
 
@@ -73,7 +74,6 @@ def write_dict(file_count, dictionary):
     print(f'Saving {get_filename(file_count)}')
     with open(get_filename(file_count), 'w') as f:
         f.write(json.dumps(dictionary, indent=2))
-
 
 def create_prime(file_count, value):
     info = {}

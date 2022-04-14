@@ -120,16 +120,7 @@ Assignments are not accepted late. Instead, you should submit what you have comp
 
 Do not use different videos than the ones included in this assignment.
 
-The Assignment will be graded in broad categories according to the following:
-
-| Grade | Description |
-|-------|-------------|
-| 0% | Nothing submitted or no meaningful attempt made |
-| 50% | Meaningful attempt made or doesn't compile |
-| 75% | Developing (but significantly deficient) |
-| 85% | Slightly deficient |
-| 93% to 100% | Meets requirements |
-
+Assignments are individual and not team based.  Any assignments found to be  plagiarised will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
 
 ## Submission
 

@@ -30,7 +30,6 @@ from cse251turtle import *
 
 # Include CSE 251 common Python files. 
 from cse251 import *
-set_working_directory(__file__)
 
 
 def draw_square(tur, x, y, side, color='black'):

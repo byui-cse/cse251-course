@@ -1,4 +1,4 @@
-16:57:24| Starting to retrieve data from swapi.dev
+16:57:24| Starting to retrieve data from the server
 16:57:35| ----------------------------------------
 16:57:35| Title   : Revenge of the Sith
 16:57:35| Director: George Lucas

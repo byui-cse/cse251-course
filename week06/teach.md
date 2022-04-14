@@ -13,10 +13,11 @@ Text files just contain ASCII characters.  You will be implementing a program th
 ### Requirements
 
 1. Download [team.py](team/team.py), [bom.txt](team/bom.txt) and  [gettysburg.txt](team/gettysburg.txt) from the GitHub repo.
-2. Implement the function `sender` and `receiver` to get the contents of the text file copied. Don't worry about counting the items sent over the pipe or that the copied file isn't the same as the original.  Focus on having both processes exit correctly when all of the contents of the file is transferred. You must only send words over the pipe -break up the text file into words. You might need to send other characters over the pipe too.
+2. Implement the function `sender` and `receiver` to get the contents of the text file copied. Don't worry about counting the items sent over the pipe or that the copied file isn't the same as the original.  Focus on having both processes exit correctly when all of the contents of the file is transferred. You must only send words over the pipe - break up the text file into words. You might need to send other characters over the pipe too.
 3. Work on making the copied file exact to the original.
 4. Count the number of items sent over the pipe.
 5. After you get the program working, change the program to copy the file over the pipe faster.
+1. Can you change your program to copy a binary file exactly using any method you want to use.
 
 ## Sample Solution
 
