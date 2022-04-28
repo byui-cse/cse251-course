@@ -85,8 +85,8 @@ if __name__ == '__main__':
         data = response.json()
         print(data)
 
-		# Example to get people url
-        print('\nHere is the people url:', data['people'])
+		# Example to get person 1 url
+        print('\nHere is the URL for person id = 1:', f'{data["people"]}1')
     else:
         print('Error in requesting ID')
 ```
@@ -95,15 +95,15 @@ Output:
 
 ```
 {
-   "people": "http://127.0.0.1:8790/people/", 
-   "planets": "http://127.0.0.1:8790/planets/", 
-   "films": "http://127.0.0.1:8790/films/",
-   "species": "http://127.0.0.1:8790/species/", 
-   "vehicles": "http://127.0.0.1:8790/vehicles/", 
-   "starships": "http://127.0.0.1:8790/starships/"
+    'people': 'http://127.0.0.1:8790/people/', 
+    'planets': 'http://127.0.0.1:8790/planets/', 
+    'films': 'http://127.0.0.1:8790/films/', 
+    'species': 'http://127.0.0.1:8790/species/', 
+    'vehicles': 'http://127.0.0.1:8790/vehicles/', 
+    'starships': 'http://127.0.0.1:8790/starships/'
 }
 
-Here is the people url: http://127.0.0.1:8790/people/
+Here is the URL for person id = 1: http://127.0.0.1:8790/people/1
 ```
 
 ## Rubric
