@@ -1,6 +1,6 @@
 ![](../site/banner.png)
 
-# 04 Prepare: Queues, Lock and Semaphores
+# 04 Prepare: Queues, Locks and Semaphores
 
 ## Overview
 
@@ -23,6 +23,7 @@ The right hand side of the figure shows three threads running in a process.  One
 Global variables are shared with each thread.  Although, we don't like to use global variables, they are sometimes used in multi-threaded and multi-processor programs.  They will be used sparingly in the course.
 
 ![](single-and-multithreaded-process.png)
+
 -- https://www.studytonight.com/operating-system/multithreading
 
 The `threading` module in Python contains data structures to help with the sharing of data and synchronization.

@@ -39,7 +39,7 @@ def retrieve_thread():  # TODO add arguments
 def file_reader(): # TODO add arguments
     """ This thread reading the data file and places the values in the data_queue """
 
-    # TODO Open the data file "data.txt" and place items into a queue
+    # TODO Open the data file "urls.txt" and place items into a queue
 
     log.write('finished reading file')
 
