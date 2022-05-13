@@ -18,7 +18,7 @@ The Python file contains the following classes:
 
 **Factory**: This threaded class creates the cars for the dealerships.  After a car is created, the factory uses a short delay between creating another one.
 
-**Dealer**: This is the dealership retrieves cars created by the factory to be sold. After a car is received, the dealership uses a short delay to sell the car.  The dealership only has room for 10 cars, therefore, if the dealership is full, the factory must until a car is sold before creating another car.
+**Dealer**: This is the dealership it retrieves cars created by the factory to be sold. After a car is received, the dealership uses a short delay to sell the car.  The dealership only has room for 10 cars, therefore, if the dealership is full, the factory must wait until a car is sold before creating another car.
 
 **Queue251**: This is a queue that must be used in the assignment.
 
@@ -35,7 +35,7 @@ The Python file contains the following classes:
 
 ### Plot created by your program.  
 
-**Before** the Dealership takes a car from the queue, it uses `qsize()` to get the size of the queue and updates the `queue_stats` list.  Here is an example of a plot (Your plot might/will look different).  Each bar represents the size of the queue while the program is running.  From this plot, the program had a full queue of size 10 during most of the execution time.
+**Before** the Dealership takes a car from the queue, it uses `size()` to get the size of the queue and updates the `queue_stats` list.  Here is an example of a plot (Your plot might/will look different).  Each bar represents the size of the queue while the program is running.  From this plot, the program had a full queue of size 10 during most of the execution time.
 
 ![](plot.png)
 
@@ -44,8 +44,8 @@ The Python file contains the following classes:
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
 
-Assignments are individual and not team based.  Any assignments found to be  plagiarised will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
+Assignments are individual and not team based.  Any assignments found to be plagiarised will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
 
 ## Submission
 
-When finished, upload your Python file to Canvas.
+When finished, upload your Python file and chart to Canvas.
