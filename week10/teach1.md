@@ -26,6 +26,14 @@ Note: This is an option for compiling C++ programs if you don't have a compiler 
 
 ![](replit2.png)
 
+4) You need to "turn on" the option to compile programs using PThreads.  Click on the small menu button and select `show hidden files`.
+
+![](hidden_files.png)
+
+5) Next, select the `Makefile` file and add the following `-pthread` where hightlighted in the image below.
+
+![](pthreads_option.png)
+
 4) Copy `team1.cpp` content to `main.cpp` in repl.it
 
 
