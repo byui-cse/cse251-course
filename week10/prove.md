@@ -10,6 +10,8 @@ You will be implementing the reader writer problem using shared memory in Python
 
 The project file is `assignment.py` in the `week10/assignment` folder in GitHub.  Refer to this file for instructions.
 
+For this assignment, the [Circular Buffer article](https://en.wikipedia.org/wiki/Circular_buffer) will help you understand how to use the ShareableList.
+
 ## Rubric
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
