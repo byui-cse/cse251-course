@@ -392,14 +392,14 @@ Also, you can write to a mmap.  There are many examples on the Internet that sho
 
 ### Example 4
 
-You can use the MMap as a string.
+You can use the MMap as a string and to change it.  Notice the file mode used in the open() function.
 
 ```python
 import mmap
 
 def mmap_io(filename):
-    with open(filename, mode="r", encoding="utf8") as file_obj:
-        with mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_READ) as mmap_obj:
+    with open(filename, mode="r+", encoding="utf8") as file_obj:
+        with mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_WRITE) as mmap_obj:
 
             # Print the first 10 characters
             print(mmap_obj[:10])
@@ -412,6 +412,8 @@ def mmap_io(filename):
             # Print the characters between 15 and 25
             print(mmap_obj[15:25])
 
+            # Change 9th character to the letter 'a'
+            mmap_obj[8] = 97
 
 
 def main():
@@ -419,6 +421,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 ```
 
 Output:
