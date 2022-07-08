@@ -9,7 +9,7 @@ Most of this lesson will be going over Java program examples.  Please take the t
 
 ## How does Java run programs
 
-A Java program is compiled into an executable.  However, that executable is made of bytes called Java Bytecode.  Once a you have the program in bytecode, there is a Java Interpreter for each type of operating system - as you can see in the figure below.  Python has the same structure except Python programs are not compiled but interpreted when run.
+A Java program is compiled into an executable.  That executable is made of bytes called Java Bytecode.  There is a Java Interpreter for each type of operating system - as you can see in the figure below.  Python has the same structure except Python programs are not compiled but interpreted when run.
 
 We have other Object-oriented programming (OOP) languages such as Python, C++, C#, etc.  In the case of Java, everything (code) needs to be in a class.  For example, there are no global variables outside of classes.
 

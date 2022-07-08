@@ -46,8 +46,12 @@ Instructions:
 - Not allowed to use Value() or Array() or any other shared data type from 
   the multiprocessing package.
 
-Add any comments for me:
+- When each reader reads a value from the sharedList, use the following code to display
+  the value:
+  
+                    print(<variable>, end=', ', flush=True)
 
+Add any comments for me:
 
 
 """

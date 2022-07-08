@@ -15,7 +15,6 @@ worker()
 This goroutine will take in a list/array/channel of numbers.  It will place
 prime numbers on another channel
 
-
 readValue()
 
 This goroutine will display the contents of the channel containing
@@ -64,6 +63,9 @@ func main() {
 
 	workers := 10
 	numberValues := 100
+
+	// Create any channels that you need
+	// Create any other "things" that you need to get the workers to finish(join)
 
 	// create workers
 	for w := 1; w <= workers; w++ {
