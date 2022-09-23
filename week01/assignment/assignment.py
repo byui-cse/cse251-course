@@ -2,7 +2,7 @@
 Course: CSE 251 
 Lesson Week: 01
 File: assignment.py 
-Author: <Add name here>
+Author: Gabriel Ikpaetuk
 
 Purpose: Drawing with Python Turtle
 
@@ -23,9 +23,8 @@ Instructions:
 
 """
 
-
 import math
-import threading 
+import threading
 from cse251turtle import *
 
 # Include CSE 251 common Python files. 
@@ -50,7 +49,7 @@ def draw_circle(tur, x, y, radius, color='red'):
     # Need to adjust starting position so that (x, y) is the center
     x1 = x - (circumference // steps) // 2
     y1 = y
-    tur.move(x1 , y1 + radius)
+    tur.move(x1, y1 + radius)
 
     tur.setheading(0)
     tur.color(color)
@@ -92,32 +91,41 @@ def draw_coord_system(tur, x, y, size=300, color='black'):
         tur.backward(size)
         tur.left(90)
 
-def draw_squares(tur):
+
+def draw_squares(tur, lock=None):
     """Draw a group of squares"""
     for x in range(-300, 350, 200):
         for y in range(-300, 350, 200):
+            if lock: lock.acquire()
             draw_square(tur, x - 50, y + 50, 100)
+            if lock: lock.release()
 
 
-def draw_circles(tur):
+def draw_circles(tur, lock=None):
     """Draw a group of circles"""
     for x in range(-300, 350, 200):
         for y in range(-300, 350, 200):
-            draw_circle(tur, x, y-2, 50)
+            if lock: lock.acquire()
+            draw_circle(tur, x, y - 2, 50)
+            if lock: lock.release()
 
 
-def draw_triangles(tur):
+def draw_triangles(tur, lock=None):
     """Draw a group of triangles"""
     for x in range(-300, 350, 200):
         for y in range(-300, 350, 200):
-            draw_triangle(tur, x-30, y-30+10, 60)
+            if lock: lock.acquire()
+            draw_triangle(tur, x - 30, y - 30 + 10, 60)
+            if lock: lock.release()
 
 
-def draw_rectangles(tur):
+def draw_rectangles(tur, lock=None):
     """Draw a group of Rectangles"""
     for x in range(-300, 350, 200):
         for y in range(-300, 350, 200):
-            draw_rectangle(tur, x-10, y+5, 20, 15)
+            if lock: lock.acquire()
+            draw_rectangle(tur, x - 10, y + 5, 20, 15)
+            if lock: lock.release()
 
 
 def run_no_threads(tur, log, main_turtle):
@@ -161,6 +169,22 @@ def run_with_threads(tur, log, main_turtle):
 
     # TODO - Start add your code here.
     # You need to use 4 threads where each thread concurrently drawing one type of shape.
+    lock = threading.Lock()
+
+    thread_square = threading.Thread(target=draw_squares, args=(tur, lock))
+    thread_circles = threading.Thread(target=draw_circles, args=(tur, lock))
+    thread_triangles = threading.Thread(target=draw_triangles, args=(tur, lock))
+    thread_rectangles = threading.Thread(target=draw_rectangles, args=(tur, lock))
+
+    thread_square.start()
+    thread_circles.start()
+    thread_triangles.start()
+    thread_rectangles.start()
+
+    thread_square.join()
+    thread_circles.join()
+    thread_triangles.join()
+    thread_rectangles.join()
     # You are free to change any functions in this code except main()
 
     log.step_timer('All drawing commands have been created')

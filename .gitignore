@@ -1,0 +1,4 @@
+# For log files
+*.log
+
+/.idea
