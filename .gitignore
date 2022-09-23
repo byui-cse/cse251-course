@@ -1,4 +1,5 @@
 # For log files
 *.log
 
-/.idea
+
+**/.idea
