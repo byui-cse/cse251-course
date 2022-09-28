@@ -16,7 +16,7 @@ The Python package `pillow` needs to be installed for this assignment.  Follow t
 
 **FFmpeg**
 
-FFmpeg is a free open-course video and image converter.  It is included in the github files for the assignment.  Read below to install it on Windows or Mac.
+FFmpeg is a free open-source video and image converter.  It is included in the github files for the assignment.  Read below to install it on Windows or Mac.
 
 #### Windows Installation
 
