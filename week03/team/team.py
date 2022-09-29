@@ -47,7 +47,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-class Board():
+class Board:
 
     directions = (
         (1, 0),   # E
@@ -64,7 +64,9 @@ class Board():
         """ Create the instance and the board arrays """
         self.size = size
         self.board = [['.' for _ in range(size)] for _ in range(size)] 
-        self.highlighting = [[False for _ in range(size)] for _ in range(size)] 
+        self.highlighting = [[False for _ in range(size)] for _ in range(size)]
+        self.look_up_dict = dict()
+        self.filled_look_up_dict = False
 
     def _word_fits(self, word, row, col, direction):
         """ Helper function: Fit a word in the board """
@@ -127,28 +129,45 @@ class Board():
     def _word_at_this_location(self, row, col, direction, word):
         """ Helper function: is the word found on the board at (x, y) in a direction """
         dir_x, dir_y = self.directions[direction]
-        highlight_copy = copy.deepcopy(self.highlighting)
+        seen_letters = []
         for letter in word:
             board_letter = self.get_letter(row, col)
             if board_letter == letter:
                 self.highlight(row, col)
+                seen_letters.append((row, col))
                 row += dir_x
                 col += dir_y
             else:
-                self.highlighting = copy.deepcopy(highlight_copy)
+                # Clear all the highlighted letters
+                for row, col in seen_letters:
+                    self.highlighting[row][col] = False
                 return False
         return True
 
     def find_word(self, word):
         """ Find a word in the board """
+        if not self.filled_look_up_dict:
+            self.create_look_up_dictionary()
+
         print(f'Finding {word}...')
-        for row in range(self.size):
-            for col in range(self.size):
-                for d in range(0, 8):
-                    if self._word_at_this_location(row, col, d, word):
-                        return True
+
+        for row, col in self.look_up_dict[word[0]]:
+            for d in range(0, 8):
+                if self._word_at_this_location(row, col, d, word):
+                    return True
+
         return False
 
+    def create_look_up_dictionary(self):
+        for row in range(self.size):
+            for col in range(self.size):
+                character = self.board[row][col]
+                if character in self.look_up_dict:
+                    self.look_up_dict[character].append((row, col))
+                else:
+                    self.look_up_dict[character] = [(row, col)]
+
+        self.filled_look_up_dict = True
 
 def main():
     board = Board(25)
