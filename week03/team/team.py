@@ -71,20 +71,25 @@ class Board:
     def _word_fits(self, word, row, col, direction):
         """ Helper function: Fit a word in the board """
         dir_x, dir_y = self.directions[direction]
-        board_copy = copy.deepcopy(self.board)
+        seen_letters_and_prevs = []
         for letter in word:
             board_letter = self.get_letter(row, col)
             if board_letter == '.' or board_letter == letter:
+                # Get the previous letter or symbol there
+                prev_letter = self.board[row][col]
                 self.board[row][col] = letter
+
+                seen_letters_and_prevs.append((row, col, prev_letter))
                 row += dir_x
                 col += dir_y
             else:
-                self.board = copy.deepcopy(board_copy)
+                for row, col, prev in seen_letters_and_prevs:
+                    self.board[row][col] = prev
                 return False
         return True
 
     def place_words(self, words):
-        """ Place all of the words into the board """
+        """ Place all the words into the board """
         for word in words:
             print(f'Placing {word}...')
             word_fitted = False
