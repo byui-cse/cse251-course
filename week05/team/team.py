@@ -13,6 +13,7 @@ Instructions:
 - Start with PRIME_PROCESS_COUNT = 1, then once it works, increase it
 
 """
+import queue
 import time
 import threading
 import multiprocessing as mp
@@ -21,7 +22,8 @@ import random
 #Include cse 251 common Python files
 from cse251 import *
 
-PRIME_PROCESS_COUNT = 1
+PRIME_PROCESS_COUNT = 5
+NO_MORE_VALUES = "NO MORE NUMBERS"
 
 def is_prime(n: int) -> bool:
     """Primality test using 6k+-1 optimization.
@@ -39,14 +41,31 @@ def is_prime(n: int) -> bool:
     return True
 
 # TODO create read_thread function
+def read_thread(filename, shared_queue):
+    with open(filename) as f:
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            shared_queue.put(int(line))
+
+    [shared_queue.put(NO_MORE_VALUES) for _ in range(3)]
+
 
 # TODO create prime_process function
+def prime_process(shared_queue, primes):
+    number = shared_queue.get()
+    while True:
+        if number == NO_MORE_VALUES:
+            break
+        if is_prime(number):
+            print(number)
+            primes.append(number)
 
 def create_data_txt(filename):
     with open(filename, 'w') as f:
         for _ in range(1000):
             f.write(str(random.randint(10000000000, 100000000000000)) + '\n')
-
 
 def main():
     """ Main function """
@@ -60,14 +79,22 @@ def main():
     log.start_timer()
 
     # TODO Create shared data structures
+    shared_q = mp.Queue()
 
     # TODO create reading thread
+    reader = threading.Thread(target=read_thread, args=(filename, shared_q))
+    primes = mp.Manager().list([])
 
     # TODO create prime processes
+    processes = [mp.Process(target=prime_process, args=(shared_q, primes)) for _ in range(PRIME_PROCESS_COUNT)]
 
     # TODO Start them all
+    reader.start()
+    [process.start() for process in processes]
 
     # TODO wait for them to complete
+    reader.join()
+    [process.join() for process in processes]
 
     log.stop_timer(f'All primes have been found using {PRIME_PROCESS_COUNT} processes')
 

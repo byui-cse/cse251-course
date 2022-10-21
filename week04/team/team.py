@@ -28,6 +28,7 @@ def retrieve_thread():  # TODO add arguments
 
     while True:
         # TODO check to see if anything is in the queue
+        number_in_quue
 
         # TODO process the value retrieved from the queue
 
@@ -36,24 +37,33 @@ def retrieve_thread():  # TODO add arguments
 
 
 
-def file_reader(): # TODO add arguments
+def file_reader(filename, queue, log): # TODO add arguments
     """ This thread reading the data file and places the values in the data_queue """
-
     # TODO Open the data file "urls.txt" and place items into a queue
+    with open(filename) as file:
+        lines = file.readlines()
+
+    lines = [line.rstrip() for line in lines]
+
+    for line in lines:
+        queue.put(line)
 
     log.write('finished reading file')
-
     # TODO signal the retrieve threads one more time that there are "no more values"
-
 
 
 def main():
     """ Main function """
 
     log = Log(show_terminal=True)
+    url_filename = "urls.txt"
 
     # TODO create queue
+    shared_queue = queue.Queue()
+    file_reader(url_filename, shared_queue)
+    print(list(shared_queue.queue))
     # TODO create semaphore (if needed)
+    sem = threading.Semaphore()
 
     # TODO create the threads. 1 filereader() and RETRIEVE_THREADS retrieve_thread()s
     # Pass any arguments to these thread need to do their job

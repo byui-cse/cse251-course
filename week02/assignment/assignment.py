@@ -54,9 +54,25 @@ call_count = 0
 
 
 # TODO Add your threaded class definition here
+class RequestThread(threading.Thread):
+    # https://realpython.com/python-requests/
+    # constructor
+    def __init__(self, url):
+        # calling parent class constructor
+        super().__init__()
+        self.url = url
+        self.response = {}
 
-
-# TODO Add any functions you need here
+    # This is the method that is run when start() is called
+    # TODO Add any functions you need here
+    def run(self):
+        response = requests.get(self.url)
+        global call_count
+        call_count += 1
+        if response.status_code == 200:
+            self.response = response.json()
+        else:
+            print(f"Error code: {response.status_code}", flush=True)
 
 
 def main():
@@ -64,10 +80,81 @@ def main():
     log.start_timer('Starting to retrieve data from the server')
 
     # TODO Retrieve Top API urls
+    getSecondaryUrls = RequestThread(TOP_API_URL)
+    getSecondaryUrls.start()
+    getSecondaryUrls.join()
+    SECONDARY_URLS = getSecondaryUrls.response
 
-    # TODO Retireve Details on film 6
+    # print_dict(SECONDARY_URLS)
+    # TODO Retrieve Details on film 6
+    film_six_url = SECONDARY_URLS['films'] + '6'
+    film_six = RequestThread(film_six_url)
+    film_six.start()
+    film_six.join()
+    # print_dict(film_six.response)
+
+    character_Threads = [RequestThread(url) for url in film_six.response["characters"]]
+    planets_Threads = [RequestThread(url) for url in film_six.response["planets"]]
+    starships_Threads = [RequestThread(url) for url in film_six.response["starships"]]
+    vehicles_Threads = [RequestThread(url) for url in film_six.response["vehicles"]]
+    species_Threads = [RequestThread(url) for url in film_six.response["species"]]
+
+    [thread.start() for thread in character_Threads]
+    [thread.start() for thread in planets_Threads]
+    [thread.start() for thread in starships_Threads]
+    [thread.start() for thread in vehicles_Threads]
+    [thread.start() for thread in species_Threads]
+
+    [thread.join() for thread in character_Threads]
+    [thread.join() for thread in planets_Threads]
+    [thread.join() for thread in starships_Threads]
+    [thread.join() for thread in vehicles_Threads]
+    [thread.join() for thread in species_Threads]
+
+    characters = [thread.response['name'] for thread in character_Threads]
+    planets = [thread.response['name'] for thread in planets_Threads]
+    starships = [thread.response['name'] for thread in starships_Threads]
+    vehicles = [thread.response['name'] for thread in vehicles_Threads]
+    species = [thread.response['name'] for thread in species_Threads]
+
+    characters.sort()
+    planets.sort()
+    starships.sort()
+    vehicles.sort()
+    species.sort()
 
     # TODO Display results
+    log.write("-----------------------------------------")
+    log.write(f'Title   : {film_six.response["title"]}')
+    log.write(f'Director: {film_six.response["director"]}')
+    log.write(f'Producer: {film_six.response["producer"]}')
+    log.write(f'Released: {film_six.response["release_date"]}')
+
+    log.write('')
+
+    log.write("Characters: {}".format(len(characters)))
+    log.write(", ".join(characters))
+
+    log.write('')
+
+    log.write("Planets: {}".format(len(planets)))
+    log.write(", ".join(planets))
+
+    log.write('')
+
+    log.write("Starships: {}".format(len(starships)))
+    log.write(", ".join(starships))
+
+    log.write('')
+
+    log.write("Vehicles: {}".format(len(vehicles)))
+    log.write(", ".join(vehicles))
+
+    log.write('')
+
+    log.write("Species: {}".format(len(species)))
+    log.write(", ".join(species))
+    log.write('')
 
     log.stop_timer('Total Time To complete')
     log.write(f'There were {call_count} calls to the server')

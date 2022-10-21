@@ -27,15 +27,15 @@ import multiprocessing as mp
 from cse251 import *
 
 # 4 more than the number of cpu's on your computer
-CPU_COUNT = mp.cpu_count() + 4  
+CPU_COUNT = mp.cpu_count() + 4
 
-# TODO Your final video need to have 300 processed frames.  However, while you are 
+# TODO Your final video need to have 300 processed frames.  However, while you are
 # testing your code, set this much lower
-FRAME_COUNT = 20
+FRAME_COUNT = 300
 
-RED   = 0
+RED = 0
 GREEN = 1
-BLUE  = 2
+BLUE = 2
 
 
 def create_new_frame(image_file, green_file, process_file):
@@ -50,18 +50,23 @@ def create_new_frame(image_file, green_file, process_file):
     # Make Numpy array
     np_img = np.array(green_img)
 
-    # Mask pixels 
+    # Mask pixels
     mask = (np_img[:, :, BLUE] < 120) & (np_img[:, :, GREEN] > 120) & (np_img[:, :, RED] < 120)
 
     # Create mask image
-    mask_img = Image.fromarray((mask*255).astype(np.uint8))
+    mask_img = Image.fromarray((mask * 255).astype(np.uint8))
 
     image_new = Image.composite(image_img, green_img, mask_img)
     image_new.save(process_file)
 
 
 # TODO add any functions to need here
-
+def makeFilesArgumentList(counter):
+    filesArgumentList = [(rf'elephant/image{image_num:03d}.png',
+                          rf'green/image{image_num:03d}.png',
+                          rf'processed/image{image_num:03d}.png')
+                         for image_num in range(1, counter + 1)]
+    return filesArgumentList
 
 
 if __name__ == '__main__':
@@ -77,26 +82,22 @@ if __name__ == '__main__':
     # TODO Process all frames trying 1 cpu, then 2, then 3, ... to CPU_COUNT
     #      add results to xaxis_cpus and yaxis_times
 
-
-    # sample code: remove before submitting  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    # process one frame #10
-    image_number = 10
-
-    image_file = rf'elephant/image{image_number:03d}.png'
-    green_file = rf'green/image{image_number:03d}.png'
-    process_file = rf'processed/image{image_number:03d}.png'
-
     start_time = timeit.default_timer()
-    create_new_frame(image_file, green_file, process_file)
-    print(f'\nTime To Process all images = {timeit.default_timer() - start_time}')
-    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    files_arguments = makeFilesArgumentList(300)
 
+    for cpu_count in range(1, CPU_COUNT + 1):
+        start = timeit.default_timer()
+        with mp.Pool(cpu_count) as p:
+            p.starmap(create_new_frame, files_arguments)
+        xaxis_cpus.append(cpu_count)
+        yaxis_times.append(timeit.default_timer() - start)
+        log.write(f'Time to process with {cpu_count} cores: {yaxis_times[cpu_count - 1]}')
 
     log.write(f'Total Time for ALL processing: {timeit.default_timer() - all_process_time}')
 
     # create plot of results and also save it to a PNG file
     plt.plot(xaxis_cpus, yaxis_times, label=f'{FRAME_COUNT}')
-    
+
     plt.title('CPU Core yaxis_times VS CPUs')
     plt.xlabel('CPU Cores')
     plt.ylabel('Seconds')
