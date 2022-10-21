@@ -2,4 +2,7 @@
 *.log
 
 
+# For PNG file sin week03
+**/.png
+
 **/.idea

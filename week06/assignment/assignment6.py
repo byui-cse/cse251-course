@@ -212,13 +212,15 @@ class Wrapper(mp.Process):
 
         # FIXME ---> (1st approach) This seems to be a second faster than the second approach
         # start = time.time()
-        # with open(self.filename, "w") as file_to_write_to:
-        #     while True:
-        #         gift = self.receive_gift_conn.recv()
-        #         if gift == ASSEMBLER_END_MESSAGE:
-        #             break
-        #         text_to_write = f"Created - {datetime.now().time()}: {str(gift)} \n"
-        #         file_to_write_to.write(text_to_write)
+        with open(self.filename, "w") as file_to_write_to:
+            while True:
+                gift = self.receive_gift_conn.recv()
+                if gift == ASSEMBLER_END_MESSAGE:
+                    file_to_write_to.close()
+                    break
+                text_to_write = f"Created - {datetime.now().time()}: {str(gift)} \n"
+                file_to_write_to.write(text_to_write)
+
 
         # FIXME ---> (2nd approach) This seems to be a second faster than the second approach
         while True:
