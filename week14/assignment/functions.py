@@ -1,6 +1,6 @@
 """
 Course: CSE 251, week 14
-File: common.py
+File: functions.py
 Author: <your name>
 
 Instructions:
@@ -13,10 +13,10 @@ https://www.youtube.com/watch?v=86g8jAQug04
 
 
 Requesting a family from the server:
-family = Request_thread(f'{TOP_API_URL}/family/{id}')
+request = Request_thread(f'{TOP_API_URL}/family/{id}')
 
 Requesting an individual from the server:
-person = Request_thread(f'{TOP_API_URL}/person/{id}')
+request = Request_thread(f'{TOP_API_URL}/person/{id}')
 
 
 You will lose 10% if you don't detail your part 1 

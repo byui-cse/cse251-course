@@ -30,7 +30,7 @@ The only method of requesting information from the server.
 
 ### Assignment files
 
-- `functions.py` - This is the Python file that you will be changing and submitting for the assignment.  **THIS IS THE ONLY FILE THAT YOU CAN MODIFY**.
+- `functions.py` - This is the Python file that you will be changing and submitting for the assignment.  **THIS IS THE ONLY FILE THAT YOU CAN MODIFY**.  It contains comments on how to call the server.
 - `assignment.py` - This file contains main() and will call your functions in the `functions.py` Python file.
 - `common.py` - Contains common classes and functions for the assignment.
 - `runs.txt` - Contains which search algorithms will be run and how many generations will be retrieved from the server.  You can modify this file while you are testing your program.
