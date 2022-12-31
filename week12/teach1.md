@@ -24,9 +24,9 @@ Note: This is an option for writing and running Go programs if you don't have a 
 
 4) Copy `team1.go` content to replit.com
 
-### Go Programming online
+### Go Programming
 
-You can also write and run Go programs using https://play.golang.org/
+You can also write and run Go programs using [Replit.com](https://replit.com/).  You can also download the [Go compiler](https://go.dev/) to your computer.
 
 ## Sample Solution
 

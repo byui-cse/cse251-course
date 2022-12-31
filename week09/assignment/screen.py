@@ -69,10 +69,10 @@ class Screen:
         pos_x = 0
         pos_y = 0
         color = (0, 0, 0)
-        sleep_time = speed * 10
+        sleep_time = speed
         finish = False
 
-        title = 'Maze: Press "q" to quit, "f" to finish, "-" to slow down, "+" to go faster, "p" to play again'
+        title = 'Maze: Press "q" to quit, "f" to finish drawing, "1" slow drawing, "2" faster drawing, "p" to play again'
 
         cv2.namedWindow(title)
 
@@ -87,8 +87,8 @@ class Screen:
                 color = action[1]
 
             elif code == self.COMMAND_UPDATE:
+                cv2.imshow(title, self.board)
                 if not finish:
-                    cv2.imshow(title, self.board)
                     if sleep_time > 0:
                         key = cv2.waitKey(sleep_time)
                     else:

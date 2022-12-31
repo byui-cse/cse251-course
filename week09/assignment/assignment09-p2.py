@@ -7,9 +7,9 @@ Author: <Add name here>
 Purpose: Part 2 of assignment 09, finding the end position in the maze
 
 Instructions:
-- Do not create classes for this assignment, just functions
-- Do not use any other Python modules other than the ones included
-- Each thread requires a different color by calling get_color()
+- Do not create classes for this assignment, just functions.
+- Do not use any other Python modules other than the ones included.
+- Each thread requires a different color by calling get_color().
 
 
 This code is not interested in finding a path to the end position,
@@ -19,7 +19,6 @@ change the program to display the found path to the exit position.
 What would be your strategy?  
 
 <Answer here>
-
 
 Why would it work?
 
@@ -33,10 +32,10 @@ from maze import Maze
 import sys
 import cv2
 
-# Include cse 251 common Python files - Dont change
+# Include cse 251 files
 from cse251 import *
 
-SCREEN_SIZE = 800
+SCREEN_SIZE = 700
 COLOR = (0, 0, 255)
 COLORS = (
     (0,0,255),
@@ -56,11 +55,14 @@ COLORS = (
     (226,138,43),
     (128,114,250)
 )
+SLOW_SPEED = 100
+FAST_SPEED = 0
 
 # Globals
 current_color_index = 0
 thread_count = 0
 stop = False
+speed = SLOW_SPEED
 
 def get_color():
     """ Returns a different color when called """
@@ -71,10 +73,15 @@ def get_color():
     current_color_index += 1
     return color
 
+def _solve(maze, x, y):
+    pass
 
 def solve_find_end(maze):
     """ finds the end position using threads.  Nothing is returned """
     # When one of the threads finds the end position, stop all of them
+    global stop
+    stop = False
+
 
     pass
 
@@ -83,6 +90,7 @@ def find_end(log, filename, delay):
     """ Do not change this function """
 
     global thread_count
+    global speed
 
     # create a Screen Object that will contain all of the drawing commands
     screen = Screen(SCREEN_SIZE, SCREEN_SIZE)
@@ -96,14 +104,15 @@ def find_end(log, filename, delay):
     log.write(f'Number of threads created  = {thread_count}')
 
     done = False
-    speed = 1
     while not done:
         if screen.play_commands(speed): 
             key = cv2.waitKey(0)
-            if key == ord('+'):
-                speed = max(0, speed - 1)
-            elif key == ord('-'):
-                speed += 1
+            if key == ord('1'):
+                speed = SLOW_SPEED
+            elif key == ord('2'):
+                speed = FAST_SPEED
+            elif key == ord('q'):
+                exit()
             elif key != ord('p'):
                 done = True
         else:

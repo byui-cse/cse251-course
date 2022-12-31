@@ -5,7 +5,7 @@
 
 ## **Python 3**
 
-We will be using Python throughtout the course. Please ensure that you have version 3.8 or higher.  Python can be [downloaded here](python.org).
+We will be using Python throughtout the course. Please ensure that you have version 3.10 or higher (It is prefered to have the latest version of Python).  Also, make sure you have the latest update for the version of Python that you are using.  For example, version `3.10.0` has issues in this course but version `3.10.9` doesn't.  Python can be [downloaded here](python.org).
   
 
 ### Python Videos
@@ -24,6 +24,7 @@ If any of the concepts or topics in the list below seem unfamiliar to you, you s
 - [Collections](https://www.youtube.com/watch?v=beA8IsY3mQs&list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6&index=25)
 - [Loops](https://www.youtube.com/watch?v=LrOAl8vUFHY&[list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6&index=27)
 - [Python dictionaries: realpython](https://realpython.com/lessons/dictionary-python/)
+- [Python splicing](https://www.youtube.com/watch?v=ajrtAuDg3yw)
 
 ### Links to Python Articles
 

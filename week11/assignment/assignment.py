@@ -25,14 +25,14 @@ def cleaner_waiting():
     time.sleep(random.uniform(0, 2))
 
 def cleaner_cleaning(id):
-    print(f'Cleaner {id}')
+    print(f'Cleaner: {id}')
     time.sleep(random.uniform(0, 2))
 
 def guest_waiting():
     time.sleep(random.uniform(0, 2))
 
-def guest_partying(id):
-    print(f'Guest {id}')
+def guest_partying(id, count):
+    print(f'Guest: {id}, count = {count}')
     time.sleep(random.uniform(0, 1))
 
 def cleaner():
@@ -52,7 +52,7 @@ def guest():
         guest will wait to try to get access to the room (guest_waiting())
         get access to the room
         display message STARTING_PARTY_MESSAGE if this guest is the first one in the room
-        Take some time partying (guest_partying())
+        Take some time partying (call guest_partying())
         display message STOPPING_PARTY_MESSAGE if the guest is the last one leaving in the room
     """
     pass

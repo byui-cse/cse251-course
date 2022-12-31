@@ -45,7 +45,6 @@ class Bag():
     def __str__(self):
         return str(self.items)
 
-
 class Gift():
     """ Gift of a large marble and a bag of marbles - Don't change """
 
@@ -116,7 +115,7 @@ class Bagger(mp.Process):
 class Assembler(mp.Process):
     """ Take the set of marbles and create a gift from them.
         Sends the completed gift to the wrapper """
-    marble_names = ('Lucky', 'Spinner', 'Sure Shot', 'The Boss', 'Winner', '5-Star', 'Hercules', 'Apollo', 'Zeus')
+    marble_names = ('Lucky', 'Spinner', 'Sure Shot', 'Fr. Comeau', 'Winner', '5-Star', 'Hercules', 'Apollo', 'Zeus')
 
     def __init__(self):
         mp.Process.__init__(self)
@@ -172,12 +171,12 @@ def main():
         log.write_error(f'Problem reading in settings file: {CONTROL_FILENAME}')
         return
 
-    log.write(f'Marble count                = {settings[MARBLE_COUNT]}')
-    log.write(f'settings["creator-delay"]   = {settings[CREATOR_DELAY]}')
-    log.write(f'settings["bag-count"]       = {settings[BAG_COUNT]}') 
-    log.write(f'settings["bagger-delay"]    = {settings[BAGGER_DELAY]}')
-    log.write(f'settings["assembler-delay"] = {settings[ASSEMBLER_DELAY]}')
-    log.write(f'settings["wrapper-delay"]   = {settings[WRAPPER_DELAY]}')
+    log.write(f'Marble count     = {settings[MARBLE_COUNT]}')
+    log.write(f'Marble delay     = {settings[CREATOR_DELAY]}')
+    log.write(f'Bag count        = {settings[BAG_COUNT]}') 
+    log.write(f'Bagger delay     = {settings[BAGGER_DELAY]}')
+    log.write(f'Assembler delay  = {settings[ASSEMBLER_DELAY]}')
+    log.write(f'Wrapper delay    = {settings[WRAPPER_DELAY]}')
 
     # TODO: create Pipes between creator -> bagger -> assembler -> wrapper
 
@@ -198,8 +197,9 @@ def main():
     # TODO add code here
 
     display_final_boxes(BOXES_FILENAME, log)
-
+    
     # TODO Log the number of gifts created.
+
 
 
 

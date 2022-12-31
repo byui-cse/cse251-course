@@ -43,6 +43,7 @@ There is a server program that you will need to run in it's own terminal window 
 1. Go to the directory of the assignment.
 1. Type `python server.py` to start the server.
 1. Note if the server is very busy it might not reply with a 200 reply code or might return an empty JSON.  You should handle these issues in your program.
+1. There are two API calls that you will be making to build your tree.  The details are found in `functions.py`.
 
 While running, the server will display requests and replies from your assignment.  It also displays the current number of active threads making requests and the maximum number of threads.
 
@@ -63,10 +64,10 @@ While running, the server will display requests and replies from your assignment
 - Do not use recursion for this algorithm.
 - **Your goal is to execute part 2 in under 10 seconds for 6 generations**
 
-### 10% Bonus
+### 10% Extra Bonus (Optional)
 
 - A 10% bonus if you can limit the number of threads to 5 while retrieving the family information in part 2 using function `breadth_fs_pedigree_limit5()`.  
-- The server must not have more than 5 active threads at a time. (watch the output from the server to see number of activity threads)
+- The server must not have more than 5 active threads at a time. (watch the output from the server to see number of activity threads).  However, your program should try to have 5 active threads at a time.
 - There is no time requirement for this extra feature.
 
 

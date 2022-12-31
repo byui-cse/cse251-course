@@ -38,7 +38,7 @@ One data structure that is used to share data between threads is called a queue.
 - [Python documentation on threading queue](https://docs.python.org/3/library/queue.html)
 - [Python Queue Video](https://www.youtube.com/watch?v=TQx3IfCVvQ0)
 
-The Queue data structure is `thread safe` which means that the `get()` and `put()` when used will add or remove an item from the queue without race conditions.  These type of methods or operations are called atomic.
+The Queue data structure is `thread safe` which means that the `get()` and `put()` when used will add or remove an item from the queue without race conditions.  These methods or operations are called atomic.
 
 Here is an example of creating and using a queue.  Note that `queue` is not part of the threading module.
 
@@ -122,9 +122,9 @@ All work completed
 
 > The following is from the above link
 
-Bear in mind that a process that has put items in a queue will wait before terminating until all the buffered items are fed by the “feeder” thread to the underlying pipe. (The child process can call the `Queue.cancel_join_thread` method of the queue to avoid this behavior.)
+Bear in mind that a process/thread that puts items in a queue will wait before terminating until all the buffered items are fed by the “feeder” thread to the underlying pipe. (The child process can call the `Queue.cancel_join_thread` method of the queue to avoid this behavior.)
 
-This means that whenever you use a queue you need to make sure that all items which have been put on the queue will eventually be removed before the process is joined. Otherwise you cannot be sure that processes which have put items on the queue will terminate. Remember also that non-daemonic processes will be joined automatically.
+This means that whenever you use a queue you need to make sure that all items which have been put on the queue will eventually be removed before the process is joined. Otherwise you cannot be sure that processes/threads which have put items on the queue will terminate. Remember also that non-daemonic processes will be joined automatically.
 
 An example which will deadlock is the following:
 

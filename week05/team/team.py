@@ -17,6 +17,9 @@ import time
 import threading
 import multiprocessing as mp
 import random
+from os.path import exists
+
+
 
 #Include cse 251 common Python files
 from cse251 import *
@@ -43,17 +46,17 @@ def is_prime(n: int) -> bool:
 # TODO create prime_process function
 
 def create_data_txt(filename):
-    with open(filename, 'w') as f:
-        for _ in range(1000):
-            f.write(str(random.randint(10000000000, 100000000000000)) + '\n')
+    # only create if is doesn't exist 
+    if not exists(filename):
+        with open(filename, 'w') as f:
+            for _ in range(1000):
+                f.write(str(random.randint(10000000000, 100000000000000)) + '\n')
 
 
 def main():
     """ Main function """
 
     filename = 'data.txt'
-
-    # Once the data file is created, you can comment out this line
     create_data_txt(filename)
 
     log = Log(show_terminal=True)

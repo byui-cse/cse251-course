@@ -9,6 +9,9 @@ Instructions:
 
 import time
 import threading
+import random
+import string
+import os
 
 # -----------------------------------------------------------------------------
 def reverse_file(filename):
@@ -45,8 +48,30 @@ def promote_letter_a_threads(filename):
     pass
 
 
+def create_large_file(filename):
+    if not os.path.exists(filename):
+        print('Creating large data file', end='')
+        words = []
+
+        for _ in range(1000):
+            word = ''
+            for _ in range(80):
+                word += random.choice(string.ascii_lowercase)
+            words.append(word)
+
+        with open(filename, 'w') as f:
+            for i in range(2000000):
+                if i % 25000 == 0:
+                    print('.', end='', flush=True)
+
+                f.write(random.choice(words))
+                f.write('\n')
+            print()
+
+
 # -----------------------------------------------------------------------------
 def main():
+    create_large_file('letter_a.txt')
     reverse_file('data.txt')
     promote_letter_a('letter_a.txt')
     

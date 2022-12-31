@@ -13,7 +13,8 @@ You will be using the process pool apply_async() function to change your assignm
 ### Requirements
 
 1. Make a copy of your assignment 2 program.  Since you are working in a team, you can decide which assignment 2 program that you will use for the team activity.
-1. Convert the program to use a process pool and use apply_async() with a callback function to retrieve data from the Star Wars website.
+1. Convert the program to use a process pool and use apply_async() with a callback function to retrieve data from the Star Wars website.  Each request for data must be a apply_async() call.
+1. You can continue to use the Request_Thread() class from assignment 02 that makes the call to the server.
 
 ## Sample Solution
 

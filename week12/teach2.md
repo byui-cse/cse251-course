@@ -8,7 +8,7 @@ In this team activity, you will be finding primes from an array of numbers using
 
 ## Assignment
 
-Download the file `team2.py` from the folder `week12/team2` in Github.
+Download the file `team2.go` from the folder `week12/team2` in Github.
 
 ### Sample Output of the program
 
@@ -117,6 +117,9 @@ Prime:  757592474706730193
 Prime:  1599282818016765821
 All Done!
 ```
+### Go Programming
+
+You can also write and run Go programs using [Replit.com](https://replit.com/).  You can also download the [Go compiler](https://go.dev/) to your computer.
 
 ## Sample Solution
 

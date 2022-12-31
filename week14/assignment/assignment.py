@@ -27,22 +27,30 @@ def run_part(log, start_id, generations, title, func):
     req.join()
 
     log.write('\n')
-    log.write('#' * 60)
+    log.write('#' * 45)
     log.start_timer(f'{title}: {generations} generations')
-    log.write('#' * 60)
+    log.write('#' * 45)
     func(start_id, tree)
     total_time = log.stop_timer()
 
     req = Request_thread(f'{TOP_API_URL}/end')
     req.start()
     req.join()
+    server_data = req.get_response()
+    print(server_data)
 
     tree.display(log)
     log.write('')
-    log.write(f'total_time                          : {total_time:.5f}')
-    log.write(f'Generations                         : {generations}')
-    log.write(f'People % Families / second          : {(tree.get_person_count()  + tree.get_family_count()) / total_time:.5f}')
+    log.write(f'total_time                    : {total_time:.5f}')
+    log.write(f'Generations                   : {generations}')
+    log.write(f'People % Families / second    : {(tree.get_person_count()  + tree.get_family_count()) / total_time:.5f}')
     log.write('')
+
+    log.write(f'STATS        Retrieved | Server details')
+    log.write(f'People  :   {tree.get_person_count():>10,} | {server_data["people"]:>14,}')
+    log.write(f'Families:   {tree.get_family_count():>10,} | {server_data["families"]:>14,}')
+    log.write(f'API Calls            : {server_data["api"]}')
+    log.write(f'Max number of threads: {server_data["threads"]}')
 
 
 def main():
@@ -53,12 +61,13 @@ def main():
     req.start()
     req.join()
 
-    print(f'Starting Family id: {req.response["start_family_id"]}')
-    start_id = req.response['start_family_id']
+
+    data = req.get_response()
+    start_id = data['start_family_id']
+    print(f'Starting Family id: {start_id}')
 
     # load runs.txt
     # part number, number of generations
-
     with open('runs.txt') as runs:
         for line in runs:
             parts = line.split(',')

@@ -47,7 +47,7 @@ Instructions:
   (Just looking at output from print() statements is not enough)
 - Are the philosophers each eating and thinking the same amount?
 - Using lists for philosophers and forks will help you in this program.
-  for example: philosophers[i] needs forks[i] and forks[i+1] to eat
+  for example: philosophers[i] needs forks[i] and forks[i+1] to eat (the % operator helps)
 """
 
 import time

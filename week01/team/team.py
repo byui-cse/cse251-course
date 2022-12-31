@@ -9,7 +9,7 @@ Purpose: Find prime numbers
 Instructions:
 
 - Don't include any other Python packages or modules
-- Review team acvitiy details in I-Learn
+- Review team activity details in I-Learn
 
 """
 

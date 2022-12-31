@@ -52,7 +52,7 @@ Note: This is an option for compiling C++ programs if you don't have a compiler 
 ```
 
 
-### Issues with using Visual Studio 2019
+### Issues with using Visual Studio
 
 1. Create a console empty project
 2. create team1.cpp and copy the content from team1.cpp from Github

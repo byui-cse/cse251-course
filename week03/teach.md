@@ -12,7 +12,7 @@ Download the file [team.py](team/team.py) to your computer.  Place it based on t
 
 ### Instructions:
 
-- Try to speed up this program
+- Try to speed up this program.  Use any programming technique learned in this course or in any other programming course.
 - you can change the Board class
 - talk with your team before making changes
 - make backups if you try something that doesn't work

@@ -26,6 +26,7 @@ import json
 import time
 import random
 import threading
+import ast
 
 hostName = "127.0.0.1"
 serverPort = 8123
@@ -244,28 +245,27 @@ def build_tree(gens):
         families[next_family_id] = family
         next_family_id += 1
 
-        number_children = random.randint(0, 8)
+        number_children = random.randint(2, 8)
         for i in range(number_children):
+
             if random.randint(1, 2) == 1:
                 child = Person(next_person_id, get_name_male())
             else:
                 child = Person(next_person_id, get_name_female())
+
             people[next_person_id] = child
             family.add_child(child)
             next_person_id += 1
 
-
         if generation > 1:
-            if random.randint(1, 10) != 1:
-                # create parents and recurve calls
-                husband_parents = _create_family(generation - 1)
-                husband.add_parents(husband_parents.id)
-                husband_parents.add_child(husband)
+            # create parents and recurve calls
+            husband_parents = _create_family(generation - 1)
+            husband.add_parents(husband_parents.id)
+            husband_parents.add_child(husband)
 
-            if random.randint(1, 10) != 1:
-                wife_parents = _create_family(generation - 1)
-                wife.add_parents(wife_parents.id)
-                wife_parents.add_child(wife)
+            wife_parents = _create_family(generation - 1)
+            wife.add_parents(wife_parents.id)
+            wife_parents.add_child(wife)
 
 
         # return the family that was created
@@ -377,7 +377,10 @@ class Handler(BaseHTTPRequestHandler):
             print(f'Final thread count (max count): {max_thread_count}')
             log.write(f'Final thread count (max count): {max_thread_count}')
 
-            json_data = '{"status":"OK"}'
+            data_str = '{' + \
+                       f'"status":"OK", "people": {len(people)}, "families": {len(families)}, "api": {call_count}, "threads": {max_thread_count}' + \
+                       '}'
+            json_data = json.dumps(ast.literal_eval(data_str))
 
             print('#' * 80)
             log.write('#' * 80)

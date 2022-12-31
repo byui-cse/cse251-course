@@ -7,8 +7,8 @@ Author: <Add name here>
 Purpose: Part 1 of assignment 09, finding a path to the end position in a maze
 
 Instructions:
-- Do not create classes for this assignment, just functions
-- Do not use any other Python modules other than the ones included
+- Do not create classes for this assignment, just functions.
+- Do not use any other Python modules other than the ones included.
 
 """
 import math
@@ -17,12 +17,14 @@ from maze import Maze
 import cv2
 import sys
 
-# Include cse 251 common Python files - Dont change
+# Include cse 251 files
 from cse251 import *
 
 SCREEN_SIZE = 800
 COLOR = (0, 0, 255)
-
+SLOW_SPEED = 100
+FAST_SPEED = 1
+speed = SLOW_SPEED
 
 # TODO add any functions
 
@@ -37,6 +39,8 @@ def solve_path(maze):
 
 def get_path(log, filename):
     """ Do not change this function """
+    #  'Maze: Press "q" to quit, "1" slow drawing, "2" faster drawing, "p" to play again'
+    global speed
 
     # create a Screen Object that will contain all of the drawing commands
     screen = Screen(SCREEN_SIZE, SCREEN_SIZE)
@@ -49,14 +53,15 @@ def get_path(log, filename):
     log.write(f'Number of drawing commands for = {screen.get_command_count()}')
 
     done = False
-    speed = 1
     while not done:
         if screen.play_commands(speed): 
             key = cv2.waitKey(0)
-            if key == ord('+'):
-                speed = max(0, speed - 1)
-            elif key == ord('-'):
-                speed += 1
+            if key == ord('1'):
+                speed = SLOW_SPEED
+            elif key == ord('2'):
+                speed = FAST_SPEED
+            elif key == ord('q'):
+                exit()
             elif key != ord('p'):
                 done = True
         else:

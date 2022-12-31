@@ -9,7 +9,7 @@ Instructions:  See I-Learn
 
 TODO
 
-Add you comments here on the pool sizes that you used for your assignment and
+Add your comments here on the pool sizes that you used for your assignment and
 why they were the best choices.
 
 
