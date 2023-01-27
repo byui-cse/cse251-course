@@ -66,7 +66,7 @@ class Queue251():
         return len(self.items)
 
     def put(self, item):
-        assert len(self.items) < 10
+        assert len(self.items) <= 10
         self.items.append(item)
 
     def get(self):
