@@ -1,13 +1,13 @@
 ![](../site/banner.png)
 ***
 
-# Microsoft Teams
+# Slack
 
-Microsoft Teams is cloud-based team collaboration software that is part of the Office 365 suite of applications. The core capabilities in Microsoft Teams include business messaging, calling, video meetings and file sharing. 
+Slack is cloud-based team collaboration software. The core capabilities in Slack include business messaging, calling, video meetings and file sharing. 
 
-You can download MS Teams from: [Download Page](https://teams.microsoft.com/downloads)
+You can download Slack from: [Download Page](https://slack.com/downloads/windows)
 
-The Teams group for this course can be found on the home page in I-Learn.
+The Slack group for this course can be found in the course.
 
 ## Channels
 
