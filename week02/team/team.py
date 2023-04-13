@@ -5,6 +5,7 @@ File: team.py
 Author: Brother Comeau
 
 Purpose: Playing Card API calls
+Website is: http://deckofcardsapi.com
 
 Instructions:
 
@@ -37,8 +38,9 @@ class Deck:
 
 
     def reshuffle(self):
+        print('Reshuffle Deck')
         # TODO - add call to reshuffle
-        pass
+
 
     def draw_card(self):
         # TODO add call to get a card

@@ -23,7 +23,7 @@ BOXES_FILENAME   = 'boxes.txt'
 # Settings consts
 MARBLE_COUNT = 'marble-count'
 CREATOR_DELAY = 'creator-delay'
-BAG_COUNT = 'bag-count'
+NUMBER_OF_MARBLES_IN_A_BAG = 'bag-count'
 BAGGER_DELAY = 'bagger-delay'
 ASSEMBLER_DELAY = 'assembler-delay'
 WRAPPER_DELAY = 'wrapper-delay'
@@ -115,7 +115,7 @@ class Bagger(mp.Process):
 class Assembler(mp.Process):
     """ Take the set of marbles and create a gift from them.
         Sends the completed gift to the wrapper """
-    marble_names = ('Lucky', 'Spinner', 'Sure Shot', 'Fr. Comeau', 'Winner', '5-Star', 'Hercules', 'Apollo', 'Zeus')
+    marble_names = ('Lucky', 'Spinner', 'Sure Shot', 'Big Joe', 'Winner', '5-Star', 'Hercules', 'Apollo', 'Zeus')
 
     def __init__(self):
         mp.Process.__init__(self)
@@ -173,7 +173,7 @@ def main():
 
     log.write(f'Marble count     = {settings[MARBLE_COUNT]}')
     log.write(f'Marble delay     = {settings[CREATOR_DELAY]}')
-    log.write(f'Bag count        = {settings[BAG_COUNT]}') 
+    log.write(f'Marbles in a bag = {settings[NUMBER_OF_MARBLES_IN_A_BAG]}') 
     log.write(f'Bagger delay     = {settings[BAGGER_DELAY]}')
     log.write(f'Assembler delay  = {settings[ASSEMBLER_DELAY]}')
     log.write(f'Wrapper delay    = {settings[WRAPPER_DELAY]}')

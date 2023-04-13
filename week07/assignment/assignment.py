@@ -105,6 +105,9 @@ def main():
 
     # TODO Create process pools
 
+    # TODO you can change the following
+    # TODO start and wait pools
+    
     count = 0
     task_files = glob.glob("*.task")
     for filename in task_files:
@@ -127,7 +130,6 @@ def main():
         else:
             log.write(f'Error: unknown task type {task_type}')
 
-    # TODO start and wait pools
 
 
     # Do not change the following code (to the end of the main function)

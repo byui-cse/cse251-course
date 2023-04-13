@@ -10,6 +10,8 @@ Instructions:
 
 - See in I-Learn
 
+Question: is the Python Queue thread safe?  (https://en.wikipedia.org/wiki/Thread_safety)
+
 """
 
 import threading

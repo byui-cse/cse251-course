@@ -68,7 +68,7 @@ def depth_fs_pedigree(family_id, tree):
     pass
 
 # -----------------------------------------------------------------------------
-def breadth_fs_pedigree(start_id, tree):
+def breadth_fs_pedigree(family_id, tree):
     # KEEP this function even if you don't implement it
     # TODO - implement breadth first retrieval
     # TODO - Printing out people and families that are retrieved from the server will help debugging
@@ -76,7 +76,7 @@ def breadth_fs_pedigree(start_id, tree):
     pass
 
 # -----------------------------------------------------------------------------
-def breadth_fs_pedigree_limit5(start_id, tree):
+def breadth_fs_pedigree_limit5(family_id, tree):
     # KEEP this function even if you don't implement it
     # TODO - implement breadth first retrieval
     #      - Limit number of concurrent connections to the FS server to 5

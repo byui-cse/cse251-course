@@ -73,9 +73,6 @@ def get_color():
     current_color_index += 1
     return color
 
-def _solve(maze, x, y):
-    pass
-
 def solve_find_end(maze):
     """ finds the end position using threads.  Nothing is returned """
     # When one of the threads finds the end position, stop all of them

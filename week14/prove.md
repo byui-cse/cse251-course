@@ -54,6 +54,7 @@ While running, the server will display requests and replies from your assignment
 - You must build the pedigree tree starting with the starting family id.  You must write your program to handle different family information from the server (ie., number of families, number of children, etc.).  A family might be missing a parent and the number of children is random.
 - You must retrieve all individuals in a family and add them to the tree object. (ie., husband, wife and children)
 - Suggestion: get the function to work without using threads first.
+- Do not use try...except statements
 - **Your goal is to execute part 1 in under 10 seconds for 6 generations**
 
 ### Part 2
@@ -62,6 +63,7 @@ While running, the server will display requests and replies from your assignment
 - Your goal is to make this function as fast as possible by using threads.
 - You must retrieve all individuals in a family (ie., husband, wife and children)
 - Do not use recursion for this algorithm.
+- Do not use try...except statements
 - **Your goal is to execute part 2 in under 10 seconds for 6 generations**
 
 ### 10% Extra Bonus (Optional)

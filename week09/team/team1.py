@@ -54,7 +54,7 @@ import time
 import threading
 
 PHILOSOPHERS = 5
-MAX_MEALS = PHILOSOPHERS * 5
+MAX_MEALS_EATEN = PHILOSOPHERS * 5
 
 def main():
     # TODO - create the forks

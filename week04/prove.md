@@ -29,6 +29,7 @@ The Python file contains the following classes:
 - No global variables, all data must be passed to the objects.
 - Only the included/imported packages are allowed. 
 - Thread pools are not allowed.
+- Do not use try..except statements
 - You are not allowed to use the normal Python Queue class.  You must use Queue251. This shared queue holds the Car objects and can not be greater than MAX_QUEUE_SIZE while your program is running.
 - Your goal is to create `CARS_TO_PRODUCE` many cars. The Dealer thread must not know how many cars will be produced by the factory.
 - You will need two semaphores to properly implement this assignment.  Don't use a BoundedSemaphore. Do not use any arguments for the method acquire() when using semaphores.  Also, when using semaphores, do not use the **_value** attribute.

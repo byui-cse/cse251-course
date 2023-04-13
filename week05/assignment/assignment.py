@@ -13,6 +13,8 @@ Instructions:
 - No global variables, all data must be passed to the objects.
 - Only the included/imported packages are allowed.  
 - Thread/process pools are not allowed
+- You MUST use a barrier
+- Do not use try...except statements
 - You are not allowed to use the normal Python Queue object.  You must use Queue251.
 - the shared queue between the threads that are used to hold the Car objects
   can not be greater than MAX_QUEUE_SIZE
@@ -119,10 +121,10 @@ def run_production(factory_count, dealer_count):
         factories and dealerships passed in as arguments.
     """
 
-    # TODO Create semaphore(s)
+    # TODO Create semaphore(s) if needed
     # TODO Create queue
-    # TODO Create lock(s)
-    # TODO Create barrier(s)
+    # TODO Create lock(s) if needed
+    # TODO Create barrier
 
     # This is used to track the number of cars receives by each dealer
     dealer_stats = list([0] * dealer_count)
@@ -134,8 +136,6 @@ def run_production(factory_count, dealer_count):
     log.start_timer()
 
     # TODO Start all dealerships
-
-    time.sleep(1)   # make sure all dealers have time to start
 
     # TODO Start all factories
 

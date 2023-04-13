@@ -71,6 +71,8 @@ class Board():
         dir_x, dir_y = self.directions[direction]
         board_copy = copy.deepcopy(self.board)
         for letter in word:
+            if row < 0 or col < 0 or row >= self.size or col >= self.size:
+                return False
             board_letter = self.get_letter(row, col)
             if board_letter == '.' or board_letter == letter:
                 self.board[row][col] = letter

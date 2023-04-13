@@ -24,7 +24,7 @@ from cse251 import *
 prime_count = 0
 numbers_processed = 0
 
-def is_prime(n: int) -> bool:
+def is_prime(n):
     global numbers_processed
     numbers_processed += 1
 

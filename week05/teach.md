@@ -16,7 +16,7 @@ The following graph outlines the processes and data structures that you will nee
 
 **Reader Thread** This is a thread that will read the data file and place items onto a Queue.  There is no limit on the size of the queue.
 
-**Queue** This is a multiprocessing Queue.
+**Queue** This is a Queue.
 
 **Prime Process** This is a process that will read something from the Queue and check to see if it is a prime number.  If the number is prime, it will place the number on a shared list.  You need 3 of these processes.
 

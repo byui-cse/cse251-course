@@ -4,17 +4,17 @@ Lesson Week: 11
 File: team2.py
 Author: Brother Comeau
 
-Purpose: Team Activity 2: Queue, Pipe, Stack
+Purpose: Team Activity 2: Queue, Stack
 
 Instructions:
 
 Part 1:
-- Create classes for Queue_t, Pipe_t and Stack_t that are thread safe.
+- Create classes for Queue_t and Stack_t that are thread safe.
 - You can use the List() data structure in your classes.
 - Once written, test them using multiple threads.
 
 Part 2
-- Create classes for Queue_p, Pipe_p and Stack_p that are process safe.
+- Create classes for Queue_p and Stack_p that are process safe.
 - You can use the List() data structure in your classes.
 - Once written, test them using multiple processes.
 

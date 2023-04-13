@@ -119,13 +119,13 @@ class Tree:
 
     def add_person(self, person):
         if self.does_person_exist(person.get_id()):
-            print(f'ERROR: Person with ID = {person.id} Already exists in the tree')
+            print(f'ERROR: Person with ID = {person.get_id()} Already exists in the tree')
         else:
             self.__people[person.get_id()] = person
 
     def add_family(self, family):
         if self.does_family_exist(family.get_id()):
-            print(f'ERROR: Family with ID = {family.id} Already exists in the tree')
+            print(f'ERROR: Family with ID = {family.get_id()} Already exists in the tree')
         else:
             self.__families[family.get_id()] = family
 

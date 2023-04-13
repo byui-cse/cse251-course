@@ -18,7 +18,9 @@ Instructions:
 - reader: a process that receive numbers sent by the writer.  The reader will
   accept values until indicated by the writer that there are no more values to
   process.  
-  
+
+- Do not use try...except statements
+
 - Display the numbers received by the reader printing them to the console.
 
 - Create WRITERS writer processes
@@ -41,7 +43,7 @@ Instructions:
   3) Any indexes that the processes need to keep track of the data queue
   4) Any other values you need for the assignment
 
-- Not allowed to use Queue(), Pipe(), List() or any other data structure.
+- Not allowed to use Queue(), Pipe(), List(), Barrier() or any other data structure.
 
 - Not allowed to use Value() or Array() or any other shared data type from 
   the multiprocessing package.
@@ -53,8 +55,8 @@ Instructions:
 
 Add any comments for me:
 
-
 """
+
 import random
 from multiprocessing.managers import SharedMemoryManager
 import multiprocessing as mp
@@ -72,6 +74,15 @@ def main():
     smm.start()
 
     # TODO - Create a ShareableList to be used between the processes
+    #      - The buffer should be size 10 PLUS at least three other
+    #        values (ie., [0] * (BUFFER_SIZE + 3)).  The extra values
+    #        are used for the head and tail for the circular buffer.
+    #        The another value is the current number that the writers
+    #        need to send over the buffer.  This last value is shared
+    #        between the writers.
+    #        You can add another value to the sharedable list to keep
+    #        track of the number of values received by the readers.
+    #        (ie., [0] * (BUFFER_SIZE + 4))
 
     # TODO - Create any lock(s) or semaphore(s) that you feel you need
 

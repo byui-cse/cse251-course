@@ -26,11 +26,13 @@ Instructions:
 
 import math
 import threading 
+import os
 from cse251turtle import *
 
 # Include CSE 251 common Python files. 
 from cse251 import *
 
+# No global variables.
 
 def draw_square(tur, x, y, side, color='black'):
     """Draw Square"""
@@ -44,7 +46,7 @@ def draw_square(tur, x, y, side, color='black'):
 
 def draw_circle(tur, x, y, radius, color='red'):
     """Draw Circle"""
-    steps = 8
+    steps = 10
     circumference = 2 * math.pi * radius
 
     # Need to adjust starting position so that (x, y) is the center
@@ -123,6 +125,13 @@ def draw_rectangles(tur):
 def run_no_threads(tur, log, main_turtle):
     """Draw different shapes without using threads"""
 
+    # !!!!!!!!!!!!!!      DO NOT CHANGE THIS FUNCTION    !!!!!!!!!!!!!!!!!!
+    # !!!!!!!!!!!!!!      DO NOT CHANGE THIS FUNCTION    !!!!!!!!!!!!!!!!!!
+    # !!!!!!!!!!!!!!      DO NOT CHANGE THIS FUNCTION    !!!!!!!!!!!!!!!!!!
+    # !!!!!!!!!!!!!!      DO NOT CHANGE THIS FUNCTION    !!!!!!!!!!!!!!!!!!
+    # !!!!!!!!!!!!!!      DO NOT CHANGE THIS FUNCTION    !!!!!!!!!!!!!!!!!!
+    # !!!!!!!!!!!!!!      DO NOT CHANGE THIS FUNCTION    !!!!!!!!!!!!!!!!!!
+
     # Draw Coords system
     tur.pensize(0.5)
     draw_coord_system(tur, 0, 0, size=375)
@@ -192,7 +201,9 @@ def main():
     turtle251 = CSE251Turtle()
 
     # Test 1 - Drawing with no threads
-    run_no_threads(turtle251, log, main_turtle)
+    # remove the file 'drawpart1.txt' to stop drawing part 1
+    if os.path.exists('drawpart1.txt'):
+        run_no_threads(turtle251, log, main_turtle)
     
     main_turtle.clear()
 

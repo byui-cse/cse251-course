@@ -17,7 +17,8 @@ Your assignment will process a directory full of task files.  Each file will con
 1. You are required to use the function apply_async() for these 5 pools. You can't use map(), or any other pool function.  You must use callback functions with the apply_async() statement.
 1. Each pool will collect that results of their tasks into a global list. (ie. result_primes, result_words, result_upper, result_sums, result_names)
 1. the task_* functions contain general logic of what needs to happen
-1. Run the server.py program from a terminal/console program.  Simply type `python server.py`.  This server is the same one used for assignment 2.  Refer to assignment 2's documention on how to start and use the server,
+1. Run the server.py program from a terminal/console program.  Simply type `python server.py`.  This server is the same one used for assignment 2.  Refer to assignment 2's documention on how to start and use the server.
+1. Do not use try...except statements
 
 ### create_tasks.py program
 

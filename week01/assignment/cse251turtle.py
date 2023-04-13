@@ -13,6 +13,9 @@ Purpose: Turtle Class for CSE 251
 
 import turtle
 import time
+import sys
+import select
+import threading
 
 
 class CSE251Turtle:
@@ -29,9 +32,8 @@ class CSE251Turtle:
     COMMAND_SETHEADING = 9
     COMMAND_PENSIZE = 10
 
-    SLEEP = 0.00001
-
     def __init__(self):
+        # sys.setswitchinterval(0.000000000001)
         self.commands = []
 
 
@@ -40,42 +42,51 @@ class CSE251Turtle:
 
 
     def move(self, x, y):
+        print(f'Move({x}, {y})')
         self.up()
         self.goto(x, y)
         self.down()
 
 
     def up(self):
+        print('Up()')
         self.commands.append((self.COMMAND_UP, ))
 
 
     def goto(self, x, y):
+        print(f'Goto({x}, {y})')
         self.commands.append((self.COMMAND_GOTO, x, y))
 
 
     def down(self):
+        print('Down()')
         self.commands.append((self.COMMAND_DOWN, ))
 
 
     def forward(self, amount):
-        time.sleep(self.SLEEP)
+        # time.sleep(self.SLEEP)
+        print(f'Forward({amount})')
         self.commands.append((self.COMMAND_FORWARD, amount))
 
 
     def backward(self, amount):
-        time.sleep(self.SLEEP)
+        # time.sleep(self.SLEEP)
+        print(f'Backward({amount})')
         self.commands.append((self.COMMAND_BACKWARD, amount))
 
 
     def left(self, amount):
+        print(f'Left({amount})')
         self.commands.append((self.COMMAND_LEFT, amount))
 
 
     def right(self, amount):
+        print(f'Right({amount})')
         self.commands.append((self.COMMAND_RIGHT, amount))
 
 
     def color(self, color):
+        print(f'color({color})')
         self.commands.append((self.COMMAND_COLOR, color))
 
 
