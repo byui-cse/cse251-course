@@ -10,8 +10,9 @@ Instructions:
 
 - Implement the process functions to copy a text file exactly using a pipe
 
-After you can copy a text file word by word exactly
-- Change the program to be faster (Still using the processes)
+- After you can copy a text file word by word exactly,
+  Change the program (any way you want) to be faster 
+  (Still using the processes)
 
 """
 
@@ -81,4 +82,3 @@ if __name__ == "__main__":
     
     # After you get the gettysburg.txt file working, uncomment this statement
     # copy_file(log, 'bom.txt', 'bom-copy.txt')
-

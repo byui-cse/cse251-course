@@ -46,8 +46,9 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-
 class Board():
+
+    SIZE = 25
 
     directions = (
         (1, 0),   # E
@@ -60,46 +61,38 @@ class Board():
         (1, -1)   # NE
     )
 
-    def __init__(self, size):
+    def __init__(self):
         """ Create the instance and the board arrays """
-        self.size = size
-        self.board = [['.' for _ in range(size)] for _ in range(size)] 
-        self.highlighting = [[False for _ in range(size)] for _ in range(size)] 
+        # self.board = [['.' for _ in range(size)] for _ in range(size)]
+        self.size = self.SIZE 
+        self.highlighting = [[False for _ in range(self.SIZE)] for _ in range(self.SIZE)] 
 
-    def _word_fits(self, word, row, col, direction):
-        """ Helper function: Fit a word in the board """
-        dir_x, dir_y = self.directions[direction]
-        board_copy = copy.deepcopy(self.board)
-        for letter in word:
-            if row < 0 or col < 0 or row >= self.size or col >= self.size:
-                return False
-            board_letter = self.get_letter(row, col)
-            if board_letter == '.' or board_letter == letter:
-                self.board[row][col] = letter
-                row += dir_x
-                col += dir_y
-            else:
-                self.board = copy.deepcopy(board_copy)
-                return False
-        return True
+        self.board = [['L', 'S', 'O', 'D', 'A', 'E', 'O', 'M', 'A', 'A', 'I', 'I', 'A', 'S', 'S', 'A', 'M', 'G', 'R', 'C', 'O', 'D', 'A', 'I', 'R'], 
+                      ['A', 'V', 'C', 'S', 'N', 'T', 'U', 'U', 'O', 'H', 'N', 'C', 'H', 'A', 'B', 'E', 'U', 'M', 'O', 'C', 'R', 'G', 'H', 'A', 'I'], 
+                      ['E', 'T', 'H', 'A', 'A', 'S', 'M', 'S', 'S', 'C', 'A', 'O', 'A', 'T', 'N', 'T', 'S', 'N', 'H', 'T', 'A', 'E', 'P', 'D', 'H'], 
+                      ['E', 'I', 'S', 'S', 'S', 'E', 'W', 'S', 'L', 'V', 'R', 'R', 'H', 'S', 'E', 'Q', 'S', 'B', 'S', 'M', 'E', 'R', 'V', 'K', 'A'], 
+                      ['R', 'S', 'S', 'A', 'H', 'B', 'B', 'A', 'L', 'E', 'E', 'I', 'L', 'B', 'T', 'R', 'A', 'W', 'C', 'K', 'W', 'W', 'E', 'O', 'A'], 
+                      ['U', 'U', 'G', 'N', 'I', 'K', 'N', 'I', 'H', 'T', 'E', 'R', 'A', 'V', 'L', 'L', 'D', 'N', 'L', 'H', 'Y', 'S', 'S', 'T', 'A'], 
+                      ['M', 'O', 'C', 'D', 'M', 'B', 'N', 'D', 'U', 'Q', 'M', 'I', 'A', 'A', 'H', 'L', 'E', 'N', 'A', 'P', 'E', 'K', 'H', 'I', 'H'], 
+                      ['L', 'C', 'O', 'O', 'K', 'I', 'E', 'P', 'U', 'A', 'O', 'E', 'N', 'T', 'D', 'Q', 'L', 'Q', 'C', 'N', 'T', 'J', 'I', 'D', 'A'], 
+                      ['C', 'H', 'G', 'A', 'N', 'V', 'M', 'M', 'G', 'Y', 'S', 'R', 'E', 'G', 'E', 'L', 'L', 'O', 'C', 'O', 'F', 'Y', 'R', 'I', 'N'], 
+                      ['A', 'E', 'A', 'G', 'T', 'O', 'J', 'A', 'O', 'U', 'U', 'W', 'A', 'D', 'E', 'O', 'V', 'P', 'O', 'A', 'O', 'N', 'T', 'U', 'A'], 
+                      ['A', 'A', 'R', 'E', 'C', 'A', 'Z', 'W', 'F', 'O', 'H', 'A', 'P', 'C', 'Q', 'S', 'P', 'T', 'E', 'V', 'I', 'L', 'O', 'G', 'A'], 
+                      ['B', 'V', 'J', 'E', 'M', 'I', 'D', 'F', 'J', 'T', 'I', 'E', 'P', 'A', 'C', 'S', 'H', 'Y', 'X', 'G', 'R', 'R', 'Z', 'D', 'E'], 
+                      ['A', 'Y', 'T', 'L', 'N', 'A', 'I', 'D', 'K', 'G', 'G', 'E', 'A', 'M', 'N', 'I', 'R', 'O', 'N', 'C', 'L', 'A', 'D', 'D', 'A'], 
+                      ['G', 'S', 'W', 'E', 'S', 'D', 'N', 'U', 'O', 'I', 'H', 'Y', 'R', 'G', 'L', 'L', 'M', 'I', 'Y', 'D', 'V', 'M', 'A', 'J', 'O'], 
+                      ['G', 'A', 'E', 'A', 'A', 'Y', 'A', 'R', 'N', 'W', 'W', 'O', 'A', 'U', 'K', 'N', 'K', 'T', 'B', 'I', 'R', 'T', 'M', 'C', 'U'], 
+                      ['A', 'M', 'A', 'S', 'R', 'C', 'O', 'A', 'U', 'R', 'A', 'L', 'T', 'O', 'Y', 'C', 'E', 'O', 'E', 'E', 'A', 'F', 'P', 'P', 'Y'], 
+                      ['G', 'P', 'S', 'S', 'O', 'I', 'H', 'V', 'D', 'S', 'Y', 'P', 'U', 'B', 'O', 'R', 'O', 'Z', 'T', 'B', 'P', 'D', 'M', 'P', 'M'], 
+                      ['E', 'L', 'E', 'U', 'T', 'J', 'F', 'I', 'E', 'D', 'S', 'M', 'S', 'L', 'O', 'K', 'T', 'U', 'A', 'R', 'D', 'O', 'P', 'K', 'H'], 
+                      ['U', 'E', 'L', 'M', 'A', 'N', 'R', 'C', 'N', 'R', 'Q', 'E', 'C', 'R', 'M', 'Y', 'P', 'S', 'O', 'Z', 'C', 'A', 'O', 'S', 'D'], 
+                      ['C', 'D', 'G', 'P', 'R', 'T', 'E', 'X', 'Y', 'G', 'C', 'R', 'D', 'A', 'T', 'M', 'E', 'D', 'U', 'D', 'H', 'O', 'C', 'A', 'S'], 
+                      ['A', 'T', 'N', 'T', 'E', 'M', 'O', 'X', 'E', 'S', 'E', 'L', 'R', 'I', 'O', 'H', 'U', 'J', 'Q', 'D', 'B', 'D', 'I', 'F', 'F'], 
+                      ['C', 'D', 'D', 'I', 'N', 'A', 'K', 'Q', 'N', 'V', 'K', 'K', 'O', 'C', 'N', 'C', 'Q', 'L', 'O', 'I', 'N', 'D', 'L', 'U', 'C'], 
+                      ['A', 'I', 'S', 'O', 'E', 'G', 'P', 'G', 'O', 'M', 'Y', 'O', 'Z', 'C', 'E', 'D', 'R', 'D', 'T', 'U', 'N', 'I', 'A', 'S', 'S'], 
+                      ['F', 'R', 'O', 'N', 'G', 'A', 'A', 'A', 'A', 'C', 'C', 'P', 'V', 'R', 'K', 'D', 'U', 'A', 'I', 'A', 'R', 'D', 'Z', 'E', 'D'], 
+                      ['D', 'C', 'D', 'V', 'A', 'Z', 'N', 'G', 'S', 'O', 'L', 'D', 'I', 'E', 'I', 'I', 'D', 'S', 'S', 'F', 'C', 'N', 'U', 'A', 'I']]
 
-    def place_words(self, words):
-        """ Place all of the words into the board """
-        for word in words:
-            print(f'Placing {word}...')
-            word_fitted = False
-            while not word_fitted:
-                row = random.randint(0, self.size - 1)
-                col = random.randint(0, self.size - 1)
-                direction = random.randint(0, 7)
-                word_fitted = self._word_fits(word, row, col, direction)
-
-    def fill_in_dots(self):
-        """ Replace '.' in the board to random letters """
-        for row in range(self.size):
-            for col in range(self.size):
-                if self.board[row][col] == '.':
-                    self.board[row][col] = random.choice(string.ascii_uppercase)
 
     def highlight(self, row, col, on=True):
         """ Turn on/off highlighting for a letter """
@@ -153,12 +146,7 @@ class Board():
 
 
 def main():
-    board = Board(25)
-    board.place_words(words)
-
-    print('Board with placed words')
-    board.display()
-    board.fill_in_dots()
+    board = Board()
     board.display()
 
     start = time.perf_counter()
@@ -170,7 +158,6 @@ def main():
 
     board.display()
     print(f'Time to find words = {total_time}')
-
 
 if __name__ == '__main__':
     main()

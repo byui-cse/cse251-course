@@ -6,13 +6,19 @@ Run the following a terminal.  Make sure that you use the same Python version th
 
 You need to have `git` installed on your computer. [Instructions to installing git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-```
-Mac:
-python3 -m pip install git+https://github.com/byui-cse/cse251-course-files.git
 
-Windows:
+```
+Mac or Windows:
 <python path used in VS Code> -m pip install git+https://github.com/byui-cse/cse251-course-files.git
 ```
+
+# Finding the path of Python used by VSCode
+
+1. 
+
+
+
+
 
 The following code will include the common files for the course.
 

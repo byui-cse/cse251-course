@@ -24,7 +24,7 @@ If any of the concepts or topics in the list below seem unfamiliar to you, you s
 - [Collections](https://www.youtube.com/watch?v=beA8IsY3mQs&list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6&index=25)
 - [Loops](https://www.youtube.com/watch?v=LrOAl8vUFHY&[list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6&index=27)
 - [Python dictionaries: realpython](https://realpython.com/lessons/dictionary-python/)
-- [Python splicing](https://www.youtube.com/watch?v=ajrtAuDg3yw)
+- [Python slicing](https://www.youtube.com/watch?v=ajrtAuDg3yw)
 
 ### Links to Python Articles
 

@@ -82,7 +82,7 @@ assignment
 
 1. Take a look at the code in `assignment.py` and the `TODO` in the comments.  Your goal is to process all 300 frames from the `elephant` and `green` folders to create 300 new frames in the `processed` folder.
 
-1. You must use a mp.pool() function for this assignment.
+1. You must use the map() function in mp.pool() for this assignment. (ie., p.map(function, data))
 
 1. Your program will process all of the frames using 1 CPU core.  You will need to keep track of the time it took to process all of the frames.  (See the main code for the variables that will be used.)
 

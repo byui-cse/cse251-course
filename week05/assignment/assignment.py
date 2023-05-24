@@ -160,7 +160,7 @@ def main(log):
         log.write(f'Dealerships    : {dealerships}')
         log.write(f'Run Time       : {run_time:.4f}')
         log.write(f'Max queue size : {max_queue_size}')
-        log.write(f'Factor Stats   : {factory_stats}')
+        log.write(f'Factory Stats  : {factory_stats}')
         log.write(f'Dealer Stats   : {dealer_stats}')
         log.write('')
 

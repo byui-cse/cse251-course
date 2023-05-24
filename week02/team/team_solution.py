@@ -79,6 +79,6 @@ if __name__ == '__main__':
 
     for i in range(55):
         card = deck.draw_endless()
-        print(i, card, flush=True)
+        print(f'card {i + 1}: {card}', flush=True)
 
     print()
