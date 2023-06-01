@@ -28,7 +28,7 @@ This program will create the task files that your assignment will process.  Ther
 Do you want all task files (y), or just a few for testing (n): 
 ```
 
-If you select 'y' to create all of the task files (434 of them).  You are required to process of these files for your assignment.  However, while you are developing your program, you can select the 'n' option to only create 5 task files.  Each of these task files represents one of the 5 different tasks your assignment must handle.
+If you select 'y' to create all of the task files (4034 of them).  You are required to process of these files for your assignment.  However, while you are developing your program, you can select the 'n' option to only create 5 task files.  Each of these task files represents one of the 5 different tasks your assignment must handle.
 
 Sample Output while using these test tasks files.
 
